@@ -74,9 +74,11 @@ public class NonVR : MonoBehaviour {
         float xInput = Input.GetAxis ("Mouse X");
         float yInput = Input.GetAxis ("Mouse Y");
 
-        // Rotate the body
-        transform.eulerAngles += new Vector3 (0, xInput, 0);
-        // Rotate the camera
-        cam.transform.eulerAngles += new Vector3 (-yInput, 0, 0);
+        if (Input.GetButton ("Fire2")) {
+            // Rotate the body
+            transform.eulerAngles += new Vector3 (0, xInput, 0);
+            // Rotate the camera
+            cam.transform.eulerAngles += new Vector3 (-yInput, 0, 0);
+        }
     }
 }
