@@ -11,12 +11,11 @@ public class PickupSystem : MonoBehaviour {
 	public LayerMask eniviroment;
 
 	#region Private Variables
-	private GameObject currentObjectSelected;
+	private GameObject currentObjectWithinRange;
 	#endregion
 	
 	private void Update() {
 		ObjectInteraction();
-		CorrectPosition();
 	}
 
 	private void CorrectPosition() {
@@ -30,19 +29,19 @@ public class PickupSystem : MonoBehaviour {
     }
 
     private void ObjectInteraction() {
-		if(currentObjectSelected != null)
+		if(currentObjectWithinRange != null)
 			if(holding == null)
+				if(Input.GetButton("Fire1")) {								
+					if(holding == null)
+					holding = currentObjectWithinRange;
 
-				if(Input.GetButton("Fire1")) {
-				
-				if(holding == null)
-				holding = currentObjectSelected;
-
-				holding.transform.position = transform.position;
-				holding.transform.SetParent(gameObject.transform);
+					holding.transform.position = transform.position;
+					holding.transform.SetParent(gameObject.transform);
 				return;
 				} 
 
+
+				if(Input.GetButtonUp("Fire1"))
 					if(holding != null)
 					{
 					holding.transform.parent = null;
@@ -53,13 +52,13 @@ public class PickupSystem : MonoBehaviour {
 
 	public void OnTriggerStay(Collider c) {
 		if(c.transform.GetComponent<Pickup>()) {
-			currentObjectSelected = c.transform.gameObject;
+			currentObjectWithinRange = c.transform.gameObject;
 		}
 	}
 
 	public void OnTriggerExit(Collider c) {
 		if(c.transform.GetComponent<Pickup>()) {
-			currentObjectSelected = null;
+			currentObjectWithinRange = null;
 		}
 	}
 }
