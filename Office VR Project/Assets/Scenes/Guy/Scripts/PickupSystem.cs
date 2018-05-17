@@ -4,62 +4,101 @@ using UnityEngine;
 
 /*This script has the primary use of enabling the player to interact with props and different objects*/
 
+[RequireComponent(typeof(Rigidbody), typeof(FixedJoint))]
 public class PickupSystem : MonoBehaviour {
 
 	[Header("Debug Settings")]
-	public GameObject holding;
-	public LayerMask eniviroment;
+	public Pickup objectBeingCarried = null;
+
+	[Tooltip("This is the interval between 2 stored positions to decide the throw force.")]
+	public int framesTillPositionStore = 15;
+	public float throwforceMultiplier = 2;
 
 	#region Private Variables
-	private GameObject currentObjectSelected;
+	private FixedJoint thisJoint; //Current gameobject its fixed joint;
+
+	private Rigidbody otherBody;
+	private Rigidbody thisBody;
+
+	private bool isThrowing = false;
+	private Pickup currentObjectWithinRange = null;
+
+	private Vector3 newLocation;
+	private Vector3 oldLocation;
+
+	private int frameCount;
 	#endregion
 	
-	private void Update() {
-		ObjectInteraction();
-		CorrectPosition();
+	public void Awake() { //Sets some references;
+		thisJoint = GetComponent<FixedJoint>(); //Sets the main joint of this object;
+		thisBody = GetComponent<Rigidbody>();
 	}
 
-	private void CorrectPosition() {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+	private void Update() {
+		ObjectInteraction(); 
+	}
 
-        if (Physics.Raycast(ray, out hit, eniviroment)) //check if the ray hit something
-        {
-            transform.position = hit.point;
-        }
-    }
+	private void FixedUpdate() {
+		StorePosition();
+	}
+
+	bool CanCarry() {
+		if(objectBeingCarried == null)
+			if(currentObjectWithinRange != null)
+				if(Input.GetButtonDown("Fire1"))
+					return true;
+					
+					//If the statements above are not met, it will return false;
+					return false;
+	}
+
+	private void Throwing() {
+			if(objectBeingCarried != null)
+			{		
+			otherBody.velocity = (newLocation - oldLocation) * throwforceMultiplier;
+			objectBeingCarried.beingCarried = false;
+			thisJoint.connectedBody = null;
+			objectBeingCarried = null;
+		}
+	}
+
+	private void StorePosition() {
+		newLocation = transform.position;
+
+		if(framesTillPositionStore < 15)
+		framesTillPositionStore++;
+		else {
+			oldLocation = transform.position;
+			framesTillPositionStore = 0;
+		}
+
+	}
 
     private void ObjectInteraction() {
-		if(currentObjectSelected != null)
-			if(holding == null)
+		bool canCarry = CanCarry(); 
 
-				if(Input.GetButton("Fire1")) {
-				
-				if(holding == null)
-				holding = currentObjectSelected;
-
-				holding.transform.position = transform.position;
-				holding.transform.SetParent(gameObject.transform);
-				return;
+				if(canCarry) {
+					objectBeingCarried = currentObjectWithinRange;	
+					objectBeingCarried.beingCarried = true;							
+					thisJoint.connectedBody = objectBeingCarried.GetComponent<Rigidbody>();
+				    return;
 				} 
 
-					if(holding != null)
-					{
-					holding.transform.parent = null;
-					holding = null;
-					}
+				if(Input.GetButtonUp("Fire1"))
+					Throwing();
 				}
 
+	private void OnTriggerEnter(Collider c) {
 
-	public void OnTriggerStay(Collider c) {
-		if(c.transform.GetComponent<Pickup>()) {
-			currentObjectSelected = c.transform.gameObject;
+		if(c.transform.GetComponent<Pickup>())	{
+			if(c.transform.GetComponent<Pickup>().beingCarried == false)
+			currentObjectWithinRange = c.transform.gameObject.GetComponent<Pickup>();
+			otherBody = currentObjectWithinRange.gameObject.GetComponent<Rigidbody>();
 		}
+
 	}
 
-	public void OnTriggerExit(Collider c) {
-		if(c.transform.GetComponent<Pickup>()) {
-			currentObjectSelected = null;
-		}
-	}
+	private void OnTriggerExit(Collider c) {
+		currentObjectWithinRange = null;
+	} 
 }
