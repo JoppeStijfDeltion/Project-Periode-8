@@ -51,7 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scenes\Guy\Scripts\Pickup.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Door\Door.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Door\Keylock.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Drawer.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\InteractableObject.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\PickupSystem.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\NonVR.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\RenderLine.cs" />
@@ -66,8 +69,8 @@
      <None Include="Assets\Implementable Prefabs\test.txt" />
      <None Include="Assets\Scenes\Joppe\Particles\test.txt" />
      <None Include="Assets\Scenes\Lucas\Models\test.txt" />
+     <None Include="Assets\Scenes\Guy\Shader\OutlineInteractable.shader" />
      <None Include="Assets\PostProcessing\test.txt" />
-     <None Include="Assets\Scenes\Guy\Scripts\test.txt" />
      <None Include="Assets\Scenes\Tom\Local Prefabs\test.txt" />
      <None Include="Assets\Scenes\Joppe\Materials\test.txt" />
      <None Include="Assets\GUI\Sprites\test.txt" />
