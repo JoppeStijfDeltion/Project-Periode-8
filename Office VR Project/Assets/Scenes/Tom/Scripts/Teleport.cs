@@ -7,18 +7,18 @@ using UnityEngine.AI;
 public class Teleport : MonoBehaviour {
 
 	public Transform hand;
-
 	private NavMeshAgent agent;
 
-	private void Start () {
+	private void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
+
+		RenderLine.spawn = hand;
 	}
 
 	private void Update () {
+		RaycastHit hit;
 		if (Input.GetButtonDown ("Fire1")) {
-			RaycastHit hit;
 			if (Physics.Raycast (hand.position, hand.forward, out hit, 10f)) {
-				print (hit.point);
 				agent.SetDestination (hit.point);
 			}
 		}

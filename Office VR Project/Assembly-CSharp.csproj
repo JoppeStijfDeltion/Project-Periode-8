@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Pickup.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\PickupSystem.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\NonVR.cs" />
+     <Compile Include="Assets\Scenes\Tom\Scripts\RenderLine.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Teleport.cs" />
      <Compile Include="Assets\Scenes\Tom\Standard Assets\Scripts\SetCorrectCameraHeight.cs" />
      <None Include="Assets\Scenes\Joppe\Textures\test.txt" />
@@ -69,7 +70,6 @@
      <None Include="Assets\Scenes\Guy\Scripts\test.txt" />
      <None Include="Assets\Scenes\Tom\Local Prefabs\test.txt" />
      <None Include="Assets\Scenes\Joppe\Materials\test.txt" />
-     <None Include="Assets\Scenes\Guy\Local Prefabs\test.txt" />
      <None Include="Assets\GUI\Sprites\test.txt" />
      <None Include="Assets\Scenes\Lucas\Local Prefabs\test.txt" />
  <Reference Include="com.unity.render-pipelines.core.Editor">
