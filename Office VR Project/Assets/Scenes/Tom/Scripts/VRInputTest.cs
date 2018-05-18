@@ -14,26 +14,34 @@ public class VRInputTest : MonoBehaviour {
         #region Buttons
         // Menu
         if (Input.GetButtonDown ("OpenVR_L_Button_Menu")) {
+            Debug.Log ("<color=blue>Menu</color>");
         }
         if (Input.GetButtonDown ("OpenVR_R_Button_Menu")) {
+            Debug.Log ("<color=red>Menu</color>");
         }
 
         // Trackpad Press
         if (Input.GetButtonDown ("OpenVR_L_Button_Trackpad_Press")) {
+            Debug.Log ("<color=blue>Trackpad_Press</color>");
         }
         if (Input.GetButtonDown ("OpenVR_R_Button_Trackpad_Press")) {
+            Debug.Log ("<color=red>Trackpad_Press</color>");
         }
 
         // Trackpad Touch
         if (Input.GetButtonDown ("OpenVR_L_Button_Trackpad_Touch")) {
+            Debug.Log ("<color=blue>Trackpad_Touch</color>");
         }
         if (Input.GetButtonDown ("OpenVR_R_Button_Trackpad_Touch")) {
+            Debug.Log ("<color=red>Trackpad_Touch</color>");
         }
 
         // Trigger Touch
         if (Input.GetButtonDown ("OpenVR_L_Button_Trigger_Touch")) {
+            Debug.Log ("<color=blue>Trigger_Touch</color>");
         }
         if (Input.GetButtonDown ("OpenVR_R_Button_Trigger_Touch")) {
+            Debug.Log ("<color=red>Trigger_Touch</color>");
         }
         #endregion
         #region Axes
