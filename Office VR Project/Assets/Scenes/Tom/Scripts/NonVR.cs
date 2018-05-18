@@ -13,6 +13,9 @@ public class NonVR : MonoBehaviour {
     [Tooltip ("Show a popup everything you start the game asking if you want to use VR or not!")]
     public bool popup = true;
 
+    [Header ("Hold right click to rotate")]
+    public bool rightClick = true;
+
     // Input modification
     [Header ("The speed you move arround")]
     public float movementSpeed = 3f;
@@ -74,7 +77,7 @@ public class NonVR : MonoBehaviour {
         float xInput = Input.GetAxis ("Mouse X");
         float yInput = Input.GetAxis ("Mouse Y");
 
-        if (Input.GetButton ("Fire2")) {
+        if (Input.GetButton ("Fire2") || !rightClick) {
             // Rotate the body
             transform.eulerAngles += new Vector3 (0, xInput, 0);
             // Rotate the camera
