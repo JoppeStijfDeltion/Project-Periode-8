@@ -9,13 +9,16 @@ public class Door : InteractableObject {
 	public float minRotation;
 	public float maxRotation;
 	public float followingspeed = 2;
+
 	public bool locked = false;
 
 	#region Private Variables
+	private Animator anim;
 	private Vector3 currentRotation;
 	#endregion
 
 	private void Awake() {
+		anim = GetComponent<Animator>();
 		currentRotation = hinge.transform.eulerAngles;
 	}
 
@@ -25,8 +28,10 @@ public class Door : InteractableObject {
 	}
 
 	public override void Grapple(PickupSystem _Object) {
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Fire1")) {
+			anim.SetTrigger("Down");
 		hand = _Object;
+		}
 	}
 
 	public override void Interact() {
@@ -36,7 +41,10 @@ public class Door : InteractableObject {
 			currentRotation.y = Mathf.Lerp(currentRotation.y, ClampAngle(targetRot.eulerAngles.y), followingspeed * Time.deltaTime);
 
 			if(Input.GetButtonUp("Fire1"))
+			{
 			hand = null;
+			anim.SetTrigger("Up");
+			}
 		}
 
 	#region Physics

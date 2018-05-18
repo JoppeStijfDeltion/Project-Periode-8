@@ -48,10 +48,10 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Pickup(Rigidbody _Object) {
-			_Object.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0.01f);
+			//_Object.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0.01f);
 		if(Input.GetButtonDown("Fire1")) //Checks if you are holding down the button;
 		{
-			_Object.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);
+			//_Object.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);
 			objectBeingCarried = _Object; //Sets the overloaded object as the object being carried;
 			objectBeingCarried.transform.SetParent(gameObject.transform); //Childs newfound object to the hand;
 			thisJoint.connectedBody = objectBeingCarried; //Connects the rigidbodys between the parent and the child;
@@ -85,7 +85,7 @@ public class PickupSystem : MonoBehaviour {
 	
 	private void OnTriggerExit(Collider c) {
 		if(c.gameObject.GetComponent<Rigidbody>())
-			c.gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);
+			//c.gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);
 
 		if(objectBeingCarried)
 			if(c.transform.gameObject == objectBeingCarried.gameObject)

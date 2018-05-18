@@ -17,10 +17,10 @@ public abstract class InteractableObject : MonoBehaviour {
 	}
 
 	public virtual void DrawOutline(bool _DrawOutline) {
-		if(_DrawOutline) 
+		/*if(_DrawOutline) 
 			gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0.01f);
    		 else
-			gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);
+			gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);*/
 	}
 
 	public abstract void Grapple(PickupSystem _Object);
@@ -32,7 +32,7 @@ public abstract class InteractableObject : MonoBehaviour {
 			DrawOutline(true);
 	}
 
-		public virtual void OnTriggerExit(Collider c) {
+	public virtual void OnTriggerExit(Collider c) {
 		if(c.GetComponent<PickupSystem>())
 			DrawOutline(false);
 	}
