@@ -4,36 +4,36 @@ using UnityEngine;
 
 /*Objects with these scripts tend to have a different function than being picked up */
 
+[RequireComponent(typeof(AudioSource), typeof(Animator))]
 public abstract class InteractableObject : MonoBehaviour {
 
+	[Header("Audio:")]
+	public List<AudioClip> sounds; //Audioclips;
+
 	[Header("Current Status:")]
-	public PickupSystem hand;
+	public PickupSystem hand; //Interacted object;
+
+	#region Private Variables
+	protected AudioSource aSource; //Audiosource;
+	protected Animator anim; //Animator;
+	#endregion
+
+	public virtual void Awake() { //Sets references;
+		aSource = GetComponent<AudioSource>();
+		anim = GetComponent<Animator>();
+	}
 
 	public virtual void Update() {
+		UpdateAnimations();
+
 		if(hand != null)
 		{
 		Interact();
 		}
 	}
 
-	public virtual void DrawOutline(bool _DrawOutline) {
-		/*if(_DrawOutline) 
-			gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0.01f);
-   		 else
-			gameObject.GetComponent<MeshRenderer>().materials[1].SetFloat("_Outline", 0);*/
-	}
+	public virtual void UpdateAnimations() {}
 
-	public abstract void Grapple(PickupSystem _Object);
+	public abstract void Interact(); //Main function;
 
-	public abstract void Interact();
-
-	public virtual void OnTriggerEnter(Collider c) {
-		if(c.GetComponent<PickupSystem>())
-			DrawOutline(true);
-	}
-
-	public virtual void OnTriggerExit(Collider c) {
-		if(c.GetComponent<PickupSystem>())
-			DrawOutline(false);
-	}
 }

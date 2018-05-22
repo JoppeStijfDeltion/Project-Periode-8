@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*An object that can be rotated once some conditions are met*/
+
 public class Door : InteractableObject {
 
 	[Header("Door Options")]
@@ -9,85 +11,72 @@ public class Door : InteractableObject {
 	public float minRotation;
 	public float maxRotation;
 	public float followingspeed = 2;
-
 	public bool locked = false;
 
 	#region Private Variables
-	private Animator anim;
+	private bool selected = false;
+	private bool doorOpened = false; //If the opening audio has played;
+
 	private Vector3 currentRotation;
 	#endregion
 
-	private void Awake() {
-		anim = GetComponent<Animator>();
-		currentRotation = hinge.transform.eulerAngles;
+	public override void Awake() {
+		base.Awake();
+		anim = GetComponent<Animator>(); //Sets reference to the animator;
+		currentRotation = hinge.transform.eulerAngles; //Sets Vector3 to the rotation of this object;
+		anim.StopPlayback();
 	}
 
 	public override void Update() {
-		base.Update();
-		hinge.transform.eulerAngles = currentRotation;
+		base.Update(); //Gets information of the parent class;
+		Audio();
+		hinge.transform.eulerAngles = currentRotation; //Sets the rotation to a local Vector3 for modifying purposes;
 	}
 
-	public override void Grapple(PickupSystem _Object) {
-		if(Input.GetButtonDown("Fire1")) {
-			anim.SetTrigger("Down");
-		hand = _Object;
+	public override void UpdateAnimations() { //Function solely based on animation updating;
+		anim.SetBool("Selected", selected); //A bool to check if this object has been selected or not for animation purposes;
+
+		if(hand == null)
+		selected = false;
+		else
+		selected = true;
+	}
+
+	public void Audio() {
+		if(hand != null) {
+			if(doorOpened == false) {
+			AudioManager.audioManager.PlayAudio(aSource, sounds[1]);
+			doorOpened = true;
+			} 
+		} else {
+			doorOpened = false;
 		}
+	}
+
+	public void Unlock() {
+		locked = false;
+		AudioManager.audioManager.PlayAudio(aSource, sounds[0]);
 	}
 
 	public override void Interact() {
-		if(hand == null) { return; } //If there is no object to track, function will be cut off;
-
-			Quaternion targetRot = Quaternion.LookRotation(hand.transform.position - hinge.transform.position);
-			currentRotation.y = Mathf.Lerp(currentRotation.y, ClampAngle(targetRot.eulerAngles.y), followingspeed * Time.deltaTime);
-
-			if(Input.GetButtonUp("Fire1"))
-			{
-			hand = null;
-			anim.SetTrigger("Up");
+			if(locked == false) { //If door is off the lock;
+			Quaternion targetRot = Quaternion.LookRotation(hand.transform.position - hinge.transform.position); 
+			currentRotation.y = Mathf.Lerp(currentRotation.y, ClampAngle(targetRot.eulerAngles.y), followingspeed * Time.deltaTime); //Smoothing the interpolation to open;
+			return;
 			}
 		}
 
-	#region Physics
+	private float ClampAngle(float angle) { //Clamp function based on the bug when eulerangles go negative;
 
-	private void OnTriggerStay(Collider c) {
-		bool detectedHand = InteractionCheck(c.gameObject);
-
-		if(detectedHand)
-		Grapple(c.gameObject.GetComponent<PickupSystem>());
-		Interact();
-	}
-
-	public override void OnTriggerExit(Collider c) {
-		base.OnTriggerExit(null);
-		if(hand != null)
-			if(c.transform == hand.transform)
-			hand = null;
-	}
-
-	private float ClampAngle(float angle) {
-
-		if (angle < 90 || angle > 270) {
+		if (angle < 90 || angle > 270) { //Calculates if the anglers are going negative;
 		if (angle > 180) angle -= 360;
 		if (maxRotation > 180) maxRotation -= 360;	
 		if (minRotation > 180) minRotation -= 360;
 		} 
 
-		angle = Mathf.Clamp(angle, minRotation, maxRotation);
+		angle = Mathf.Clamp(angle, minRotation, maxRotation); //Finalizes the clamp;
 
 		if (angle < 0) angle += 360;
-		return angle;
-}
-
-	#endregion
-
-	#region Checks
-	bool InteractionCheck(GameObject _Object) {
-		if(_Object.GetComponent<PickupSystem>())
-			if(_Object.GetComponent<PickupSystem>().objectBeingCarried == null)
-				if(locked == false)
-			return true;
-
-			return false;
+		return angle; //Returns the newely found angle to move towards;
 	}
-	#endregion
 }

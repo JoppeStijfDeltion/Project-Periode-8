@@ -6,70 +6,51 @@ using UnityEngine;
 
 public class Drawer : InteractableObject {
 
-	public Vector3 currentLocation;
-
 	[Header("Drawer Settings:")]
+	[Tooltip("The max range from the startoffset the drawer can open at.")]
 	public float maxOpenOffset = 0.8f;
+	[Tooltip("For correcting the distance between the hand and the knob.")]
 	public float pivotOffet = 2;
+	[Tooltip("Smoothing variable.")]
 	public float drawSpeed = 1;
 
 	#region Private Variables
 	/*Drawer Related*/
+	private Vector3 currentLocation;
 	private float startOffsetZ;
-
-	/*Hand Related*/
-	private bool correctedOffset = false;
+	public bool opened = false;
 	#endregion
 
-	private void Awake() {
+	public override void UpdateAnimations(){}
+
+	public override void Awake() {
+		base.Awake();
 		currentLocation = transform.localPosition; //Correcting some transforms;
 		startOffsetZ = transform.localPosition.z;
 	}
 
 	public override void Update() {
 		base.Update();
+		Audio();
 		transform.localPosition = currentLocation;
 	}
 
-	public override void Grapple(PickupSystem _Object) {
-		if(Input.GetButtonDown("Fire1"))
-		hand = _Object;
+	private void Audio() {
+		if(hand != null) {
+			if(opened == false) {
+				opened = true;
+				AudioManager.audioManager.PlayAudio(aSource, sounds[0]); //If the drawer is starting to get grabbed on, play audio;
+			}
+		} else {
+			opened = false;
+		}
 	}
 
 	public override void Interact() {
-		if(hand == null) { correctedOffset = false; return; } //If there is no object to track, function will be cut off;
-
-		if(correctedOffset == false) {
-			correctedOffset = true;
-		}
+		if(hand == null) { opened = false; return;	} //If there is no object to track, function will be cut off;
 
 		currentLocation.z = Mathf.Lerp(currentLocation.z, transform.InverseTransformDirection(hand.transform.position).z + pivotOffet, drawSpeed * Time.deltaTime);
 		currentLocation.z = Mathf.Clamp(currentLocation.z, startOffsetZ, startOffsetZ + maxOpenOffset);
 
-		if(Input.GetButtonUp("Fire1"))
-		hand = null;
-
 		}
-
-	#region Physics
-
-	public void OnTriggerStay(Collider c) {
-		bool detectedHand = InteractionCheck(c.gameObject);
-
-		if(detectedHand)
-		Grapple(c.gameObject.GetComponent<PickupSystem>());
-		Interact();
 	}
-
-	#endregion
-
-	#region Checks
-	static bool InteractionCheck(GameObject _Object) {
-		if(_Object.GetComponent<PickupSystem>())
-			if(_Object.GetComponent<PickupSystem>().objectBeingCarried == null)
-			return true;
-
-			return false;
-	}
-	#endregion
-}
