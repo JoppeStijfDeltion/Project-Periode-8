@@ -4,31 +4,29 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.XR;
 
-[RequireComponent (typeof (CharacterController), typeof (CapsuleCollider))]
+[RequireComponent (typeof (CharacterController))]
 public class NonVR : MonoBehaviour {
 
     // Start settings
     [Header ("Use VR or not")]
     public bool use;
-    [Tooltip ("Show a popup everything you start the game asking if you want to use VR or not!")]
+    [Tooltip ("Show a popup everytime you start the game asking if you want to use VR or not!")]
     public bool popup = true;
 
+    public GameObject cam;
+
     [Header ("Hold right click to rotate")]
-    public bool rightClick = true;
+    public bool rightClick = false;
 
     // Input modification
     [Header ("The speed you move arround")]
     public float movementSpeed = 3f;
 
     // Ref
-    private GameObject cam;
     private CharacterController con;
-    private CapsuleCollider col;
 
     private void Start () {
         con = GetComponent<CharacterController> ();
-        col = GetComponent<CapsuleCollider> ();
-
         // Show popup
         if (popup) {
             if (EditorUtility.DisplayDialog ("Play Mode", "Do you want to use VR mode or Non-VR mode?", "VR Mode", "Non-VR mode"))
@@ -37,26 +35,22 @@ public class NonVR : MonoBehaviour {
         }
 
         // Toggle VR
-        if (use)
+        if (use) {
             XRSettings.LoadDeviceByName ("OpenVR");
-        // Disable the TrackedPoseDriver so you can move the camera
+            con.enabled = false;
+        }
         else {
-            cam = Camera.main.gameObject;
-            cam.GetComponent<UnityEngine.SpatialTracking.TrackedPoseDriver> ().enabled = false;
+            cam.transform.position = new Vector3 (0f, 1.6f, 0f);
 
+            con.enabled = true;
+            con.height = 1.6f;
+            con.radius = 0.4f;
+            con.center = new Vector3 (0f, 0.8f, 0f);
+            con.skinWidth = 0.0001f;
         }
     }
 
     private void FixedUpdate () {
-
-        // Update the collider height
-        col.height = transform.GetChild (0).transform.position.y;
-        col.center = new Vector3 (0f, col.height / 2, 0f);
-
-        // Update the controller height
-        con.height = transform.GetChild (0).transform.position.y;
-        con.center = new Vector3 (0f, col.height / 2, 0f);
-
         if (!use) {
             Movement ();
             Rotation ();
