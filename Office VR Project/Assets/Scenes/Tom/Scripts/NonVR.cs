@@ -22,6 +22,8 @@ public class NonVR : MonoBehaviour {
     [Header ("The speed you move arround")]
     public float movementSpeed = 3f;
 
+    public float rotationSpeed = 3f;
+
     // Ref
     private CharacterController con;
 
@@ -62,7 +64,7 @@ public class NonVR : MonoBehaviour {
         float yInput = Input.GetAxis ("Vertical");
 
         // Gets the input and converts it to world position instead if of local
-        Vector3 input = transform.TransformDirection (new Vector3 (xInput, 0, yInput) * movementSpeed);
+        Vector3 input = transform.TransformDirection (new Vector3 (xInput, 0, yInput)* movementSpeed);
         // Tell the controller to move
         con.Move (input * Time.deltaTime);
     }
@@ -71,11 +73,11 @@ public class NonVR : MonoBehaviour {
         float xInput = Input.GetAxis ("Mouse X");
         float yInput = Input.GetAxis ("Mouse Y");
 
-        if (Input.GetButton ("Fire2") || !rightClick) {
+        if (Input.GetButton ("Fire2")|| !rightClick) {
             // Rotate the body
-            transform.eulerAngles += new Vector3 (0, xInput, 0);
+            transform.eulerAngles += new Vector3 (0, xInput * rotationSpeed, 0);
             // Rotate the camera
-            cam.transform.eulerAngles += new Vector3 (-yInput, 0, 0);
+            cam.transform.eulerAngles += new Vector3 (-yInput * rotationSpeed, 0, 0);
         }
     }
 }

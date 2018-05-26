@@ -1,205 +1,183 @@
-﻿Shader "Custom/Outline"
+﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
+//
+// Purpose: Used to show the outline of the object
+//
+//=============================================================================
+// UNITY_SHADER_NO_UPGRADE
+Shader "Outline"
 {
-    Properties
-    {
-        // Specular vs Metallic workflow
-        [HideInInspector] _WorkflowMode("WorkflowMode", Float) = 1.0
+	//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+	Properties
+	{
+		g_vOutlineColor( "Outline Color", Color ) = ( .5, .5, .5, 1 )
+		g_flOutlineWidth( "Outline width", Range ( .001, 0.03 ) ) = .005
+		g_flCornerAdjust( "Corner Adjustment", Range( 0, 2 ) ) = .5
+	}
 
-        _Color("Color", Color) = (1,1,1,1)
-        _MainTex("Albedo", 2D) = "white" {}
+	//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+	CGINCLUDE
 
-        _Cutoff("Alpha Cutoff", Range(0.0, 1.0)) = 0.5
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		#pragma target 5.0
 
-        _Glossiness("Smoothness", Range(0.0, 1.0)) = 0.5
-        _GlossMapScale("Smoothness Scale", Range(0.0, 1.0)) = 1.0
-        _SmoothnessTextureChannel("Smoothness texture channel", Float) = 0
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		#include "UnityCG.cginc"
 
-        [Gamma] _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
-        _MetallicGlossMap("Metallic", 2D) = "white" {}
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		float4 g_vOutlineColor;
+		float g_flOutlineWidth;
+		float g_flCornerAdjust;
 
-        _SpecColor("Specular", Color) = (0.2, 0.2, 0.2)
-        _SpecGlossMap("Specular", 2D) = "white" {}
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		struct VS_INPUT
+		{
+			float4 vPositionOs : POSITION;
+			float3 vNormalOs : NORMAL;
+		};
 
-        [ToggleOff] _SpecularHighlights("Specular Highlights", Float) = 1.0
-        [ToggleOff] _GlossyReflections("Glossy Reflections", Float) = 1.0
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		struct PS_INPUT
+		{
+			float4 vPositionOs : TEXCOORD0;
+			float3 vNormalOs : TEXCOORD1;
+			float4 vPositionPs : SV_POSITION;
+		};
 
-        _BumpScale("Scale", Float) = 1.0
-        _BumpMap("Normal Map", 2D) = "bump" {}
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		PS_INPUT MainVs( VS_INPUT i )
+		{
+			PS_INPUT o;
+			o.vPositionOs.xyzw = i.vPositionOs.xyzw;
+			o.vNormalOs.xyz = i.vNormalOs.xyz;
+#if UNITY_VERSION >= 540
+			o.vPositionPs = UnityObjectToClipPos( i.vPositionOs.xyzw );
+#else
+			o.vPositionPs = mul( UNITY_MATRIX_MVP, i.vPositionOs.xyzw );
+#endif
+			return o;
+		}
 
-        _Parallax("Height Scale", Range(0.005, 0.08)) = 0.02
-        _ParallaxMap("Height Map", 2D) = "black" {}
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		PS_INPUT Extrude( PS_INPUT vertex )
+		{
+			PS_INPUT extruded = vertex;
 
-        _OcclusionStrength("Strength", Range(0.0, 1.0)) = 1.0
-        _OcclusionMap("Occlusion", 2D) = "white" {}
+			// Offset along normal in projection space
+			float3 vNormalVs = mul( ( float3x3 )UNITY_MATRIX_IT_MV, vertex.vNormalOs.xyz );
+			float2 vOffsetPs = TransformViewToProjection( vNormalVs.xy );
+			vOffsetPs.xy = normalize( vOffsetPs.xy );
 
-        _EmissionColor("Color", Color) = (0,0,0)
-        _EmissionMap("Emission", 2D) = "white" {}
+			// Calculate position
+#if UNITY_VERSION >= 540
+			extruded.vPositionPs = UnityObjectToClipPos( vertex.vPositionOs.xyzw );
+#else
+			extruded.vPositionPs = mul( UNITY_MATRIX_MVP, vertex.vPositionOs.xyzw );
+#endif
+			extruded.vPositionPs.xy += vOffsetPs.xy * extruded.vPositionPs.w * g_flOutlineWidth;
 
-        _DetailMask("Detail Mask", 2D) = "white" {}
+			return extruded;
+		}
 
-        _DetailAlbedoMap("Detail Albedo x2", 2D) = "grey" {}
-        _DetailNormalMapScale("Scale", Float) = 1.0
-        _DetailNormalMap("Normal Map", 2D) = "bump" {}
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		[maxvertexcount(18)]
+		void ExtrudeGs( triangle PS_INPUT inputTriangle[3], inout TriangleStream<PS_INPUT> outputStream )
+		{
+		    float3 a = normalize(inputTriangle[0].vPositionOs.xyz - inputTriangle[1].vPositionOs.xyz);
+		    float3 b = normalize(inputTriangle[1].vPositionOs.xyz - inputTriangle[2].vPositionOs.xyz);
+		    float3 c = normalize(inputTriangle[2].vPositionOs.xyz - inputTriangle[0].vPositionOs.xyz);
 
-        [Enum(UV0,0,UV1,1)] _UVSec("UV Set for secondary textures", Float) = 0
+		    inputTriangle[0].vNormalOs = inputTriangle[0].vNormalOs + normalize( a - c) * g_flCornerAdjust;
+		    inputTriangle[1].vNormalOs = inputTriangle[1].vNormalOs + normalize(-a + b) * g_flCornerAdjust;
+		    inputTriangle[2].vNormalOs = inputTriangle[2].vNormalOs + normalize(-b + c) * g_flCornerAdjust;
 
-        // Blending state
-        [HideInInspector] _Surface("__surface", Float) = 0.0
-        [HideInInspector] _Blend("__blend", Float) = 0.0
-        [HideInInspector] _AlphaClip("__clip", Float) = 0.0
-        [HideInInspector] _SrcBlend("__src", Float) = 1.0
-        [HideInInspector] _DstBlend("__dst", Float) = 0.0
-        [HideInInspector] _ZWrite("__zw", Float) = 1.0
-        [HideInInspector] _Cull("__cull", Float) = 2.0
-    }
+		    PS_INPUT extrudedTriangle0 = Extrude( inputTriangle[0] );
+		    PS_INPUT extrudedTriangle1 = Extrude( inputTriangle[1] );
+		    PS_INPUT extrudedTriangle2 = Extrude( inputTriangle[2] );
 
-    SubShader
-    {
-        // Lightweight Pipeline tag is required. If Lightweight pipeline is not set in the graphics settings
-        // this Subshader will fail. One can add a subshader below or fallback to Standard built-in to make this
-        // material work with both Lightweight Pipeline and Builtin Unity Pipeline
-        Tags{"RenderType" = "Opaque" "RenderPipeline" = "LightweightPipeline"}
-        LOD 300
+		    outputStream.Append( inputTriangle[0] );
+		    outputStream.Append( extrudedTriangle0 );
+		    outputStream.Append( inputTriangle[1] );
+		    outputStream.Append( extrudedTriangle0 );
+		    outputStream.Append( extrudedTriangle1 );
+		    outputStream.Append( inputTriangle[1] );
 
-        // ------------------------------------------------------------------
-        //  Forward pass. Shades all light in a single pass. GI + emission + Fog
-        Pass
-        {
-            // Lightmode matches the ShaderPassName set in LightweightPipeline.cs. SRPDefaultUnlit and passes with
-            // no LightMode tag are also rendered by Lightweight Pipeline
-            Tags{"LightMode" = "LightweightForward"}
+		    outputStream.Append( inputTriangle[1] );
+		    outputStream.Append( extrudedTriangle1 );
+		    outputStream.Append( extrudedTriangle2 );
+		    outputStream.Append( inputTriangle[1] );
+		    outputStream.Append( extrudedTriangle2 );
+		    outputStream.Append( inputTriangle[2] );
 
-            Blend[_SrcBlend][_DstBlend]
-            ZWrite[_ZWrite]
-            Cull[_Cull]
+		    outputStream.Append( inputTriangle[2] );
+		    outputStream.Append( extrudedTriangle2 );
+		    outputStream.Append(inputTriangle[0]);
+		    outputStream.Append( extrudedTriangle2 );
+		    outputStream.Append( extrudedTriangle0 );
+		    outputStream.Append( inputTriangle[0] );
+		}
 
-            HLSLPROGRAM
-            // Required to compile gles 2.0 with standard SRP library
-            // All shaders must be compiled with HLSLcc and currently only gles is not using HLSLcc by default
-            #pragma prefer_hlslcc gles
-            #pragma target 2.0
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		fixed4 MainPs( PS_INPUT i ) : SV_Target
+		{
+			return g_vOutlineColor;
+		}
 
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature _NORMALMAP
-            #pragma shader_feature _ALPHATEST_ON
-            #pragma shader_feature _ALPHAPREMULTIPLY_ON
-            #pragma shader_feature _EMISSION
-            #pragma shader_feature _METALLICSPECGLOSSMAP
-            #pragma shader_feature _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature _OCCLUSIONMAP
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		fixed4 NullPs( PS_INPUT i ) : SV_Target
+		{
+			return float4( 1.0, 0.0, 1.0, 1.0 );
+		}
 
-            #pragma shader_feature _SPECULARHIGHLIGHTS_OFF
-            #pragma shader_feature _GLOSSYREFLECTIONS_OFF
-            #pragma shader_feature _SPECULAR_SETUP
+	ENDCG
 
-            // -------------------------------------
-            // Lightweight Pipeline keywords
-            #pragma multi_compile _ _ADDITIONAL_LIGHTS
-            #pragma multi_compile _ _VERTEX_LIGHTS
-            #pragma multi_compile _ _MIXED_LIGHTING_SUBTRACTIVE
-            #pragma multi_compile _ FOG_LINEAR FOG_EXP2
+	SubShader
+	{
+		Tags { "RenderType"="Outline" "Queue" = "Geometry-1" "RenderPipeline" = "LightweightPipeline"}
 
-            // -------------------------------------
-            // Unity defined keywords
-            #pragma multi_compile _ DIRLIGHTMAP_COMBINED
-            #pragma multi_compile _ LIGHTMAP_ON
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Render the object with stencil=1 to mask out the part that isn't the silhouette
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		Pass
+		{
+			Tags { "LightMode" = "LightweightForward" }
+			ColorMask 0
+			Cull Off
+			ZWrite Off
+			Stencil
+			{
+				Ref 1
+				Comp always
+				Pass replace
+			}
 
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
+			CGPROGRAM
+				#pragma vertex MainVs
+				#pragma fragment NullPs
+			ENDCG
+		}
 
-            #pragma vertex LitPassVertex
-            #pragma fragment LitPassFragment
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Render the outline by extruding along vertex normals and using the stencil mask previously rendered. Only render depth, so that the final pass executes
+		// once per fragment (otherwise alpha blending will look bad).
+		//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+		Pass
+		{
+			Tags { "LightMode" = "LightweightForward" }
+			Cull Off
+			ZWrite On
+			Stencil
+			{
+				Ref 1
+				Comp notequal
+				Pass keep
+				Fail keep
+			}
 
-            #include "LWRP/ShaderLibrary/LightweightPassLit.hlsl"
-            ENDHLSL
-        }
-
-        Pass
-        {
-            Tags{"LightMode" = "ShadowCaster"}
-
-            ZWrite On
-            ZTest LEqual
-            Cull[_Cull]
-
-            HLSLPROGRAM
-            // Required to compile gles 2.0 with standard srp library
-            #pragma prefer_hlslcc gles
-            #pragma target 2.0
-
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature _ALPHATEST_ON
-            #pragma shader_feature _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
-
-            #pragma vertex ShadowPassVertex
-            #pragma fragment ShadowPassFragment
-
-            #include "LWRP/ShaderLibrary/LightweightPassShadow.hlsl"
-            ENDHLSL
-        }
-
-        Pass
-        {
-            Tags{"LightMode" = "DepthOnly"}
-
-            ZWrite On
-            ColorMask 0
-
-            HLSLPROGRAM
-            // Required to compile gles 2.0 with standard srp library
-            #pragma prefer_hlslcc gles
-            #pragma target 2.0
-
-            #pragma vertex DepthOnlyVertex
-            #pragma fragment DepthOnlyFragment
-
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature _ALPHATEST_ON
-            #pragma shader_feature _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
-
-            #include "LWRP/ShaderLibrary/LightweightPassDepthOnly.hlsl"
-            ENDHLSL
-        }
-
-        // This pass it not used during regular rendering, only for lightmap baking.
-        Pass
-        {
-            Tags{"LightMode" = "Meta"}
-
-            Cull Off
-
-            HLSLPROGRAM
-            // Required to compile gles 2.0 with standard srp library
-            #pragma prefer_hlslcc gles
-
-            #pragma vertex LightweightVertexMeta
-            #pragma fragment LightweightFragmentMeta
-
-            #pragma shader_feature _SPECULAR_SETUP
-            #pragma shader_feature _EMISSION
-            #pragma shader_feature _METALLICSPECGLOSSMAP
-            #pragma shader_feature _ _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-            #pragma shader_feature EDITOR_VISUALIZATION
-
-            #pragma shader_feature _SPECGLOSSMAP
-
-            #include "LWRP/ShaderLibrary/LightweightPassMeta.hlsl"
-            ENDHLSL
-        }
-
-    }
-    FallBack "Hidden/InternalErrorShader"
-    CustomEditor "LightweightStandardGUI"
+			CGPROGRAM
+				#pragma vertex MainVs
+				#pragma geometry ExtrudeGs
+				#pragma fragment MainPs
+			ENDCG
+		}
+	}
 }
