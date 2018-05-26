@@ -22,18 +22,24 @@ public class NonVR : MonoBehaviour {
     [Header ("The speed you move arround")]
     public float movementSpeed = 3f;
 
-    public float rotationSpeed = 3f;
+    public float rotationSpeed = 2.5f;
 
     // Ref
     private CharacterController con;
 
-    private void Start () {
+    private void Awake () {
         con = GetComponent<CharacterController> ();
         // Show popup
         if (popup) {
-            if (EditorUtility.DisplayDialog ("Play Mode", "Do you want to use VR mode or Non-VR mode?", "VR Mode", "Non-VR mode"))
+            if (EditorUtility.DisplayDialog ("Play Mode", "Do you want to use VR mode or Non-VR mode?", "VR Mode", "Non-VR mode")) {
                 use = true;
-            else use = false;
+                ControllerScript.vr = true;
+            }
+            else {
+                use = false;
+                ControllerScript.vr = false;
+            }
+
         }
 
         // Toggle VR
@@ -52,10 +58,14 @@ public class NonVR : MonoBehaviour {
         }
     }
 
+    private void Update () {
+        if (!use) {
+            Rotation ();
+        }
+    }
     private void FixedUpdate () {
         if (!use) {
             Movement ();
-            Rotation ();
         }
     }
 
