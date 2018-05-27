@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RayTarget
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,11 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Environment
+=======
+  - Teleport
+>>>>>>> ff3ae7cd6b77eb88bfc5d2f7bcaeb39ef01dc9ff
   - 
   - 
   - 
