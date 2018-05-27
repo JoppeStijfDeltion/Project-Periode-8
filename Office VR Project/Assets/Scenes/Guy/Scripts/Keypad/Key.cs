@@ -17,7 +17,7 @@ public class Key : RayInteraction {
 	public ConnectedDevice state;
 
 	public override void Activate() { 
-		anim.SetTrigger("Press"); //Plays animation of the button being pressed
+		//anim.SetTrigger("Press"); //Plays animation of the button being pressed
 		PlayAudio(0); //Plays audio that sounds like something is pressed;
 
 		switch(isEnter) {

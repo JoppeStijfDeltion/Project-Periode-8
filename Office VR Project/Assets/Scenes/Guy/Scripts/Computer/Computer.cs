@@ -17,14 +17,28 @@ public class Computer : RayInteraction {
 	[Header("DOS Settings:")]
 	public float timeTillUpdate;
 
+	[Header("Affected Object Settings:")]
+	public Printer printer;
+
+	[System.Serializable]
+	public struct PrintingOptions {
+		public string name;
+		public Material print;
+	}
+
+	public List<PrintingOptions> possiblePrints = new List<PrintingOptions>();
+
 	[Header("String Container:")]
 	public string startCommand;
 	public string[] possibleResults;
 
+	[Header("Checks:")]
+	public bool usingPrinter = false;
+	public bool usingDirectory = false;
+
 	#region Private Variables
 	private bool blinked = false;
-	public bool usingPrinter = false;
-	public bool canStoreChars = false;
+	private bool canStoreChars = false;
 	private bool hideIndicator = false;
 	#endregion
 
@@ -102,7 +116,7 @@ public class Computer : RayInteraction {
 		}
 	}
 
-	public void IndentifyCommand(string _Command) {
+	public void IndentifyCommand(string _Command) { //Function is used to determine if a command exists;
 		input.text = startCommand;
 		BlinkingCursor(true);
 
@@ -111,47 +125,85 @@ public class Computer : RayInteraction {
 			return;
 		}
 
+		if(usingDirectory == true) { //If printer is selected;
+			DirectoryOptions(_Command);
+			return;
+		}
 
 		if(_Command.Contains("print")) {
 			usingPrinter = true;
+
+			if(printer.isOn == true)
 			result.text = possibleResults[0];
+			else
+			result.text = possibleResults[1];
+			return;
+		}
+
+		if(_Command.Contains("directory")) {
+			usingDirectory = true;
+			result.text = possibleResults[2] + "\n > -Desktop"; //This result explains the possible directorys to look at;
 			return;
 		}
 
 		if(_Command.Contains("help")) {
-			result.text = "> Available Commands: \n -print \n -debug";
+			result.text = "> Available Commands: \n -print \n -directory";
 			return;
 		}
 
 		NullReference(_Command);
 	}
 
-		public void NullReference(string _Input) { //Sets default string when input is not recognized;
+		private void NullReference(string _Input) { //Sets default string when input is not recognized;
 			if(_Input != "")
 			result.text = ">"+ '[' + _Input+ ']' + " is not recognized as an internal \n or external command, operable program \n or batch file.";
 			input.text = startCommand;
 			BlinkingCursor(true);
-	}
+			}
 
 
-	public void PrinterOptions(string _Command) {
+	private void PrinterOptions(string _Command) { //If the printer command has been selected;
 		usingPrinter = false;
 
-		if(_Command.Contains("doorcode")) {
-			result.text = "> Added doorcode.jpg to the printing queue";
-			return;
+		if(_Command.Contains("turnon")) //If the player has this as input;
+		{
+		printer.ActivatePrinter(); //The printer will turn on and will have to ability go add to the queuing list;
+		result.text = possibleResults[4];
+		return;
 		}
 
-		if(_Command.Contains("mike")) {
-			result.text = "> Added mike his face to the printing Queue";
-			return;
+		if(_Command.Contains("turnoff")) //If the player has this as input;
+		{
+		printer.DeactivatePrinter(); //The printer will turn on and will have to ability go add to the queuing list;
+		result.text = possibleResults[5];
+		return;
 		}
 
-		if(_Command.Contains("meme")) {
-			result.text = "> Added something hideous to the printing Queue";
-			return;
+		foreach(PrintingOptions prints in possiblePrints) { //For every possible prints it checks if the command matches one of em;
+			if(_Command.Contains(prints.name)) { //If the command matches one of the file types
+				if(printer.isOn == true){ //If the printer is turned off;
+				printer.AddToQueue(prints.print); //Adds the object to the printing queue;
+				result.text = "Added *" +prints.name+".jpg to the queue..."; //Prints that something has been added to the queue;
+				return;
+			}
 		}
-
-		NullReference(_Command);
 	}
-}
+		if(printer.isOn == true)
+		NullReference(_Command);
+		else
+		result.text = possibleResults[3];
+	}
+
+	private void DirectoryOptions(string _Command) { //Incase the directory has been selected;
+		string detectedFiles = "> Following files were found <";
+		usingDirectory = false; //Shuts off the reference towards the directory at entering input;
+
+		if(_Command.Contains("desktop")) 
+			foreach(PrintingOptions files in possiblePrints) {
+				detectedFiles += "\n> "+files.name +".jpg";
+			}
+
+			result.text = detectedFiles;
+			return;
+		}
+	}

@@ -5,6 +5,12 @@
 [RequireComponent(typeof(Rigidbody))]
 public class PickupSystem : MonoBehaviour {
 
+	public enum Interaction {Default, RayInteraction, Teleporting}
+	public Interaction interactionState;
+
+	[Header("Teleportation Settings:")]
+	public Laser teleport; //Teleport Options;
+
 	[Header("Debug Settings")]
 	public GameObject objectBeingCarried = null;
 
@@ -13,12 +19,16 @@ public class PickupSystem : MonoBehaviour {
 	public float throwforceMultiplier = 2;
 
 	[Header("Ray Interaction Settings:")]
-	public float maxRange;
-	public Color rayColour;
-	public LineRenderer rayRepresentation;
-	public bool usingRayInteraction = false;
+	public float maxRange; //Maxrange to interact with rayObjects;
+	public Color rayColour; //Color of the line thats drawn;
+	public LineRenderer rayRepresentation; //Rayline;
+	public bool usingRayInteraction = false; //If you are using rayIntereaction;
 
-	#region Private Variables
+	#region Private&Hidden Variables
+	/*private SteamVR_TrackedObject trackedObj;
+	[HideInInspector]
+	public SteamVR_Controller.Device controller {	get { return SteamVR_Controller.Input((int)trackedObj.index); }}*/
+
 	private FixedJoint thisJoint; //Current gameobject its fixed joint;
 
 	private Rigidbody thisBody;
@@ -29,52 +39,71 @@ public class PickupSystem : MonoBehaviour {
 	private int frameCount;
 	#endregion
 	
-	public void Awake() { //Sets some references;
+	private void Awake() { //Sets some references;
 		thisJoint = GetComponent<FixedJoint>(); //Sets the main joint of this object;
 		thisBody = GetComponent<Rigidbody>();
-	}
+		rayRepresentation.gameObject.SetActive(true);
 
-	private void FixedUpdate() {
-		LetGo();
-
+		/*if(GetComponent<SteamVR_TrackedObject>())
+		trackedObj = GetComponent<SteamVR_TrackedObject>();*/
 	}
 
 	private void Update() {
-		RayInteraction();	
-		AdjustVelocity();
+		LetGo(); //Used for when you let go of the button; 
+		AdjustVelocity(); //Used to define the throwing speed;
+		Toggle(); //This function is used to toggle the way to interact with the environment;
+		CoreInteraction(); //Used to decide for which functions to activate;
 	}
 
-	#region RayInteraction
-	public void RayInteraction() {
-		Ray ray;
-		RaycastHit rayHit;
+	private void Toggle() { //This method is used to toggle between multiple interaction methods;
+		if(Input.GetButtonDown("Fire3")  /*|| controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad)*/) { //Interaction based toggle;
+		rayRepresentation.enabled = false;
 
-		if(Input.GetButtonDown("Fire3")) //Ray toggle;
-		switch(usingRayInteraction) {
-			case true:
-			rayRepresentation.enabled = false;
-			usingRayInteraction = false;
+		switch(interactionState) {
+
+			case Interaction.Default: //If the interaction state is currently none;
+			interactionState = Interaction.RayInteraction; //Set it to Rayinteraction with objects;
 			break;
 
-			case false:
-			rayRepresentation.enabled = true;
-			usingRayInteraction = true;
+			case Interaction.RayInteraction: //If the interaction state is currently related to ray interaction;
+			interactionState = Interaction.Teleporting; //Set it to Teleporting;
 			break;
-		}
 
-		/*This is the functionality part of the ray interaction function */
-		if(usingRayInteraction == true) {
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, maxRange)) { //If it detects collision;
-			print(rayHit.transform.gameObject);
-			if(rayHit.transform.gameObject.GetComponent<RayInteraction>()) {
-				if(Input.GetButtonDown("Fire2")) {
-					rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate();
-					return;
-					}
-				}
+			case Interaction.Teleporting: //If the interaction state is currently related to teleporting;
+			interactionState = Interaction.Default; //Set it to Default (None);
+			break;
 			}
 		}
 	}
+
+	private void CoreInteraction() { //Used to decide which functions to activate;
+		if(interactionState == Interaction.RayInteraction)
+		RayInteraction();
+
+		//if(interactionState == Interaction.Teleporting) //If you selected the teleportation action, it will be enabled;
+		//teleport.enabled = true; //Sets teleporting to true;
+		//else
+		//teleport.enabled = false; //Sets teleporting to false;
+	}
+
+	#region RayInteraction
+	public void RayInteraction() { //Used for when the player is using a ray to interact with;
+		Ray ray;
+		RaycastHit rayHit;
+
+		/*This is the functionality part of the ray interaction function */
+		if(rayRepresentation.enabled == false) //Check if the ray is turned off;
+		rayRepresentation.enabled = true; //If so, turns it back on;
+
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, maxRange)) { //If it detects collision;
+			rayRepresentation.transform.localScale = new Vector3 (rayRepresentation.transform.lossyScale.x, rayRepresentation.transform.localEulerAngles.y, rayHit.distance * 7); //To draw the ray;
+			if(rayHit.transform.gameObject.GetComponent<RayInteraction>()) { //If the object detected can be interacted with;
+				if(Input.GetKeyDown("e") /*  ||  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) {
+					rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
+					}
+				}
+			}
+		}		
 	#endregion
 
 	#region PhysicalInteraction
@@ -91,7 +120,7 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Pickup(GameObject _Object) {
-		if(Input.GetKeyDown(KeyCode.E)) //Checks if you are holding down the button;
+		if(Input.GetKeyDown(KeyCode.E) /* || controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) //Checks if you are holding down the button;
 		{
 			objectBeingCarried = _Object; //Sets the overloaded object as the object being carried;	
 
@@ -111,6 +140,7 @@ public class PickupSystem : MonoBehaviour {
 	private void Throwing() { //Applying velocity and let go of grip of the object;
 					objectBeingCarried.transform.parent = null; //Unchilds it from the hand;
 					objectBeingCarried.GetComponent<Rigidbody>().velocity = (newLocation - oldLocation) * throwforceMultiplier; //Formula to decide velocity;
+					if(thisJoint != null) //If the hand has a fixedjoint assigned
 					thisJoint.connectedBody = null; //Resets connected rigidbody;
 					objectBeingCarried = null; //Resets object;		
 					Destroy(thisJoint);				
@@ -119,7 +149,7 @@ public class PickupSystem : MonoBehaviour {
 	public void LetGo() {
 		if(objectBeingCarried == null) { return;} //If there is no object being interacted with, cut function off;
 
-		if(Input.GetKeyUp(KeyCode.E)) {
+		if(Input.GetKeyUp(KeyCode.E) /* || controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)*/) {
 
 			if(objectBeingCarried.GetComponent<InteractableObject>())
 				objectBeingCarried.GetComponent<InteractableObject>().hand = null; //If its an interactable, stop interaction;

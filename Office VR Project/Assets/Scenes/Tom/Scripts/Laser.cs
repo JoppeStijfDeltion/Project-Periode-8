@@ -37,7 +37,7 @@ public class Laser : MonoBehaviour {
 	private Transform laserTransform;
 	private Vector3 hitPoint;
 
-	private void ShowLaser (RaycastHit hit) {
+	private void ShowLaser (RaycastHit hit) { 
 		laser.SetActive (true);
 		laserTransform.position = Vector3.Lerp (trackedObj.transform.position, hitPoint, .5f);
 		laserTransform.LookAt (hitPoint);
@@ -46,7 +46,7 @@ public class Laser : MonoBehaviour {
 	#endregion;
 
 	private void Awake () {
-		trackedObj = GetComponent<SteamVR_TrackedObject> ();
+		trackedObj = GetComponent<SteamVR_TrackedObject>();
 	}
 
 	private void Start () {

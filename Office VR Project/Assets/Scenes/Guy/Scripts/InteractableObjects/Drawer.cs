@@ -18,7 +18,7 @@ public class Drawer : InteractableObject {
 	/*Drawer Related*/
 	private Vector3 currentLocation;
 	private float startOffsetZ;
-	public bool opened = false;
+	private bool opened = false;
 	#endregion
 
 	public override void UpdateAnimations(){}

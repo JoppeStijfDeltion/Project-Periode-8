@@ -66,6 +66,9 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\ManagerManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\PickupSystem.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlebox.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlepiece.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlespace.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Laser.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\NonVR.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\VRInputTest.cs" />
@@ -178,7 +181,6 @@
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
      <None Include="Assets\Scenes\Joppe\Textures\test.txt" />
-     <None Include="Assets\Implementable Prefabs\test.txt" />
      <None Include="Assets\Scenes\Joppe\Local Prefabs\test.txt" />
      <None Include="Assets\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
      <None Include="Assets\Scenes\Lucas\Materials\test.txt" />
