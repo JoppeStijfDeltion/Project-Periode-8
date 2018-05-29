@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class WeightPuzzle : MonoBehaviour {
 
-	public float mass;
-	public List<Collider> colliders = new List<Collider> ();
+	public float requiredMass = 5f;
 
-	private void OnTriggerStay (Collider collider) {
-		if (!colliders.Contains (collider)) {
-			colliders.Add (collider);
-			UpdateMass ();
+	private float mass;
+	private List<Rigidbody> colliders = new List<Rigidbody> ();
+
+	private void OnTriggerEnter (Collider collider) {
+		if (collider.GetComponent<Rigidbody> ()) {
+			colliders.Add (collider.GetComponent<Rigidbody> ());
 		}
+		UpdateMass ();
+	}
+
+	private void OnTriggerExit (Collider collider) {
+		if (collider.GetComponent<Rigidbody> ()) {
+			colliders.Remove (collider.GetComponent<Rigidbody> ());
+		}
+		UpdateMass ();
 	}
 
 	private void UpdateMass () {
+		float m = 0;
 		for (int i = 0; i < colliders.Count; i++) {
-			if (colliders[i].GetComponent<Rigidbody> ()!= null) {
-				mass += colliders[i].GetComponent<Rigidbody> ().mass;
-			}
+			m += colliders[i].mass;
+		}
+		mass = m;
+
+		if (m >= requiredMass) {
+			print ("Completed!");
 		}
 	}
 }

@@ -678,6 +678,7 @@ MonoBehaviour:
   rayTargetLeft: {fileID: 4067818498042524}
   rayTargetRight: {fileID: 4404463976120664}
   interactDistance: 10
+  interactRef: {fileID: 0}
 --- !u!114 &114789327264027644
 MonoBehaviour:
   m_ObjectHideFlags: 1
