@@ -8,7 +8,7 @@ public class VRInputTest : MonoBehaviour {
     private SteamVR_TrackedObject trackedObj;
 
     private SteamVR_Controller.Device Controller {
-        get { return SteamVR_Controller.Input ((int) trackedObj.index); }
+        get { return SteamVR_Controller.Input ((int)trackedObj.index); }
     }
 
     private void Awake () {
@@ -17,7 +17,7 @@ public class VRInputTest : MonoBehaviour {
 
     private void Update () {
         if (showPrints) {
-            if (Controller.GetAxis () != Vector2.zero) {
+            if (Controller.GetAxis ()!= Vector2.zero) {
                 Debug.Log (gameObject.name + Controller.GetAxis ());
             }
 
@@ -35,6 +35,9 @@ public class VRInputTest : MonoBehaviour {
 
             if (Controller.GetPressUp (SteamVR_Controller.ButtonMask.Grip)) {
                 Debug.Log (gameObject.name + " Grip Release");
+            }
+            if (Controller.GetPressDown (SteamVR_Controller.ButtonMask.System)) {
+
             }
         }
 

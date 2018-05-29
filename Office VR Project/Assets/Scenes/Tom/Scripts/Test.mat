@@ -19,15 +19,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture_474AEC93:
-        m_Texture: {fileID: 2800000, guid: decb53a77cbd3a94d99e31867d84b9c7, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture_4BC1CB9C:
-        m_Texture: {fileID: 2800000, guid: ac80c335ebd6dde4fa54a82050064545, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture_DE983154:
-        m_Texture: {fileID: 2800000, guid: 239847be36985ae4bb8f96e0379ca11c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -76,7 +76,7 @@ Material:
     - Vector1_1D8D8A4B: 0
     - Vector1_66A35974: 10
     - Vector1_B434C4CA: 34.8
-    - Vector1_FDBB2197: 0.5
+    - Vector1_FDBB2197: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -103,7 +103,7 @@ Material:
     - g_flOutlineWidth: 0.005
     m_Colors:
     - Color_7D2C8A5D: {r: 0, g: 0.41495943, b: 1, a: 0}
-    - Color_98F628AE: {r: 1, g: 1, b: 1, a: 0}
+    - Color_98F628AE: {r: 1, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SceneTint: {r: 1, g: 1, b: 1, a: 1}

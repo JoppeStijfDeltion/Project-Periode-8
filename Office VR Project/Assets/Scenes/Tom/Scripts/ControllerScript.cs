@@ -64,7 +64,11 @@ public class ControllerScript : MonoBehaviour {
 
 	#endregion
 
+	// Change this to private bla bla bla
+	public PickupSystem interactRef;
+
 	private void Awake () {
+
 		if (vr) {
 			trackedObjLeft = GetComponent<SteamVR_ControllerManager> ().left.GetComponent<SteamVR_TrackedObject> ();
 			trackedObjRight = GetComponent<SteamVR_ControllerManager> ().right.GetComponent<SteamVR_TrackedObject> ();
@@ -139,7 +143,7 @@ public class ControllerScript : MonoBehaviour {
 					ShowInteractLaser (laser, rayTarget, trackedObj, false, new RaycastHit ());
 				}
 				if (controller.GetHairTrigger ()) {
-					// Interaction here...
+					interactRef.RayInteraction ();
 				}
 				break;
 		}
@@ -181,7 +185,7 @@ public class ControllerScript : MonoBehaviour {
 					ShowInteractLaser (laserRight, rayTargetRight, null, false, new RaycastHit ());
 				}
 				if (Input.GetButtonDown ("Fire1")) {
-					// Interaction here...
+					interactRef.RayInteraction ();
 				}
 				break;
 		}
