@@ -5,7 +5,7 @@ using UnityEngine;
 /*Objects with these scripts tend to have a different function than being picked up */
 
 [RequireComponent(typeof(AudioSource), typeof(Animator))]
-public abstract class InteractableObject : MonoBehaviour {
+public abstract class InteractableObject : AllInteractables {
 
 	[Header("Audio:")]
 	public List<AudioClip> sounds; //Audioclips;

@@ -36,6 +36,8 @@ public class PickupSystem : MonoBehaviour {
 	private Vector3 newLocation;
 	private Vector3 oldLocation;
 
+	private GameObject currentRaySelectedObject;
+
 	private int frameCount;
 	#endregion
 	

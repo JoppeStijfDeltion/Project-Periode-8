@@ -4,6 +4,6 @@ using UnityEngine;
 
 /*This subclass is part of the puzzle pieces that you can move by ray interaction; */
 
-public class Puzzlepiece : MonoBehaviour {
+public class Puzzlepiece : AllInteractables {
 
 }

@@ -6,6 +6,9 @@ public class GameManager : ManagerManager {
 
 	public static GameManager gameManager;
 
+	[Header("Selected Settings:")]
+	public Material selected;
+
 	[Header("GameManager Settings:")]
 	public bool startedGame = false;
 	public int minutes = 0;
@@ -16,12 +19,12 @@ public class GameManager : ManagerManager {
 	#endregion
 
 	public override void Initialization() {
-		if(gameManager == null) { gameManager = this; return; }
-		Destroy(this);
+		if(gameManager == null) { gameManager = this; return; } //Sets the static manager;
+		Destroy(this); //If its already set, destroy this component;
 	}
 
 	public void Update() { //Constant functions;
-		TimeHandler();
+		TimeHandler(); //Shows the digital clock;
 	}
 
 	private void TimeHandler() {

@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Printer.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fuse.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fusebox.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\AllInteractables.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Door\Door.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Door\Keylock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Drawer.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlebox.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlepiece.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlespace.cs" />
+     <Compile Include="Assets\Scenes\Tom\Scripts\ControllerScript.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Laser.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\NonVR.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\VRInputTest.cs" />
@@ -175,9 +177,11 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+     <Compile Include="Assets\WeightPuzzle.cs" />
      <None Include="Assets\PostProcessing\test.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
      <None Include="Assets\Scenes\Joppe\Models\test.txt" />
+     <None Include="Assets\Scenes\Tom\Scripts\Outline.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
      <None Include="Assets\Scenes\Joppe\Textures\test.txt" />
@@ -188,7 +192,6 @@
      <None Include="Assets\GUI\Sprites\test.txt" />
      <None Include="Assets\Scenes\Lucas\Local Prefabs\test.txt" />
      <None Include="Assets\Scenes\Joppe\Materials\test.txt" />
-     <None Include="Assets\Scenes\Tom\Local Prefabs\test.txt" />
      <None Include="Assets\Scenes\Joppe\Scene\test.txt" />
      <None Include="Assets\Scenes\Lucas\Models\test.txt" />
      <None Include="Assets\Scenes\Guy\Shader\OutlineInteractable.shader" />
