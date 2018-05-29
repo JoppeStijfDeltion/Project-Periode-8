@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*A puzzle where every fuse must be green lit*/
+
 public class Fusebox : MonoBehaviour {
 
 	public static Fusebox fuseBox;
 
 	[Header("Fusebox Settings:")]
-	public Fuse[] fuses;
+	public List<Fuse> fuses = new List<Fuse>();
 	public Door door;
 	public bool completed = false;
+
+	[Header("Debug")]
+	public bool[] checks;
 
 	private void Awake() {
 		if(fuseBox == null)
@@ -20,12 +25,13 @@ public class Fusebox : MonoBehaviour {
 	}
 
 	public void Completion() {
-		foreach(Fuse fuse in fuses) {
-			if(fuse.activated == false)
-				return;
+		foreach(Fuse f in fuses) {
+			if(f.activated == false) {
+			return;
+			}
 		}
 
 		completed = true;
-		door.locked = false;
+		door.Unlock();
 	}
 }

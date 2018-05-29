@@ -7,42 +7,32 @@ using UnityEngine;
 public class Fuse : InteractableObject {
 
 	[Header("Influenced Fuses:")]
-	public Fuse[] InfluencedFuses;
+	public List<Fuse> InfluencedFuses = new List<Fuse>();
 	public bool activated = false;
 
-	public void Awake() {
+	public override void Awake() {
+		base.Awake();
+		SetStartingColors();
+	}
+
+	private void SetStartingColors() { //When the game initializes, it updates its visuals based on its starting parameters;
 		switch(activated) {
 			case true:
-			activated = false;
-			GetComponent<MeshRenderer>().material.color = Color.red;
+			GetComponent<MeshRenderer>().material.color = Color.green; //If NOT activated;
 			break;
 
 			case false:
-			activated = true;
-			GetComponent<MeshRenderer>().material.color = Color.green;
+			GetComponent<MeshRenderer>().material.color = Color.red; //If activated;
 			break;
 		}
 	}
-
-	public override void Update(){return;}
-
-	public override void Grapple(PickupSystem _Object) {
-		{
-		if(Input.GetButtonDown("Fire1")) {
-			foreach(Fuse fuse in Fusebox.fuseBox.fuses) {
-				if(fuse.hand != null) 
-				fuse.hand = null;
-			}
-
-			Interact();
-		}
-	}
-}
 
 	public override void Interact() {
 		if(Fusebox.fuseBox.completed)
 		return;
 
+		AudioManager.audioManager.PlayAudio(aSource, sounds[0]);
+		anim.SetTrigger("Press");
 		switch(activated) {
 			case true:
 			activated = false;
@@ -62,55 +52,18 @@ public class Fuse : InteractableObject {
 		foreach(Fuse f in InfluencedFuses) {
 				switch(f.activated) {
 					case true:
-					f.activated = false;
 					f.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+					f.activated = false;
 					break;
 
 					case false:
-					f.activated = true;
 					f.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+					f.activated = true;
 					break;
 				}		
+			}
 
 			Fusebox.fuseBox.Completion();
-			}
+			hand = null;
 	}
-
-	
-	#region Physics
-
-
-	public void OnTriggerStay(Collider c) {
-		bool detectedHand = InteractionCheck(c.gameObject);
-
-		if(detectedHand)
-		hand = c.gameObject.GetComponent<PickupSystem>();
-		else
-		return;
-
-		if(hand != null) {
-			Grapple(hand);
-		}
-	}
-
-	
-	public override void OnTriggerExit(Collider c) {
-	//base.OnTriggerExit(null);
-	if(hand != null)
-		if(c.gameObject == hand.gameObject)
-		hand = null;
-	}
-
-
-	#endregion
-
-	#region Checks
-	static bool InteractionCheck(GameObject _Object) {
-		if(_Object.GetComponent<PickupSystem>())
-			if(_Object.GetComponent<PickupSystem>().objectBeingCarried == null)
-			return true;
-
-			return false;
-	}
-	#endregion
 }

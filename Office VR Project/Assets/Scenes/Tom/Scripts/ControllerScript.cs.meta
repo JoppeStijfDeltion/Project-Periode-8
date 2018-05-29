@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b598962de65445746a9b2c2823b8d1d5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - headTransform: {instanceID: 0}
+  - LaserPrefab: {fileID: 1316129689437864, guid: f5117d3e57d9d3045a0bdc8601a68490,
+      type: 2}
+  - teleportMaterial: {fileID: 2100000, guid: dfcb31a837c8d224b940af8326f05be8, type: 2}
+  - interactMaterial: {fileID: 2100000, guid: 5223a64e09884b449aa0e8f9d32c76c8, type: 2}
+  - teleportReticlePrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

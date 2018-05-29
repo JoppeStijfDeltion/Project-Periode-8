@@ -302,8 +302,8 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Enabled: 1
     m_Devices:
-    - OpenVR
     - None
+    - OpenVR
   - m_BuildTarget: Tizen
     m_Enabled: 0
     m_Devices: []
@@ -714,7 +714,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 449b7f99-a019-468e-8bea-2145564cb1b8
-  projectName: 
+  projectName: Office VR Project
   organizationId: tom-van-het-ende
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
