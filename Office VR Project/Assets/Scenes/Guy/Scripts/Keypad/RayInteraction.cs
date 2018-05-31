@@ -13,7 +13,7 @@ public abstract class RayInteraction : MonoBehaviour {
 	protected AudioSource aSource;
 	#endregion
 
-	protected void Awake() { //Sets some references;
+	protected virtual void Awake() { //Sets some references;
 		anim = GetComponent<Animator>();
 		aSource = GetComponent<AudioSource>();
 	}

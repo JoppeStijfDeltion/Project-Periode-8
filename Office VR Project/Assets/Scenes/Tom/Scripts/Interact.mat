@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Interact
   m_Shader: {fileID: 4800000, guid: cd55c8a422b1ef248be2a626ca3f917a, type: 3}
-  m_ShaderKeywords: BOOLEAN_A5D3ACEF_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,8 +71,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_A5D3ACEF: 1
-    - Vector1_B434C4CA: 9
+    - Boolean_A5D3ACEF: 0
+    - Vector1_1D8D8A4B: 0
+    - Vector1_B434C4CA: 7
+    - Vector1_FDBB2197: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -94,7 +96,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_7D2C8A5D: {r: 0, g: 0, b: 0.9622641, a: 0}
+    - Color_7D2C8A5D: {r: 1, g: 0.009601339, b: 0, a: 1}
+    - Color_98F628AE: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0, g: 0.34672564, b: 0.6698113, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

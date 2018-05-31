@@ -24,6 +24,8 @@ public class PickupSystem : MonoBehaviour {
 	public LineRenderer rayRepresentation; //Rayline;
 	public bool usingRayInteraction = false; //If you are using rayIntereaction;
 
+	private GameObject oldSelected;
+
 	#region Private&Hidden Variables
 	/*private SteamVR_TrackedObject trackedObj;
 	[HideInInspector]
@@ -36,6 +38,7 @@ public class PickupSystem : MonoBehaviour {
 	private Vector3 newLocation;
 	private Vector3 oldLocation;
 
+	private GameObject currentlyHovering; //An object which the hand can currently grab;
 	private GameObject currentRaySelectedObject;
 
 	private int frameCount;
@@ -90,22 +93,42 @@ public class PickupSystem : MonoBehaviour {
 
 	#region RayInteraction
 	public void RayInteraction() { //Used for when the player is using a ray to interact with;
-		Ray ray;
+		Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
 		RaycastHit rayHit;
 
 		/*This is the functionality part of the ray interaction function */
 		if(rayRepresentation.enabled == false) //Check if the ray is turned off;
 		rayRepresentation.enabled = true; //If so, turns it back on;
 
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, maxRange)) { //If it detects collision;
+		if (Physics.Raycast(ray, out rayHit, maxRange)) { //If it detects collision;
+		
 			rayRepresentation.transform.localScale = new Vector3 (rayRepresentation.transform.lossyScale.x, rayRepresentation.transform.localEulerAngles.y, rayHit.distance * 7); //To draw the ray;
-			if(rayHit.transform.gameObject.GetComponent<RayInteraction>()) { //If the object detected can be interacted with;
-				if(Input.GetKeyDown("e") /*  ||  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) {
-					rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
+				if(rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
+
+					if(Input.GetKeyDown("e") /*  ||  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) 
+						rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
+
+					if(currentRaySelectedObject == null) { //If the current object is equal to nothing;
+						currentRaySelectedObject = rayHit.transform.gameObject; //Grasp new found object;
+						currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 1); //Set the material to its selected format;
+
+					} else if(currentRaySelectedObject != null) { //If the current interacted ray object storage is already occupied;
+						if(currentRaySelectedObject != rayHit.transform.gameObject) { //And if the object is not equal to the selected one;
+							currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Deselect the old one;
+							currentRaySelectedObject = rayHit.transform.gameObject; //Sets the newely interacted object;
+							currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 1); //Selects the new one;			
+						}
+					}
+
+				return; //Cuts off function;
+			} 
+
+					if(currentRaySelectedObject != null) {//If there is a old selected object;
+						currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Deselects old ray object;
+						currentRaySelectedObject = null; //Sets current object thats being interacted with to a null;
 					}
 				}
-			}
-		}		
+			}		
 	#endregion
 
 	#region PhysicalInteraction
@@ -126,6 +149,9 @@ public class PickupSystem : MonoBehaviour {
 		{
 			objectBeingCarried = _Object; //Sets the overloaded object as the object being carried;	
 
+			if(objectBeingCarried.GetComponent<Friction>())
+			objectBeingCarried.GetComponent<Friction>().canChild = false;
+
 			if(objectBeingCarried.GetComponent<InteractableObject>()) {	
 			objectBeingCarried.GetComponent<InteractableObject>().hand = this;
 			}
@@ -141,6 +167,7 @@ public class PickupSystem : MonoBehaviour {
 
 	private void Throwing() { //Applying velocity and let go of grip of the object;
 					objectBeingCarried.transform.parent = null; //Unchilds it from the hand;
+					objectBeingCarried.GetComponent<Friction>().canChild = true;
 					objectBeingCarried.GetComponent<Rigidbody>().velocity = (newLocation - oldLocation) * throwforceMultiplier; //Formula to decide velocity;
 					if(thisJoint != null) //If the hand has a fixedjoint assigned
 					thisJoint.connectedBody = null; //Resets connected rigidbody;
@@ -163,12 +190,48 @@ public class PickupSystem : MonoBehaviour {
 		}
 	}
 
+	private void Selected(GameObject _SelectedObj, bool _Deselect) { //Used for visual effects;
+		if(_SelectedObj == currentRaySelectedObject) { //If the object selected is the same object as previously;
+			return; //Cut off function and do not update visuals;
+		}
+
+		if(currentlyHovering == null) { //If the currently hovered object is empty;
+			currentlyHovering = _SelectedObj; //Fill in the hovered object;
+
+		} else if(currentlyHovering != null) { //Else if the currently hovering object 
+
+			if(_Deselect == true) {
+			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Set the material to its selected format;
+			currentlyHovering = null; //Change it to the newely hovered object;
+			return;
+			}
+
+			if(_Deselect == false) {
+			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Set the material to its selected format;
+			currentlyHovering = _SelectedObj; //Change it to the newely hovered object;
+			}
+		}
+
+		if(currentlyHovering != null && currentlyHovering.GetComponent<MeshRenderer>() && _Deselect == false) //If the overloaded object is not null;
+			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 1); //Set the material to its selected format;
+	}
+
+		public void OnTriggerEnter(Collider c) {
+			if(c.GetComponent<InteractableObject>() && objectBeingCarried == null)
+				Selected(c.gameObject, false);
+		}
+
 		private void OnTriggerStay(Collider c) {
-			bool canPickup = PickupCheck(c.gameObject);
+			bool canPickup = PickupCheck(c.gameObject); //A check to see if the item in range is indeed something to interact with;
 
-			if(canPickup)
-			Pickup(c.gameObject);	
+			if(canPickup) //If you can pickup the item;
+			Pickup(c.gameObject); //Call Pickup;
 
+		}
+
+		private void OnTriggerExit(Collider c) {
+			if(c.GetComponent<InteractableObject>() && c.GetComponent<MeshRenderer>())
+			Selected(c.gameObject, true);
 		}
 
 		bool PickupCheck(GameObject _Object) {

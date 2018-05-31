@@ -1,0 +1,443 @@
+fileFormatVersion: 2
+guid: f8f8a554fba612442b529b461088568a
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1st_Room_Big_Wall_001
+    100002: 1st_Room_Big_Wall_002
+    100004: 1st_Room_Big_Wall_004
+    100006: 1st_Room_Big_Wall_005
+    100008: 1st_Room_ceiling
+    100010: 1st_Room_Door_Wall
+    100012: 1st_Room_Single_Wall_001
+    100014: 1st_Room_Single_Wall_003
+    100016: 1st_Room_Window_001
+    100018: 2nd_Room_1st_Ceiling
+    100020: 2nd_Room_2nd_Ceiling
+    100022: 2nd_Room_3rd_Ceiling
+    100024: 2nd_Room_Big_Wall_001
+    100026: 2nd_Room_Big_Wall_002
+    100028: 2nd_Room_Big_Wall_003
+    100030: 2nd_Room_Big_Wall_004
+    100032: 2nd_Room_Big_Wall_005
+    100034: 2nd_Room_Big_Wall_006
+    100036: 2nd_Room_Door_Wall
+    100038: Box007
+    100040: Door_001
+    100042: Door_002
+    100044: Door_Frame_001
+    100046: Door_Frame_002
+    100048: Door_Frame_003
+    100050: Door_Handle_001
+    100052: Door_Handle_002
+    100054: Exit_Door
+    100056: Exit_Handle
+    100058: Exit_Holder
+    100060: Floor_001
+    100062: Hinge
+    100064: New room
+    100066: //RootNode
+    100068: Safe door
+    100070: Safe glass
+    100072: Safe Pin
+    100074: Safe Pin 1
+    100076: Safe Pin 10
+    100078: Safe Pin 11
+    100080: Safe Pin 12
+    100082: Safe Pin 13
+    100084: Safe Pin 14
+    100086: Safe Pin 15
+    100088: Safe Pin 16
+    100090: Safe Pin 17
+    100092: Safe Pin 2
+    100094: Safe Pin 3
+    100096: Safe Pin 4
+    100098: Safe Pin 5
+    100100: Safe Pin 6
+    100102: Safe Pin 7
+    100104: Safe Pin 8
+    100106: Safe Pin 9
+    100108: Safe wall
+    100110: Safe_Cylinder
+    100112: Safe_Cylinder 1
+    100114: Safe_Cylinder 2
+    100116: Screw001
+    100118: Screw002
+    100120: Screw003
+    100122: Screw004
+    100124: Secret_Room_Ceiling
+    100126: Secret_Room_Single_Wall
+    100128: Starting_Room_Ceiling
+    100130: Starting_Room_walls
+    100132: Window_Blinds001
+    400000: 1st_Room_Big_Wall_001
+    400002: 1st_Room_Big_Wall_002
+    400004: 1st_Room_Big_Wall_004
+    400006: 1st_Room_Big_Wall_005
+    400008: 1st_Room_ceiling
+    400010: 1st_Room_Door_Wall
+    400012: 1st_Room_Single_Wall_001
+    400014: 1st_Room_Single_Wall_003
+    400016: 1st_Room_Window_001
+    400018: 2nd_Room_1st_Ceiling
+    400020: 2nd_Room_2nd_Ceiling
+    400022: 2nd_Room_3rd_Ceiling
+    400024: 2nd_Room_Big_Wall_001
+    400026: 2nd_Room_Big_Wall_002
+    400028: 2nd_Room_Big_Wall_003
+    400030: 2nd_Room_Big_Wall_004
+    400032: 2nd_Room_Big_Wall_005
+    400034: 2nd_Room_Big_Wall_006
+    400036: 2nd_Room_Door_Wall
+    400038: Box007
+    400040: Door_001
+    400042: Door_002
+    400044: Door_Frame_001
+    400046: Door_Frame_002
+    400048: Door_Frame_003
+    400050: Door_Handle_001
+    400052: Door_Handle_002
+    400054: Exit_Door
+    400056: Exit_Handle
+    400058: Exit_Holder
+    400060: Floor_001
+    400062: Hinge
+    400064: New room
+    400066: //RootNode
+    400068: Safe door
+    400070: Safe glass
+    400072: Safe Pin
+    400074: Safe Pin 1
+    400076: Safe Pin 10
+    400078: Safe Pin 11
+    400080: Safe Pin 12
+    400082: Safe Pin 13
+    400084: Safe Pin 14
+    400086: Safe Pin 15
+    400088: Safe Pin 16
+    400090: Safe Pin 17
+    400092: Safe Pin 2
+    400094: Safe Pin 3
+    400096: Safe Pin 4
+    400098: Safe Pin 5
+    400100: Safe Pin 6
+    400102: Safe Pin 7
+    400104: Safe Pin 8
+    400106: Safe Pin 9
+    400108: Safe wall
+    400110: Safe_Cylinder
+    400112: Safe_Cylinder 1
+    400114: Safe_Cylinder 2
+    400116: Screw001
+    400118: Screw002
+    400120: Screw003
+    400122: Screw004
+    400124: Secret_Room_Ceiling
+    400126: Secret_Room_Single_Wall
+    400128: Starting_Room_Ceiling
+    400130: Starting_Room_walls
+    400132: Window_Blinds001
+    2100000: Safe door
+    2100002: 1st_Room_Big_Wall_001
+    2100004: 2nd_Room_Door_Wall
+    2100006: 1st_Room_Big_Wall_002
+    2100008: 1st_Room_Big_Wall_004
+    2100010: 1st_Room_Big_Wall_005
+    2100012: 1st_Room_Door_Wall
+    2100014: 1st_Room_Single_Wall_001
+    2100016: Starting_Room_walls
+    2100018: 2nd_Room_Big_Wall_002
+    2100020: 2nd_Room_Big_Wall_001
+    2100022: 2nd_Room_Big_Wall_004
+    2100024: 2nd_Room_Big_Wall_003
+    2100026: 2nd_Room_Big_Wall_006
+    2100028: 2nd_Room_Big_Wall_005
+    2100030: Secret_Room_Single_Wall
+    2100032: 1st_Room_Single_Wall_002
+    2100034: 1st_Room_Big_Wall_003
+    2100036: 1st_Room_Single_Wall_003
+    2100038: Window_Blinds
+    2100040: 2nd_Room_Window
+    2100042: Safe_Wall
+    2100044: No Name
+    2300000: 1st_Room_Big_Wall_001
+    2300002: 1st_Room_Big_Wall_002
+    2300004: 1st_Room_Big_Wall_004
+    2300006: 1st_Room_Big_Wall_005
+    2300008: 1st_Room_ceiling
+    2300010: 1st_Room_Door_Wall
+    2300012: 1st_Room_Single_Wall_001
+    2300014: 1st_Room_Single_Wall_003
+    2300016: 1st_Room_Window_001
+    2300018: 2nd_Room_1st_Ceiling
+    2300020: 2nd_Room_2nd_Ceiling
+    2300022: 2nd_Room_3rd_Ceiling
+    2300024: 2nd_Room_Big_Wall_001
+    2300026: 2nd_Room_Big_Wall_002
+    2300028: 2nd_Room_Big_Wall_003
+    2300030: 2nd_Room_Big_Wall_004
+    2300032: 2nd_Room_Big_Wall_005
+    2300034: 2nd_Room_Big_Wall_006
+    2300036: 2nd_Room_Door_Wall
+    2300038: Box007
+    2300040: Door_001
+    2300042: Door_002
+    2300044: Door_Frame_001
+    2300046: Door_Frame_002
+    2300048: Door_Frame_003
+    2300050: Door_Handle_001
+    2300052: Door_Handle_002
+    2300054: Exit_Door
+    2300056: Exit_Handle
+    2300058: Exit_Holder
+    2300060: Floor_001
+    2300062: Hinge
+    2300064: New room
+    2300066: Safe door
+    2300068: Safe glass
+    2300070: Safe Pin
+    2300072: Safe Pin 1
+    2300074: Safe Pin 10
+    2300076: Safe Pin 11
+    2300078: Safe Pin 12
+    2300080: Safe Pin 13
+    2300082: Safe Pin 14
+    2300084: Safe Pin 15
+    2300086: Safe Pin 16
+    2300088: Safe Pin 17
+    2300090: Safe Pin 2
+    2300092: Safe Pin 3
+    2300094: Safe Pin 4
+    2300096: Safe Pin 5
+    2300098: Safe Pin 6
+    2300100: Safe Pin 7
+    2300102: Safe Pin 8
+    2300104: Safe Pin 9
+    2300106: Safe wall
+    2300108: Safe_Cylinder
+    2300110: Safe_Cylinder 1
+    2300112: Safe_Cylinder 2
+    2300114: Screw001
+    2300116: Screw002
+    2300118: Screw003
+    2300120: Screw004
+    2300122: Secret_Room_Ceiling
+    2300124: Secret_Room_Single_Wall
+    2300126: Starting_Room_Ceiling
+    2300128: Starting_Room_walls
+    2300130: Window_Blinds001
+    3300000: 1st_Room_Big_Wall_001
+    3300002: 1st_Room_Big_Wall_002
+    3300004: 1st_Room_Big_Wall_004
+    3300006: 1st_Room_Big_Wall_005
+    3300008: 1st_Room_ceiling
+    3300010: 1st_Room_Door_Wall
+    3300012: 1st_Room_Single_Wall_001
+    3300014: 1st_Room_Single_Wall_003
+    3300016: 1st_Room_Window_001
+    3300018: 2nd_Room_1st_Ceiling
+    3300020: 2nd_Room_2nd_Ceiling
+    3300022: 2nd_Room_3rd_Ceiling
+    3300024: 2nd_Room_Big_Wall_001
+    3300026: 2nd_Room_Big_Wall_002
+    3300028: 2nd_Room_Big_Wall_003
+    3300030: 2nd_Room_Big_Wall_004
+    3300032: 2nd_Room_Big_Wall_005
+    3300034: 2nd_Room_Big_Wall_006
+    3300036: 2nd_Room_Door_Wall
+    3300038: Box007
+    3300040: Door_001
+    3300042: Door_002
+    3300044: Door_Frame_001
+    3300046: Door_Frame_002
+    3300048: Door_Frame_003
+    3300050: Door_Handle_001
+    3300052: Door_Handle_002
+    3300054: Exit_Door
+    3300056: Exit_Handle
+    3300058: Exit_Holder
+    3300060: Floor_001
+    3300062: Hinge
+    3300064: New room
+    3300066: Safe door
+    3300068: Safe glass
+    3300070: Safe Pin
+    3300072: Safe Pin 1
+    3300074: Safe Pin 10
+    3300076: Safe Pin 11
+    3300078: Safe Pin 12
+    3300080: Safe Pin 13
+    3300082: Safe Pin 14
+    3300084: Safe Pin 15
+    3300086: Safe Pin 16
+    3300088: Safe Pin 17
+    3300090: Safe Pin 2
+    3300092: Safe Pin 3
+    3300094: Safe Pin 4
+    3300096: Safe Pin 5
+    3300098: Safe Pin 6
+    3300100: Safe Pin 7
+    3300102: Safe Pin 8
+    3300104: Safe Pin 9
+    3300106: Safe wall
+    3300108: Safe_Cylinder
+    3300110: Safe_Cylinder 1
+    3300112: Safe_Cylinder 2
+    3300114: Screw001
+    3300116: Screw002
+    3300118: Screw003
+    3300120: Screw004
+    3300122: Secret_Room_Ceiling
+    3300124: Secret_Room_Single_Wall
+    3300126: Starting_Room_Ceiling
+    3300128: Starting_Room_walls
+    3300130: Window_Blinds001
+    4300000: Door_Frame_002
+    4300002: Door_002
+    4300004: Door_Handle_002
+    4300006: 2nd_Room_Door_Wall
+    4300008: Door_Frame_003
+    4300010: 1st_Room_Big_Wall_002
+    4300012: 1st_Room_Big_Wall_004
+    4300014: 1st_Room_Big_Wall_005
+    4300016: 1st_Room_Big_Wall_001
+    4300018: Door_Frame_001
+    4300020: Door_001
+    4300022: Door_Handle_001
+    4300024: 1st_Room_Door_Wall
+    4300026: 1st_Room_Single_Wall_001
+    4300028: Starting_Room_walls
+    4300030: 2nd_Room_Big_Wall_002
+    4300032: 2nd_Room_Big_Wall_001
+    4300034: 2nd_Room_Big_Wall_004
+    4300036: 2nd_Room_Big_Wall_003
+    4300038: 2nd_Room_Big_Wall_006
+    4300040: 2nd_Room_Big_Wall_005
+    4300042: Secret_Room_Single_Wall
+    4300044: 1st_Room_ceiling
+    4300046: Secret_Room_Ceiling
+    4300048: 2nd_Room_3rd_Ceiling
+    4300050: 2nd_Room_2nd_Ceiling
+    4300052: 2nd_Room_1st_Ceiling
+    4300054: Starting_Room_Ceiling
+    4300056: 1st_Room_Single_Wall_003
+    4300058: Window_Blinds001
+    4300060: 1st_Room_Window_001
+    4300062: Safe wall
+    4300064: Hinge
+    4300066: Safe door
+    4300068: Safe Pin
+    4300070: Safe glass
+    4300072: Safe_Cylinder
+    4300074: Safe Pin
+    4300076: Safe Pin
+    4300078: Safe Pin
+    4300080: Safe Pin
+    4300082: Safe Pin
+    4300084: Safe Pin
+    4300086: Safe Pin
+    4300088: Safe Pin
+    4300090: Safe Pin
+    4300092: Safe Pin
+    4300094: Safe Pin
+    4300096: Safe Pin
+    4300098: Safe Pin
+    4300100: Safe Pin
+    4300102: Safe Pin
+    4300104: Safe Pin
+    4300106: Safe Pin
+    4300108: Safe_Cylinder
+    4300110: Safe_Cylinder
+    4300112: New room
+    4300114: Exit_Door
+    4300116: Exit_Holder
+    4300118: Exit_Handle
+    4300120: Box007
+    4300122: Screw001
+    4300124: Screw003
+    4300126: Screw002
+    4300128: Screw004
+    4300130: Floor_001
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

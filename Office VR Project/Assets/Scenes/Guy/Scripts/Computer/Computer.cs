@@ -165,6 +165,9 @@ public class Computer : RayInteraction {
 	private void PrinterOptions(string _Command) { //If the printer command has been selected;
 		usingPrinter = false;
 
+		if(!result.text.Contains("-")) //Checks if is has no indentifier for a command;
+		result.text = possibleResults[5];
+
 		if(_Command.Contains("turnon")) //If the player has this as input;
 		{
 		printer.ActivatePrinter(); //The printer will turn on and will have to ability go add to the queuing list;
@@ -178,7 +181,7 @@ public class Computer : RayInteraction {
 		result.text = possibleResults[5];
 		return;
 		}
-
+		
 		foreach(PrintingOptions prints in possiblePrints) { //For every possible prints it checks if the command matches one of em;
 			if(_Command.Contains(prints.name)) { //If the command matches one of the file types
 				if(printer.isOn == true){ //If the printer is turned off;

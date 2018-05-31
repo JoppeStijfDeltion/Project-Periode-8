@@ -17,7 +17,7 @@ public class Drawer : InteractableObject {
 	#region Private Variables
 	/*Drawer Related*/
 	private Vector3 currentLocation;
-	private float startOffsetZ;
+	private float startOffset;
 	private bool opened = false;
 	#endregion
 
@@ -25,14 +25,16 @@ public class Drawer : InteractableObject {
 
 	public override void Awake() {
 		base.Awake();
-		currentLocation = transform.localPosition; //Correcting some transforms;
-		startOffsetZ = transform.localPosition.z;
+		currentLocation = transform.position; //Correcting some transforms;
+		startOffset = transform.position.x;
 	}
 
 	public override void Update() {
 		base.Update();
 		Audio();
-		transform.localPosition = currentLocation;
+		transform.position = currentLocation;
+
+		GetComponent<MeshRenderer>()
 	}
 
 	private void Audio() {
@@ -48,9 +50,9 @@ public class Drawer : InteractableObject {
 
 	public override void Interact() {
 		if(hand == null) { opened = false; return;	} //If there is no object to track, function will be cut off;
-
-		currentLocation.z = Mathf.Lerp(currentLocation.z, transform.InverseTransformDirection(hand.transform.position).z + pivotOffet, drawSpeed * Time.deltaTime);
-		currentLocation.z = Mathf.Clamp(currentLocation.z, startOffsetZ, startOffsetZ + maxOpenOffset);
+			
+				currentLocation.x = Mathf.Lerp(currentLocation.x, hand.transform.position.x + pivotOffet, drawSpeed * Time.deltaTime);
+				currentLocation.x = Mathf.Clamp(currentLocation.x, startOffset, startOffset + maxOpenOffset);
 
 		}
 	}

@@ -10,7 +10,7 @@ public class Fusebox : MonoBehaviour {
 
 	[Header("Fusebox Settings:")]
 	public List<Fuse> fuses = new List<Fuse>();
-	public Door door;
+	public Safedoor door;
 	public bool completed = false;
 
 	[Header("Debug")]
@@ -32,6 +32,6 @@ public class Fusebox : MonoBehaviour {
 		}
 
 		completed = true;
-		door.Unlock();
+		door.OpenDoor();
 	}
 }
