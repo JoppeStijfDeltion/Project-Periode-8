@@ -22,7 +22,9 @@ public class NonVR : MonoBehaviour {
     [Header ("The speed you move arround")]
     public float movementSpeed = 3f;
 
+    private float pitch;
     public float rotationSpeed = 2.5f;
+    public float clamp = 40f;
 
     // Ref
     private CharacterController con;
@@ -80,14 +82,14 @@ public class NonVR : MonoBehaviour {
     }
 
     private void Rotation () {
-        float xInput = Input.GetAxis ("Mouse X");
-        float yInput = Input.GetAxis ("Mouse Y");
+        pitch -= rotationSpeed * Input.GetAxis ("Mouse Y");
+        pitch = Mathf.Clamp (pitch, -clamp, clamp);
 
         if (Input.GetButton ("Fire2")|| !rightClick) {
             // Rotate the body
-            transform.eulerAngles += new Vector3 (0, xInput * rotationSpeed, 0);
+            transform.eulerAngles += new Vector3 (0, Input.GetAxis ("Mouse X")* rotationSpeed, 0);
             // Rotate the camera
-            cam.transform.eulerAngles += new Vector3 (-yInput * rotationSpeed, 0, 0);
+            cam.transform.eulerAngles = new Vector3 (pitch, transform.eulerAngles.y, 0);
         }
     }
 }
