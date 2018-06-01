@@ -34,7 +34,6 @@ public class Drawer : InteractableObject {
 		Audio();
 		transform.position = currentLocation;
 
-		GetComponent<MeshRenderer>()
 	}
 
 	private void Audio() {
