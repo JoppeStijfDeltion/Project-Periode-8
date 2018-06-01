@@ -5,7 +5,8 @@ using UnityEngine;
 public class ControllerScript : MonoBehaviour {
 
 	public static bool vr;
-	public Transform hand;
+	public Transform handLeft;
+	public Transform handRight;
 
 	#region Public Variables
 
@@ -67,6 +68,15 @@ public class ControllerScript : MonoBehaviour {
 	// Change this to private bla bla bla
 	public PickupSystem interactRef;
 
+	public float test {
+		get {
+			return 10f;
+		}
+		set {
+
+		}
+	}
+
 	private void Awake () {
 
 		if (vr) {
@@ -95,15 +105,8 @@ public class ControllerScript : MonoBehaviour {
 			GetControllerInput (controllerRight, trackedObjRight, laserRight, rayTargetRight, laserModeRight);
 		}
 		else {
-			if (Input.GetButtonDown ("Jump")) {
-				if (laserModeRight == LaserMode.Teleport) {
-					laserModeRight = LaserMode.Interact;
-				}
-				else {
-					laserModeRight = LaserMode.Teleport;
-				}
-			}
-			GetKeyboardInput ();
+			GetKeyboardInput (true);
+			GetKeyboardInput (false);
 		}
 	}
 
@@ -115,7 +118,7 @@ public class ControllerScript : MonoBehaviour {
 				if (controller.GetPress (SteamVR_Controller.ButtonMask.Touchpad)) {
 
 					if (Physics.Raycast (trackedObjTransform.position, trackedObjTransform.forward, out hit, 100f, teleportMask)) {
-						ShowTeleportLaser (laser, trackedObj, hit);
+						ShowTeleportLaser (null, laser, trackedObj, hit);
 						reticle.SetActive (true);
 						reticle.transform.position = hit.point + new Vector3 (0, 0.05f, 0);
 						canTeleport = true;
@@ -137,10 +140,10 @@ public class ControllerScript : MonoBehaviour {
 			case LaserMode.Interact:
 				reticle.SetActive (false);
 				if (Physics.Raycast (trackedObjTransform.position, trackedObjTransform.forward, out hit, interactDistance)) {
-					ShowInteractLaser (laser, rayTarget, trackedObj, true, hit);
+					ShowInteractLaser (null, laser, rayTarget, trackedObj, true, hit);
 				}
 				else {
-					ShowInteractLaser (laser, rayTarget, trackedObj, false, new RaycastHit ());
+					ShowInteractLaser (null, laser, rayTarget, trackedObj, false, new RaycastHit ());
 				}
 				if (controller.GetHairTrigger ()) {
 					interactRef.RayInteraction ();
@@ -149,21 +152,55 @@ public class ControllerScript : MonoBehaviour {
 		}
 	}
 
-	private void GetKeyboardInput () {
+	private void GetKeyboardInput (bool left) {
+		LaserMode laserMode;
+		Transform hand;
+		Transform target;
+		GameObject laser;
+
+		if (left) {
+			if (Input.GetButtonDown ("Jump")) {
+				if (laserModeLeft == LaserMode.Teleport) {
+					laserModeLeft = LaserMode.Interact;
+				}
+				else {
+					laserModeLeft = LaserMode.Teleport;
+				}
+			}
+			laserMode = laserModeLeft;
+			hand = handLeft;
+			target = rayTargetLeft;
+			laser = laserLeft;
+		}
+		else {
+			if (Input.GetButtonDown ("Jump")) {
+				if (laserModeRight == LaserMode.Teleport) {
+					laserModeRight = LaserMode.Interact;
+				}
+				else {
+					laserModeRight = LaserMode.Teleport;
+				}
+			}
+			laserMode = laserModeRight;
+			hand = handRight;
+			target = rayTargetRight;
+			laser = laserRight;
+		}
+
 		RaycastHit hit;
 
-		switch (laserModeRight) {
+		switch (laserMode) {
 			case LaserMode.Teleport:
 				if (Input.GetButton ("Fire2")) {
 
 					if (Physics.Raycast (hand.position, hand.forward, out hit, 100f, teleportMask)) {
-						ShowTeleportLaser (laserRight, null, hit);
+						ShowTeleportLaser (hand, laser, null, hit);
 						reticle.SetActive (true);
 						reticle.transform.position = hit.point + new Vector3 (0, 0.05f, 0);
 						canTeleport = true;
 					}
 					else {
-						laserRight.SetActive (false);
+						laser.SetActive (false);
 						reticle.SetActive (false);
 					}
 
@@ -172,17 +209,17 @@ public class ControllerScript : MonoBehaviour {
 					}
 				}
 				else {
-					laserRight.SetActive (false);
+					laser.SetActive (false);
 					reticle.SetActive (false);
 				}
 				break;
 			case LaserMode.Interact:
 				reticle.SetActive (false);
 				if (Physics.Raycast (hand.position, hand.forward, out hit, interactDistance)) {
-					ShowInteractLaser (laserRight, rayTargetRight, null, true, hit);
+					ShowInteractLaser (hand, laser, rayTargetRight, null, true, hit);
 				}
 				else {
-					ShowInteractLaser (laserRight, rayTargetRight, null, false, new RaycastHit ());
+					ShowInteractLaser (hand, laser, rayTargetRight, null, false, new RaycastHit ());
 				}
 				if (Input.GetButtonDown ("Fire1")) {
 					interactRef.RayInteraction ();
@@ -191,7 +228,7 @@ public class ControllerScript : MonoBehaviour {
 		}
 	}
 
-	private void ShowTeleportLaser (GameObject laser, SteamVR_TrackedObject trackedObj, RaycastHit hit) {
+	private void ShowTeleportLaser (Transform hand, GameObject laser, SteamVR_TrackedObject trackedObj, RaycastHit hit) {
 		laser.GetComponent<Renderer> ().material.color = teleportColor;
 		laser.SetActive (true);
 		Transform laserTransform = laser.transform;
@@ -205,7 +242,7 @@ public class ControllerScript : MonoBehaviour {
 		laserTransform.localScale = new Vector3 (laserTransform.localScale.x, laserTransform.localScale.y, hit.distance);
 	}
 
-	private void ShowInteractLaser (GameObject laser, Transform rayTarget, SteamVR_TrackedObject trackedObj, bool ray, RaycastHit hit) {
+	private void ShowInteractLaser (Transform hand, GameObject laser, Transform rayTarget, SteamVR_TrackedObject trackedObj, bool ray, RaycastHit hit) {
 		laser.GetComponent<Renderer> ().material.color = interactColor;
 		laser.SetActive (true);
 		Transform laserTransform = laser.transform;
