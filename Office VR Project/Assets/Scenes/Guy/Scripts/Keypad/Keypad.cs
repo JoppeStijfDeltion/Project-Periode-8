@@ -17,7 +17,7 @@ public class Keypad : MonoBehaviour {
 	public int maxChars; //Max amount of chars that can reside within the input;
 
 	[Header("Unlock Settings:")]
-	public Door door; //The door that will be unlocked upon completion;
+	public Safedoor door; //The door that will be unlocked upon completion;
 
 	[Header("Sound Settings:")]
 	public AudioClip[] sounds;
@@ -59,7 +59,7 @@ public class Keypad : MonoBehaviour {
 	public void Unlock() { //If input matches the code, unlocks whatever mechanism is selected;
 		if(input.text == code) {
 			completed = true;
-			door.Unlock(); //Unlocks door and completed the keypad;
+			door.OpenDoor(); //Unlocks door and completed the keypad;
 			input.text = "Passed";
 			input.color = Color.green;
 			AudioManager.audioManager.PlayAudio(aSource, sounds[1]);

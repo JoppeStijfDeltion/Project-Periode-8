@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : ManagerManager {
 
@@ -13,9 +14,11 @@ public class GameManager : ManagerManager {
 	public bool startedGame = false;
 	public int minutes = 0;
 	public int seconds = 0;
+	public Text timeUI;
 
 	#region Private Variables
 	private float timer;
+	private int tenSeconds; //Amount of times 10 seconds passed;
 	#endregion
 
 	public override void Initialization() {
@@ -37,10 +40,18 @@ public class GameManager : ManagerManager {
 	private void SetDigitalClock() {
 		seconds = (int)Mathf.Floor(timer); //Sets up the digital format of seconds;
 
-		if(timer >= 60) { //Counts up the minutes after every 60 seconds;
+		if(tenSeconds >= 6) { //Counts up the minutes after every 60 seconds;
+			tenSeconds = 0;
 			minutes++;
-			timer = 0;
 		}
+
+		if(timer >= 10) {
+			timer = 0;
+			tenSeconds++;
+		}
+
+		if(timeUI != null)
+		timeUI.text = minutes + ":"+ tenSeconds + seconds;
 	}
 
 	private void IncrementTime() {
