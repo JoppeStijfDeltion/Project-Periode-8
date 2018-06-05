@@ -57,35 +57,35 @@
      <Compile Include="Assets\SteamVR\Editor\SteamVR_Settings.cs" />
      <Compile Include="Assets\SteamVR\Editor\SteamVR_SkyboxEditor.cs" />
      <Compile Include="Assets\SteamVR\Editor\SteamVR_Update.cs" />
- <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.render-pipelines.lightweight.Runtime">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.lightweight.Runtime.dll</HintPath>
- </Reference>
  <Reference Include="com.unity.render-pipelines.core.Editor">
  <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.core.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.render-pipelines.core.IncludePaths">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.core.IncludePaths.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.postprocessing.Editor">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.postprocessing.Editor.dll</HintPath>
- </Reference>
- <Reference Include="Unity.ShaderGraph.Editor">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.render-pipelines.lightweight.Editor">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.lightweight.Editor.dll</HintPath>
- </Reference>
- <Reference Include="com.unity.postprocessing.Runtime">
- <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.postprocessing.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.render-pipelines.core.Runtime">
  <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.core.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.render-pipelines.lightweight.Runtime">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.lightweight.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.render-pipelines.lightweight.Editor">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.lightweight.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PackageManagerUI.Editor">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.postprocessing.Editor">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.postprocessing.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.postprocessing.Runtime">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.postprocessing.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.render-pipelines.core.IncludePaths">
+ <HintPath>C:/Users/Xepho/Documents/GitHub/Project-Periode-8/Office VR Project/Library/ScriptAssemblies/com.unity.render-pipelines.core.IncludePaths.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
