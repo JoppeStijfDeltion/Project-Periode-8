@@ -50,7 +50,7 @@ public class NonVR : MonoBehaviour {
             con.enabled = false;
         }
         else {
-            cam.transform.position = new Vector3 (0f, 1.6f, 0f);
+            cam.transform.localPosition = new Vector3 (0f, 1.6f, 0f);
 
             con.enabled = true;
             con.height = 1.6f;
