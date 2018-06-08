@@ -204,7 +204,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1764602287661638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4756869411417834}
@@ -252,6 +252,22 @@ Transform:
   m_Father: {fileID: 4457079738761096}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+--- !u!4 &4404463976120664
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1864053712304520}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 30.766663}
+  m_LocalScale: {x: 10, y: 10, z: 3}
+  m_Children: []
+  m_Father: {fileID: 4727894889157876}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> 9e139658e339d6f3862e8d5a8c0b2cc6ba20fcf5
 --- !u!4 &4457079738761096
 Transform:
   m_ObjectHideFlags: 1
@@ -632,6 +648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b598962de65445746a9b2c2823b8d1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+  handLeft: {fileID: 0}
+  handRight: {fileID: 0}
+=======
+>>>>>>> 9e139658e339d6f3862e8d5a8c0b2cc6ba20fcf5
   headTransform: {fileID: 4457079738761096}
   LaserPrefab: {fileID: 1316129689437864, guid: f5117d3e57d9d3045a0bdc8601a68490,
     type: 2}

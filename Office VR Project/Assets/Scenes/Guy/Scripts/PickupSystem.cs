@@ -9,7 +9,7 @@ public class PickupSystem : MonoBehaviour {
 	public Interaction interactionState;
 
 	[Header("Teleportation Settings:")]
-	public Laser teleport; //Teleport Options;
+	public ControllerScript teleport; //Teleport Options;
 
 	[Header("Debug Settings")]
 	public GameObject objectBeingCarried = null;
@@ -53,6 +53,10 @@ public class PickupSystem : MonoBehaviour {
 		trackedObj = GetComponent<SteamVR_TrackedObject>();*/
 	}
 
+	private void Start() {
+		GameManager.gameManager.hands.Add(this);
+	}
+
 	private void Update() {
 		LetGo(); //Used for when you let go of the button; 
 		AdjustVelocity(); //Used to define the throwing speed;
@@ -61,7 +65,7 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Toggle() { //This method is used to toggle between multiple interaction methods;
-		if(Input.GetButtonDown("Fire3")  /*|| controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad)*/) { //Interaction based toggle;
+		if(Input.GetButtonDown("Fire3") /* || controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad)*/) { //Interaction based toggle;
 		rayRepresentation.enabled = false;
 
 		switch(interactionState) {
@@ -85,10 +89,10 @@ public class PickupSystem : MonoBehaviour {
 		if(interactionState == Interaction.RayInteraction)
 		RayInteraction();
 
-		//if(interactionState == Interaction.Teleporting) //If you selected the teleportation action, it will be enabled;
-		//teleport.enabled = true; //Sets teleporting to true;
-		//else
-		//teleport.enabled = false; //Sets teleporting to false;
+		if(interactionState == Interaction.Teleporting) //If you selected the teleportation action, it will be enabled;
+			teleport.enabled = true; //Sets teleporting to true;
+		else
+			teleport.enabled = false; //Sets teleporting to false;
 	}
 
 	#region RayInteraction
@@ -105,7 +109,7 @@ public class PickupSystem : MonoBehaviour {
 			rayRepresentation.transform.localScale = new Vector3 (rayRepresentation.transform.lossyScale.x, rayRepresentation.transform.localEulerAngles.y, rayHit.distance * 7); //To draw the ray;
 				if(rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
 
-					if(Input.GetKeyDown("e") /*  ||  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) 
+					if(Input.GetKeyDown("e") /* ||  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) 
 						rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
 
 					if(currentRaySelectedObject == null) { //If the current object is equal to nothing;
@@ -145,7 +149,7 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Pickup(GameObject _Object) {
-		if(Input.GetKeyDown(KeyCode.E) /* || controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) //Checks if you are holding down the button;
+		if(Input.GetKeyDown(KeyCode.E) /* || controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)*/ ) //Checks if you are holding down the button;
 		{
 			objectBeingCarried = _Object; //Sets the overloaded object as the object being carried;	
 
@@ -166,6 +170,7 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Throwing() { //Applying velocity and let go of grip of the object;
+		if(objectBeingCarried == null) { return; }
 					objectBeingCarried.transform.parent = null; //Unchilds it from the hand;
 					objectBeingCarried.GetComponent<Friction>().canChild = true;
 					objectBeingCarried.GetComponent<Rigidbody>().velocity = (newLocation - oldLocation) * throwforceMultiplier; //Formula to decide velocity;
@@ -178,7 +183,7 @@ public class PickupSystem : MonoBehaviour {
 	public void LetGo() {
 		if(objectBeingCarried == null) { return;} //If there is no object being interacted with, cut function off;
 
-		if(Input.GetKeyUp(KeyCode.E) /* || controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger)*/) {
+		if(Input.GetKeyUp(KeyCode.E) /* || controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger) */ ) {
 
 			if(objectBeingCarried.GetComponent<InteractableObject>())
 				objectBeingCarried.GetComponent<InteractableObject>().hand = null; //If its an interactable, stop interaction;

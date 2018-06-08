@@ -10,7 +10,9 @@ public abstract class RayInteraction : MonoBehaviour {
 
 	#region Private Variables
 	protected Animator anim;
-	protected AudioSource aSource;
+
+	[HideInInspector]
+	public AudioSource aSource;
 	#endregion
 
 	protected virtual void Awake() { //Sets some references;

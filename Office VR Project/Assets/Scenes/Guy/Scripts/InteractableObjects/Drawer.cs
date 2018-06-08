@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class Drawer : InteractableObject {
 
+	public bool open = true;
+
+	[Header("Unlock Settings:")]
+	public GameObject containedObject; //Object that will instantiate once the drawer is unlocked;
+	public Transform instancePos; //Transform where the content will be instantiated upon unlock;
+
 	[Header("Drawer Settings:")]
 	[Tooltip("The max range from the startoffset the drawer can open at.")]
 	public float maxOpenOffset = 0.8f;
@@ -18,7 +24,7 @@ public class Drawer : InteractableObject {
 	/*Drawer Related*/
 	private Vector3 currentLocation;
 	private float startOffset;
-	private bool opened = false;
+	private bool openedAudio = false;
 	#endregion
 
 	public override void UpdateAnimations(){}
@@ -38,17 +44,26 @@ public class Drawer : InteractableObject {
 
 	private void Audio() {
 		if(hand != null) {
-			if(opened == false) {
-				opened = true;
-				AudioManager.audioManager.PlayAudio(aSource, sounds[0]); //If the drawer is starting to get grabbed on, play audio;
+			if(openedAudio == false) {
+				openedAudio = true;
+				AudioManager.audioManager.PlayAudio(sounds[0], transform); //If the drawer is starting to get grabbed on, play audio;
 			}
 		} else {
-			opened = false;
+			openedAudio = false;
+		}
+	}
+
+	public void Unlock() {
+		if(open == false) { //If the drawer hasn't been unlocked yet;
+		open = true; //Set the state to being unlocked;
+		GameObject _Contained = Instantiate(containedObject, instancePos.transform.position, Quaternion.identity); //Spawn the contained item;
+		_Contained.transform.SetParent(gameObject.transform);
+		//AudioManager.audioManager.PlayAudio(aSource, sounds[1]); //Play unlocking audio cueue;
 		}
 	}
 
 	public override void Interact() {
-		if(hand == null) { opened = false; return;	} //If there is no object to track, function will be cut off;
+		if(hand == null || open == false) { openedAudio = false; return;	} //If there is no object to track, function will be cut off;
 			
 				currentLocation.x = Mathf.Lerp(currentLocation.x, hand.transform.position.x + pivotOffet, drawSpeed * Time.deltaTime);
 				currentLocation.x = Mathf.Clamp(currentLocation.x, startOffset, startOffset + maxOpenOffset);

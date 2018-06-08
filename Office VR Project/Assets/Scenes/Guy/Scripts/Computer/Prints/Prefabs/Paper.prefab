@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23624129139513848}
   - component: {fileID: 65315183545992358}
   - component: {fileID: 95794950021840586}
+  - component: {fileID: 114164358298533756}
   m_Layer: 0
   m_Name: Paper
   m_TagString: Untagged
@@ -115,3 +116,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114164358298533756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625591836553608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f863432a2f21c80409b80c1e8f02d91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceBelowTillFriction: 0
+  canChild: 1

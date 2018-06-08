@@ -7,6 +7,9 @@ public class GameManager : ManagerManager {
 
 	public static GameManager gameManager;
 
+	[Header("Statics:")]
+	public List<PickupSystem> hands;
+
 	[Header("Selected Settings:")]
 	public Material selected;
 

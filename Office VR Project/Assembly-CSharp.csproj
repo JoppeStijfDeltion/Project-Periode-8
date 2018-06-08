@@ -51,13 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Elevator.cs" />
+     <Compile Include="Assets\Region.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Computer.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Printer.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Destroy.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Door\Door.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Door\Keylock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Friction.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fuse.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fusebox.cs" />
-     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Door\Door.cs" />
-     <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Door\Keylock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\Drawer.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\InteractableObjects\InteractableObject.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Keypad\Key.cs" />
@@ -66,6 +69,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\AudioManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\FrictionManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Managers\InitializeManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\ManagerManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\RegionManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\PickupSystem.cs" />
@@ -73,12 +77,16 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlepiece.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlespace.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Radio\Radio.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Radio\RadioChannel.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Radio\RadioVolume.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\RedButton.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Safedoor.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\ControllerScript.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Fusion.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Laser.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\NonVR.cs" />
+     <Compile Include="Assets\Scenes\Tom\Scripts\Screws.cs" />
+     <Compile Include="Assets\Scenes\Tom\Scripts\Vent.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\VRInputTest.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\WeightPuzzle.cs" />
      <Compile Include="Assets\Scenes\Tom\Standard Assets\Scripts\SetCorrectCameraHeight.cs" />
@@ -197,7 +205,6 @@
      <None Include="Assets\Scenes\Lucas\Textures\test.txt" />
      <None Include="Assets\GUI\Sprites\test.txt" />
      <None Include="Assets\Scenes\Lucas\Local Prefabs\test.txt" />
-     <None Include="Assets\Scenes\Joppe\Materials\test.txt" />
      <None Include="Assets\Scenes\Joppe\Scene\test.txt" />
      <None Include="Assets\Scenes\Lucas\Models\test.txt" />
      <None Include="Assets\Scenes\Guy\Shader\OutlineInteractable.shader" />

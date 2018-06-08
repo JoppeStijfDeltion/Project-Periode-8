@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class Computer : RayInteraction {
 
+	[Header("Secrets:")]
+	public Radio radio;
+
 	[Header("UI Settings:")]
 	public GameObject screen;
 	public Text input;
@@ -137,6 +140,13 @@ public class Computer : RayInteraction {
 			result.text = possibleResults[0];
 			else
 			result.text = possibleResults[1];
+			return;
+		}
+
+		if(_Command.Contains("90smode")) {
+			radio.aSource.clip = radio.sounds[1];
+			radio.aSource.Play();
+			result.text = possibleResults[7];
 			return;
 		}
 
