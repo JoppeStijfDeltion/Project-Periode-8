@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screwdriver: {fileID: 1869021284}
-  rb: {fileID: 0}
 --- !u!54 &628043732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -408,7 +407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screwdriver: {fileID: 1869021284}
-  rb: {fileID: 0}
 --- !u!54 &1001872612
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -588,7 +586,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screwdriver: {fileID: 1869021284}
-  rb: {fileID: 0}
 --- !u!54 &1367881475
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -801,7 +798,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screwdriver: {fileID: 1869021284}
-  rb: {fileID: 0}
 --- !u!54 &1462743960
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -830,7 +826,7 @@ GameObject:
   - component: {fileID: 1869021286}
   - component: {fileID: 1869021285}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Screwdriver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -912,7 +908,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1869021284}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.4, y: 0.4, z: -0.998}
+  m_LocalPosition: {x: -0.4, y: 0.4, z: -0.802}
   m_LocalScale: {x: 0.05, y: 0.6, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
