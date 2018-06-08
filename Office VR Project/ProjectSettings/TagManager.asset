@@ -14,8 +14,13 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - CanTeleport
   - CannotTeleport
+=======
+  - Teleport Mask
+  - 
+>>>>>>> 9e139658e339d6f3862e8d5a8c0b2cc6ba20fcf5
   - 
   - 
   - 

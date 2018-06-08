@@ -179,21 +179,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1864053712304520
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4404463976120664}
-  m_Layer: 0
-  m_Name: Target
-  m_TagString: RayTarget
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1939083653874964
 GameObject:
   m_ObjectHideFlags: 1
@@ -267,6 +252,7 @@ Transform:
   m_Father: {fileID: 4457079738761096}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!4 &4404463976120664
 Transform:
   m_ObjectHideFlags: 1
@@ -280,6 +266,8 @@ Transform:
   m_Father: {fileID: 4727894889157876}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> 9e139658e339d6f3862e8d5a8c0b2cc6ba20fcf5
 --- !u!4 &4457079738761096
 Transform:
   m_ObjectHideFlags: 1
@@ -331,10 +319,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1267666588912444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0.77}
+  m_LocalPosition: {x: -0.5, y: -0.3, z: 0.77}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.3}
-  m_Children:
-  - {fileID: 4404463976120664}
+  m_Children: []
   m_Father: {fileID: 4457079738761096}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -661,8 +648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b598962de65445746a9b2c2823b8d1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   handLeft: {fileID: 0}
   handRight: {fileID: 0}
+=======
+>>>>>>> 9e139658e339d6f3862e8d5a8c0b2cc6ba20fcf5
   headTransform: {fileID: 4457079738761096}
   LaserPrefab: {fileID: 1316129689437864, guid: f5117d3e57d9d3045a0bdc8601a68490,
     type: 2}
@@ -673,13 +663,7 @@ MonoBehaviour:
   teleportMask:
     serializedVersion: 2
     m_Bits: 256
-  interactMask:
-    serializedVersion: 2
-    m_Bits: 0
-  rayTargetLeft: {fileID: 4067818498042524}
-  rayTargetRight: {fileID: 4404463976120664}
   interactDistance: 10
-  interactRef: {fileID: 0}
 --- !u!114 &114789327264027644
 MonoBehaviour:
   m_ObjectHideFlags: 1
