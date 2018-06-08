@@ -5,18 +5,34 @@ using UnityEngine;
 public class Screws : MonoBehaviour {
 
 	public GameObject screwdriver;
-	private Rigidbody rb;
-
-	private void Start () {
-		rb = GetComponent<Rigidbody> ();
-		rb.useGravity = false;
-	}
+	public Vector3 pos;
 
 	private void OnTriggerEnter (Collider col) {
 		if (col.gameObject == screwdriver) {
-			rb.isKinematic = false;
-			rb.useGravity = true;
+			Destroy (screwdriver.GetComponent<Rigidbody> ());
+			col.transform.SetParent (transform, true);
+			//play animation
+			print ("play screw animation");
 		}
+	}
+
+	public void Update () {
+		if (Input.GetButtonDown ("Fire1")) {
+			Drop ();
+		}
+	}
+
+	public void Drop () {
+
+		screwdriver.transform.SetParent (null);
+		screwdriver.AddComponent<Rigidbody> ();
+		Rigidbody rb = gameObject.AddComponent<Rigidbody> ();
+		rb.isKinematic = false;
+		rb.useGravity = true;
+	}
+
+	private void OnDisabled () {
+		Destroy (gameObject.GetComponent<Rigidbody> ());
 	}
 
 }
