@@ -62,11 +62,11 @@ public class Keypad : MonoBehaviour {
 			door.OpenDoor(); //Unlocks door and completed the keypad;
 			input.text = "Passed";
 			input.color = Color.green;
-			AudioManager.audioManager.PlayAudio(aSource, sounds[1]);
+			AudioManager.audioManager.PlayAudio(sounds[1], transform);
 		} else {
 			input.text = "Wrong"; //Resets input;
 			wrongCode = true;
-			AudioManager.audioManager.PlayAudio(aSource, sounds[0]);
+			AudioManager.audioManager.PlayAudio(sounds[0], transform);
 		}
 	}
 }

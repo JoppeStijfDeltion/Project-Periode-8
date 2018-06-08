@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Art_Red_Button_Material
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: cd55c8a422b1ef248be2a626ca3f917a, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,6 +18,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture_474AEC93:
+        m_Texture: {fileID: 2800000, guid: 568057d3c14a6c941a6d83efeb9aa239, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture_4BC1CB9C:
+        m_Texture: {fileID: 2800000, guid: 5a5defd36dfc0df4cbb07e4e64e6b742, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture_DE983154:
+        m_Texture: {fileID: 2800000, guid: e728bc48b07e5fb46abd6a2ea1bb612f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 5a5defd36dfc0df4cbb07e4e64e6b742, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -59,6 +71,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_A5D3ACEF: 0
+    - Vector1_1D8D8A4B: 0
+    - Vector1_9A2AC0E: 5
+    - Vector1_B434C4CA: 10
+    - Vector1_FDBB2197: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -80,6 +97,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_7D2C8A5D: {r: 0, g: 0.4156866, b: 1, a: 0}
+    - Color_98F628AE: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

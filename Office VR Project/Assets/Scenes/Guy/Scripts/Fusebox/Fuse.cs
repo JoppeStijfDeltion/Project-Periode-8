@@ -31,7 +31,7 @@ public class Fuse : InteractableObject {
 		if(Fusebox.fuseBox.completed)
 		return;
 
-		AudioManager.audioManager.PlayAudio(aSource, sounds[0]);
+		AudioManager.audioManager.PlayAudio(sounds[0], transform);
 		anim.SetTrigger("Press");
 		switch(activated) {
 			case true:

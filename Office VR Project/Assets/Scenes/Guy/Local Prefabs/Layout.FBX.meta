@@ -1,0 +1,588 @@
+fileFormatVersion: 2
+guid: 789577e23bee36b4f82c8dda3af87a1f
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1sr_Room_Floor
+    100002: 1st_Room_Big_Wall_001
+    100004: 1st_Room_Big_Wall_002
+    100006: 1st_Room_Big_Wall_004
+    100008: 1st_Room_Big_Wall_005
+    100010: 1st_Room_ceiling
+    100012: 1st_Room_Door_Wall
+    100014: 1st_Room_Single_Wall_001
+    100016: 1st_Room_Single_Wall_003
+    100018: 1st_Room_Window_001
+    100020: 2nd_Room_1st_Ceiling
+    100022: 2nd_Room_2nd_Ceiling
+    100024: 2nd_Room_3rd_Ceiling
+    100026: 2nd_Room_Big_Wall_001
+    100028: 2nd_Room_Big_Wall_002
+    100030: 2nd_Room_Big_Wall_003
+    100032: 2nd_Room_Big_Wall_004
+    100034: 2nd_Room_Big_Wall_005
+    100036: 2nd_Room_Big_Wall_006
+    100038: 2nd_Room_Big_Wall_007
+    100040: 2nd_Room_Door_Wall
+    100042: 2nd_Room_Floor
+    100044: 3rd_Room_Floor
+    100046: Box003 copy
+    100048: Door_001
+    100050: Door_002
+    100052: Door_003
+    100054: Door_004
+    100056: Door_Frame_001
+    100058: Door_Frame_002
+    100060: Door_Frame_003
+    100062: Door_Frame_004
+    100064: Door_Frame_005
+    100066: Door_Handle_001
+    100068: Door_Handle_002
+    100070: Door_Handle_003
+    100072: Door_Handle_004
+    100074: Elevator_Butons_Holder
+    100076: Elevator_Button_0
+    100078: Elevator_Button_1
+    100080: Elevator_Button_2
+    100082: Elevator_Button_3
+    100084: Elevator_Button_4
+    100086: Elevator_Button_5
+    100088: Elevator_Button_6
+    100090: Elevator_Button_7
+    100092: Elevator_Button_Bell
+    100094: Elevator_Button_Door_Close
+    100096: Elevator_Button_Door_Open
+    100098: Elevator_Ceiling
+    100100: Elevator_Door_Left
+    100102: Elevator_Door_Right
+    100104: Elevator_Floor
+    100106: Elevator_Railing
+    100108: Elevator_Walls
+    100110: Elevator_Walls_Outside
+    100112: Exit_Door
+    100114: Exit_Handle
+    100116: Exit_Holder
+    100118: Hinge
+    100120: //RootNode
+    100122: Safe door
+    100124: Safe glass
+    100126: Safe Pin
+    100128: Safe Pin 1
+    100130: Safe Pin 10
+    100132: Safe Pin 11
+    100134: Safe Pin 12
+    100136: Safe Pin 13
+    100138: Safe Pin 14
+    100140: Safe Pin 15
+    100142: Safe Pin 16
+    100144: Safe Pin 17
+    100146: Safe Pin 2
+    100148: Safe Pin 3
+    100150: Safe Pin 4
+    100152: Safe Pin 5
+    100154: Safe Pin 6
+    100156: Safe Pin 7
+    100158: Safe Pin 8
+    100160: Safe Pin 9
+    100162: Safe wall
+    100164: Safe_Cylinder
+    100166: Safe_Cylinder 1
+    100168: Safe_Cylinder 2
+    100170: Screw001
+    100172: Screw002
+    100174: Screw003
+    100176: Screw004
+    100178: Secret_Room_Ceiling
+    100180: Secret_Room_Floor
+    100182: Secret_Room_Single_Wall
+    100184: Starting_Room_Ceiling
+    100186: Starting_Room_walls
+    100188: Vent_001
+    100190: Window_Blinds001
+    400000: 1sr_Room_Floor
+    400002: 1st_Room_Big_Wall_001
+    400004: 1st_Room_Big_Wall_002
+    400006: 1st_Room_Big_Wall_004
+    400008: 1st_Room_Big_Wall_005
+    400010: 1st_Room_ceiling
+    400012: 1st_Room_Door_Wall
+    400014: 1st_Room_Single_Wall_001
+    400016: 1st_Room_Single_Wall_003
+    400018: 1st_Room_Window_001
+    400020: 2nd_Room_1st_Ceiling
+    400022: 2nd_Room_2nd_Ceiling
+    400024: 2nd_Room_3rd_Ceiling
+    400026: 2nd_Room_Big_Wall_001
+    400028: 2nd_Room_Big_Wall_002
+    400030: 2nd_Room_Big_Wall_003
+    400032: 2nd_Room_Big_Wall_004
+    400034: 2nd_Room_Big_Wall_005
+    400036: 2nd_Room_Big_Wall_006
+    400038: 2nd_Room_Big_Wall_007
+    400040: 2nd_Room_Door_Wall
+    400042: 2nd_Room_Floor
+    400044: 3rd_Room_Floor
+    400046: Box003 copy
+    400048: Door_001
+    400050: Door_002
+    400052: Door_003
+    400054: Door_004
+    400056: Door_Frame_001
+    400058: Door_Frame_002
+    400060: Door_Frame_003
+    400062: Door_Frame_004
+    400064: Door_Frame_005
+    400066: Door_Handle_001
+    400068: Door_Handle_002
+    400070: Door_Handle_003
+    400072: Door_Handle_004
+    400074: Elevator_Butons_Holder
+    400076: Elevator_Button_0
+    400078: Elevator_Button_1
+    400080: Elevator_Button_2
+    400082: Elevator_Button_3
+    400084: Elevator_Button_4
+    400086: Elevator_Button_5
+    400088: Elevator_Button_6
+    400090: Elevator_Button_7
+    400092: Elevator_Button_Bell
+    400094: Elevator_Button_Door_Close
+    400096: Elevator_Button_Door_Open
+    400098: Elevator_Ceiling
+    400100: Elevator_Door_Left
+    400102: Elevator_Door_Right
+    400104: Elevator_Floor
+    400106: Elevator_Railing
+    400108: Elevator_Walls
+    400110: Elevator_Walls_Outside
+    400112: Exit_Door
+    400114: Exit_Handle
+    400116: Exit_Holder
+    400118: Hinge
+    400120: //RootNode
+    400122: Safe door
+    400124: Safe glass
+    400126: Safe Pin
+    400128: Safe Pin 1
+    400130: Safe Pin 10
+    400132: Safe Pin 11
+    400134: Safe Pin 12
+    400136: Safe Pin 13
+    400138: Safe Pin 14
+    400140: Safe Pin 15
+    400142: Safe Pin 16
+    400144: Safe Pin 17
+    400146: Safe Pin 2
+    400148: Safe Pin 3
+    400150: Safe Pin 4
+    400152: Safe Pin 5
+    400154: Safe Pin 6
+    400156: Safe Pin 7
+    400158: Safe Pin 8
+    400160: Safe Pin 9
+    400162: Safe wall
+    400164: Safe_Cylinder
+    400166: Safe_Cylinder 1
+    400168: Safe_Cylinder 2
+    400170: Screw001
+    400172: Screw002
+    400174: Screw003
+    400176: Screw004
+    400178: Secret_Room_Ceiling
+    400180: Secret_Room_Floor
+    400182: Secret_Room_Single_Wall
+    400184: Starting_Room_Ceiling
+    400186: Starting_Room_walls
+    400188: Vent_001
+    400190: Window_Blinds001
+    2100000: No Name
+    2100002: Safe door
+    2100004: Door_001
+    2100006: 2nd_Room_Door_Wall
+    2100008: Starting_Room_Ceiling
+    2100010: 1st_Room_Door_Wall
+    2100012: Door_Frame_001
+    2100014: Elevator_Door_Left
+    2100016: Door_Handle_001
+    2100018: Elevator_Door_Right
+    2100020: Starting_Room_walls
+    2100022: 2nd_Room_Big_Wall_004
+    2100024: 2nd_Room_Big_Wall_003
+    2100026: 2nd_Room_Big_Wall_006
+    2100028: 2nd_Room_Big_Wall_005
+    2100030: Secret_Room_Single_Wall
+    2100032: 1sr_Room_Floor
+    2100034: 1st_Room_Single_Wall_003
+    2100036: Safe_Wall
+    2100038: 2nd_Room_Big_Wall_007
+    2100040: Exit_Door
+    2100042: Exit_Handle
+    2100044: Exit_Holder
+    2300000: 1sr_Room_Floor
+    2300002: 1st_Room_Big_Wall_001
+    2300004: 1st_Room_Big_Wall_002
+    2300006: 1st_Room_Big_Wall_004
+    2300008: 1st_Room_Big_Wall_005
+    2300010: 1st_Room_ceiling
+    2300012: 1st_Room_Door_Wall
+    2300014: 1st_Room_Single_Wall_001
+    2300016: 1st_Room_Single_Wall_003
+    2300018: 1st_Room_Window_001
+    2300020: 2nd_Room_1st_Ceiling
+    2300022: 2nd_Room_2nd_Ceiling
+    2300024: 2nd_Room_3rd_Ceiling
+    2300026: 2nd_Room_Big_Wall_001
+    2300028: 2nd_Room_Big_Wall_002
+    2300030: 2nd_Room_Big_Wall_003
+    2300032: 2nd_Room_Big_Wall_004
+    2300034: 2nd_Room_Big_Wall_005
+    2300036: 2nd_Room_Big_Wall_006
+    2300038: 2nd_Room_Big_Wall_007
+    2300040: 2nd_Room_Door_Wall
+    2300042: 2nd_Room_Floor
+    2300044: 3rd_Room_Floor
+    2300046: Box003 copy
+    2300048: Door_001
+    2300050: Door_002
+    2300052: Door_003
+    2300054: Door_004
+    2300056: Door_Frame_001
+    2300058: Door_Frame_002
+    2300060: Door_Frame_003
+    2300062: Door_Frame_004
+    2300064: Door_Frame_005
+    2300066: Door_Handle_001
+    2300068: Door_Handle_002
+    2300070: Door_Handle_003
+    2300072: Door_Handle_004
+    2300074: Elevator_Butons_Holder
+    2300076: Elevator_Button_0
+    2300078: Elevator_Button_1
+    2300080: Elevator_Button_2
+    2300082: Elevator_Button_3
+    2300084: Elevator_Button_4
+    2300086: Elevator_Button_5
+    2300088: Elevator_Button_6
+    2300090: Elevator_Button_7
+    2300092: Elevator_Button_Bell
+    2300094: Elevator_Button_Door_Close
+    2300096: Elevator_Button_Door_Open
+    2300098: Elevator_Ceiling
+    2300100: Elevator_Door_Left
+    2300102: Elevator_Door_Right
+    2300104: Elevator_Floor
+    2300106: Elevator_Railing
+    2300108: Elevator_Walls
+    2300110: Elevator_Walls_Outside
+    2300112: Exit_Door
+    2300114: Exit_Handle
+    2300116: Exit_Holder
+    2300118: Hinge
+    2300120: Safe door
+    2300122: Safe glass
+    2300124: Safe Pin
+    2300126: Safe Pin 1
+    2300128: Safe Pin 10
+    2300130: Safe Pin 11
+    2300132: Safe Pin 12
+    2300134: Safe Pin 13
+    2300136: Safe Pin 14
+    2300138: Safe Pin 15
+    2300140: Safe Pin 16
+    2300142: Safe Pin 17
+    2300144: Safe Pin 2
+    2300146: Safe Pin 3
+    2300148: Safe Pin 4
+    2300150: Safe Pin 5
+    2300152: Safe Pin 6
+    2300154: Safe Pin 7
+    2300156: Safe Pin 8
+    2300158: Safe Pin 9
+    2300160: Safe wall
+    2300162: Safe_Cylinder
+    2300164: Safe_Cylinder 1
+    2300166: Safe_Cylinder 2
+    2300168: Screw001
+    2300170: Screw002
+    2300172: Screw003
+    2300174: Screw004
+    2300176: Secret_Room_Ceiling
+    2300178: Secret_Room_Floor
+    2300180: Secret_Room_Single_Wall
+    2300182: Starting_Room_Ceiling
+    2300184: Starting_Room_walls
+    2300186: Vent_001
+    2300188: Window_Blinds001
+    3300000: 1sr_Room_Floor
+    3300002: 1st_Room_Big_Wall_001
+    3300004: 1st_Room_Big_Wall_002
+    3300006: 1st_Room_Big_Wall_004
+    3300008: 1st_Room_Big_Wall_005
+    3300010: 1st_Room_ceiling
+    3300012: 1st_Room_Door_Wall
+    3300014: 1st_Room_Single_Wall_001
+    3300016: 1st_Room_Single_Wall_003
+    3300018: 1st_Room_Window_001
+    3300020: 2nd_Room_1st_Ceiling
+    3300022: 2nd_Room_2nd_Ceiling
+    3300024: 2nd_Room_3rd_Ceiling
+    3300026: 2nd_Room_Big_Wall_001
+    3300028: 2nd_Room_Big_Wall_002
+    3300030: 2nd_Room_Big_Wall_003
+    3300032: 2nd_Room_Big_Wall_004
+    3300034: 2nd_Room_Big_Wall_005
+    3300036: 2nd_Room_Big_Wall_006
+    3300038: 2nd_Room_Big_Wall_007
+    3300040: 2nd_Room_Door_Wall
+    3300042: 2nd_Room_Floor
+    3300044: 3rd_Room_Floor
+    3300046: Box003 copy
+    3300048: Door_001
+    3300050: Door_002
+    3300052: Door_003
+    3300054: Door_004
+    3300056: Door_Frame_001
+    3300058: Door_Frame_002
+    3300060: Door_Frame_003
+    3300062: Door_Frame_004
+    3300064: Door_Frame_005
+    3300066: Door_Handle_001
+    3300068: Door_Handle_002
+    3300070: Door_Handle_003
+    3300072: Door_Handle_004
+    3300074: Elevator_Butons_Holder
+    3300076: Elevator_Button_0
+    3300078: Elevator_Button_1
+    3300080: Elevator_Button_2
+    3300082: Elevator_Button_3
+    3300084: Elevator_Button_4
+    3300086: Elevator_Button_5
+    3300088: Elevator_Button_6
+    3300090: Elevator_Button_7
+    3300092: Elevator_Button_Bell
+    3300094: Elevator_Button_Door_Close
+    3300096: Elevator_Button_Door_Open
+    3300098: Elevator_Ceiling
+    3300100: Elevator_Door_Left
+    3300102: Elevator_Door_Right
+    3300104: Elevator_Floor
+    3300106: Elevator_Railing
+    3300108: Elevator_Walls
+    3300110: Elevator_Walls_Outside
+    3300112: Exit_Door
+    3300114: Exit_Handle
+    3300116: Exit_Holder
+    3300118: Hinge
+    3300120: Safe door
+    3300122: Safe glass
+    3300124: Safe Pin
+    3300126: Safe Pin 1
+    3300128: Safe Pin 10
+    3300130: Safe Pin 11
+    3300132: Safe Pin 12
+    3300134: Safe Pin 13
+    3300136: Safe Pin 14
+    3300138: Safe Pin 15
+    3300140: Safe Pin 16
+    3300142: Safe Pin 17
+    3300144: Safe Pin 2
+    3300146: Safe Pin 3
+    3300148: Safe Pin 4
+    3300150: Safe Pin 5
+    3300152: Safe Pin 6
+    3300154: Safe Pin 7
+    3300156: Safe Pin 8
+    3300158: Safe Pin 9
+    3300160: Safe wall
+    3300162: Safe_Cylinder
+    3300164: Safe_Cylinder 1
+    3300166: Safe_Cylinder 2
+    3300168: Screw001
+    3300170: Screw002
+    3300172: Screw003
+    3300174: Screw004
+    3300176: Secret_Room_Ceiling
+    3300178: Secret_Room_Floor
+    3300180: Secret_Room_Single_Wall
+    3300182: Starting_Room_Ceiling
+    3300184: Starting_Room_walls
+    3300186: Vent_001
+    3300188: Window_Blinds001
+    4300000: Box003 copy
+    4300002: Door_Frame_002
+    4300004: Door_002
+    4300006: Door_Handle_002
+    4300008: 2nd_Room_Door_Wall
+    4300010: Door_Frame_003
+    4300012: 1st_Room_Big_Wall_002
+    4300014: 1st_Room_Big_Wall_004
+    4300016: 1st_Room_Big_Wall_005
+    4300018: 1st_Room_Big_Wall_001
+    4300020: Door_Frame_001
+    4300022: Door_001
+    4300024: Door_Handle_001
+    4300026: 1st_Room_Door_Wall
+    4300028: 1st_Room_Single_Wall_001
+    4300030: Starting_Room_walls
+    4300032: 2nd_Room_Big_Wall_002
+    4300034: 2nd_Room_Big_Wall_001
+    4300036: 2nd_Room_Big_Wall_004
+    4300038: 2nd_Room_Big_Wall_003
+    4300040: 2nd_Room_Big_Wall_006
+    4300042: 2nd_Room_Big_Wall_005
+    4300044: Secret_Room_Single_Wall
+    4300046: 1st_Room_ceiling
+    4300048: Secret_Room_Ceiling
+    4300050: 2nd_Room_3rd_Ceiling
+    4300052: 2nd_Room_2nd_Ceiling
+    4300054: 2nd_Room_1st_Ceiling
+    4300056: Starting_Room_Ceiling
+    4300058: 1st_Room_Single_Wall_003
+    4300060: Window_Blinds001
+    4300062: 1st_Room_Window_001
+    4300064: Safe wall
+    4300066: Hinge
+    4300068: Safe door
+    4300070: Safe Pin
+    4300072: Safe glass
+    4300074: Safe_Cylinder
+    4300076: Safe Pin
+    4300078: Safe Pin
+    4300080: Safe Pin
+    4300082: Safe Pin
+    4300084: Safe Pin
+    4300086: Safe Pin
+    4300088: Safe Pin
+    4300090: Safe Pin
+    4300092: Safe Pin
+    4300094: Safe Pin
+    4300096: Safe Pin
+    4300098: Safe Pin
+    4300100: Safe Pin
+    4300102: Safe Pin
+    4300104: Safe Pin
+    4300106: Safe Pin
+    4300108: Safe Pin
+    4300110: Safe_Cylinder
+    4300112: Safe_Cylinder
+    4300114: 2nd_Room_Big_Wall_007
+    4300116: Exit_Door
+    4300118: Vent_001
+    4300120: Screw001
+    4300122: Screw003
+    4300124: Screw002
+    4300126: Screw004
+    4300128: 3rd_Room_Floor
+    4300130: 2nd_Room_Floor
+    4300132: Secret_Room_Floor
+    4300134: 1sr_Room_Floor
+    4300136: Door_003
+    4300138: Door_Handle_003
+    4300140: Door_Frame_004
+    4300142: Door_004
+    4300144: Door_Handle_004
+    4300146: Door_Frame_005
+    4300148: Elevator_Door_Left
+    4300150: Elevator_Walls
+    4300152: Elevator_Butons_Holder
+    4300154: Elevator_Ceiling
+    4300156: Elevator_Railing
+    4300158: Elevator_Floor
+    4300160: Elevator_Walls_Outside
+    4300162: Elevator_Door_Right
+    4300164: Exit_Holder
+    4300166: Exit_Handle
+    4300168: Elevator_Button_Door_Open
+    4300170: Elevator_Button_Door_Close
+    4300172: Elevator_Button_Bell
+    4300174: Elevator_Button_0
+    4300176: Elevator_Button_1
+    4300178: Elevator_Button_2
+    4300180: Elevator_Button_3
+    4300182: Elevator_Button_4
+    4300184: Elevator_Button_5
+    4300186: Elevator_Button_6
+    4300188: Elevator_Button_7
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

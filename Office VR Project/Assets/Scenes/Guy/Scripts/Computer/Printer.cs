@@ -38,7 +38,7 @@ public class Printer : InteractableObject {
 		isOn = true;
 		beenInteracted = false;
 		queue.enabled = true;
-		AudioManager.audioManager.PlayAudio(aSource, sounds[0]);
+		AudioManager.audioManager.PlayAudio(sounds[0], transform);
 	}
 
 	public void AddToQueue(Material _Print) { //Creates a print one the paper prefab;
@@ -93,7 +93,7 @@ public class Printer : InteractableObject {
 		GameObject printed = (GameObject)Instantiate(_Printed, printLoc.position, Quaternion.identity);
 		printed.transform.SetParent(printLoc);
 		printed.GetComponent<Animator>().SetFloat("Printspeed", printAnimationTime);
-		AudioManager.audioManager.PlayAudio(aSource, sounds[1]);
+		AudioManager.audioManager.PlayAudio(sounds[1], transform);
 		yield return new WaitForSeconds(printInterval);	
 		UpdateUI();
 

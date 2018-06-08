@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Friction : MonoBehaviour {
 	
-	private Vector3 scale = new Vector3(1, 1, 1);
-
+	[HideInInspector]
 	public float distanceBelowTillFriction;
+	
 	public bool canChild = true;
 
 	private void OnCollisionEnter(Collision c) { //This function is used so that objects move along with the object below;
@@ -18,8 +18,17 @@ public class Friction : MonoBehaviour {
 		if(Physics.Raycast(below, out hit, distanceBelowTillFriction)) { 
 			if(!hit.transform.GetComponent<PickupSystem>())
 			transform.SetParent(hit.transform, true); 			
-
 			}
 		}
+
+		print(KineticEnergy(GetComponent<Rigidbody>()));
+		if(KineticEnergy(GetComponent<Rigidbody>()) > 0.5f) {
+			AudioManager.audioManager.PlayAudio(AudioManager.audioManager.collision, transform);
+		}
 	}
+
+	public static float KineticEnergy(Rigidbody _Rigidbody){
+        // mass in kg, velocity in meters per second, result is joules
+        return 0.5f*_Rigidbody.mass*Mathf.Pow(_Rigidbody.velocity.magnitude,2);
+    }
 }
