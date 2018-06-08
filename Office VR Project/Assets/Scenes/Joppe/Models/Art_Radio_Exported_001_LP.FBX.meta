@@ -26,7 +26,12 @@ ModelImporter:
     4300002: Art_Radio_Button_Right
     4300004: Art_Radio_Button_Left
     4300006: Art_Radio_Pointer
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 382f24bae799edc4390743e881995527, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -59,7 +59,17 @@ ModelImporter:
     4300018: Drawer_Top_R_001
     7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desk
+    second: {fileID: 2100000, guid: 402d7553330ecaa48b9fa4642fab1176, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desk_Drawers
+    second: {fileID: 2100000, guid: db08075152653d94b9d2157cbaa5ed07, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

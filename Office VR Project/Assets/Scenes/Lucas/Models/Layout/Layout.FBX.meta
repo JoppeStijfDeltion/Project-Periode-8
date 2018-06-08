@@ -368,7 +368,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 1sr_Room_Floor
-    second: {fileID: 2100000, guid: 2eb56317512f366438c7d738a25d08ba, type: 2}
+    second: {fileID: 2100000, guid: 2410e689b62b32645bd37d733dd0b9c8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -378,17 +378,97 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 1st_Room_Single_Wall_003
-    second: {instanceID: 0}
+    second: {fileID: 2100000, guid: adb66b4da1b14c444bcd38fa9fb6e308, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2nd_Room_Big_Wall_003
-    second: {fileID: 2100000, guid: deb51a498ac6bfa4696c7718534bd21e, type: 2}
+    second: {fileID: 2100000, guid: 95fb70ae59e5bc546a0675871892bad8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 2nd_Room_Big_Wall_004
-    second: {fileID: 2100000, guid: 676feacfc22771f43810cfe2849d1c97, type: 2}
+    second: {fileID: 2100000, guid: 78336c69ec7169d47a76f320806d5cb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2nd_Room_Big_Wall_005
+    second: {fileID: 2100000, guid: 08047c158dca67d429cf9994cbae744a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2nd_Room_Big_Wall_006
+    second: {fileID: 2100000, guid: fe8952bbea3091f40bede6ceef5d046a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2nd_Room_Big_Wall_007
+    second: {fileID: 2100000, guid: 26a8523db3fdef64da9396889aa02698, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2nd_Room_Door_Wall
+    second: {fileID: 2100000, guid: 514f42033a1d9864590a1b1afbefb4d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door_001
+    second: {fileID: 2100000, guid: 61695cda36f152a40aa6eafaa46f073c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door_Frame_001
+    second: {fileID: 2100000, guid: 2727e4223334adb4ca89317b0191adf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door_Handle_001
+    second: {fileID: 2100000, guid: 967018ab1318b7c4eb5ebb21dc2c0799, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Elevator_Door_Left
+    second: {fileID: 2100000, guid: 9e0e8afc568935f4b97f724fe6bd4730, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Elevator_Door_Right
+    second: {fileID: 2100000, guid: da974a72ea84e5d42b02f04a1016d68d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Exit_Door
+    second: {fileID: 2100000, guid: 996c6e29bc9f9c14ead23ebc416bb929, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Exit_Handle
+    second: {fileID: 2100000, guid: 14a77f44ddc01d242a750572da6d3a00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Exit_Holder
+    second: {fileID: 2100000, guid: 98db96fa5f2852a4583df07d752f63c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Safe door
+    second: {fileID: 2100000, guid: 81e64b3588b730f45ba364bc4d6a9c77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Secret_Room_Single_Wall
+    second: {fileID: 2100000, guid: 9f199caec31c433408f48454f9605c5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Starting_Room_Ceiling
+    second: {fileID: 2100000, guid: f9f7cead42062c447ba17ce6dfcf8dcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Starting_Room_walls
+    second: {fileID: 2100000, guid: 4ad3eb4242dfdd34f8c42da6e8ae3bfc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

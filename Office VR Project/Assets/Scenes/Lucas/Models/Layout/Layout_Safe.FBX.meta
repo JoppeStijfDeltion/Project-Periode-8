@@ -141,7 +141,22 @@ ModelImporter:
     7400000: Safe_close
     7400002: Safe_open
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2nd_Room_Big_Wall_005
+    second: {fileID: 2100000, guid: 08047c158dca67d429cf9994cbae744a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Safe door
+    second: {fileID: 2100000, guid: 3edff810b160b574e9eb969dca19f11e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Safe_Wall
+    second: {fileID: 2100042, guid: f8f8a554fba612442b529b461088568a, type: 3}
   materials:
     importMaterials: 1
     materialName: 0

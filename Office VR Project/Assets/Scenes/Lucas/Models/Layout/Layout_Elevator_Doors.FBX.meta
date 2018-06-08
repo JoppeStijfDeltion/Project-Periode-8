@@ -20,7 +20,17 @@ ModelImporter:
     7400000: Elevator_open
     7400002: Elevator_close
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Elevator_Door_Left
+    second: {fileID: 2100000, guid: 9e0e8afc568935f4b97f724fe6bd4730, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Elevator_Door_Right
+    second: {fileID: 2100000, guid: da974a72ea84e5d42b02f04a1016d68d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
