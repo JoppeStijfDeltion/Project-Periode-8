@@ -79,6 +79,7 @@ public class PickupSystem : MonoBehaviour {
 			break;
 
 			case Interaction.Teleporting: //If the interaction state is currently related to teleporting;
+			teleport.LaserActivation(false);
 			interactionState = Interaction.Default; //Set it to Default (None);
 			break;
 			}
@@ -241,9 +242,13 @@ public class PickupSystem : MonoBehaviour {
 
 		bool PickupCheck(GameObject _Object) {
 			if(objectBeingCarried == null)
-				if((_Object.GetComponent<Rigidbody>() || _Object.GetComponent<InteractableObject>())) //Checks if the object can be picked up;
+				if(_Object.GetComponent<InteractableObject>()) //Checks if the object can be picked up;
 					if(!_Object.GetComponent<PickupSystem>()) //Checks if the object is NOT a 
-					return true;
+					return true; //Return true
+
+					if(_Object.GetComponent<Rigidbody>()) //If the opposing gameobject has a rigidbody;
+						if(_Object.GetComponent<Rigidbody>().isKinematic == false) //If the rigidbody is NOT kinematic;
+						return true;
 
 			//Else returns false;
 			return false;

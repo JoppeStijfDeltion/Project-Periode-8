@@ -18,11 +18,11 @@ public class Fuse : InteractableObject {
 	private void SetStartingColors() { //When the game initializes, it updates its visuals based on its starting parameters;
 		switch(activated) {
 			case true:
-			GetComponent<MeshRenderer>().material.SetColor("Color_98F628AE", Color.green); //If activated;
+			GetComponent<MeshRenderer>().material.color = Color.green;
 			break;
 
 			case false:
-			GetComponent<MeshRenderer>().material.SetColor("Color_98F628AE", Color.red); //If NOT activated;
+			GetComponent<MeshRenderer>().material.color = Color.red;
 			break;
 		}
 	}
@@ -36,12 +36,12 @@ public class Fuse : InteractableObject {
 		switch(activated) {
 			case true:
 			activated = false;
-			GetComponent<MeshRenderer>().material.SetColor("Color_98F628AE", Color.red);
+			GetComponent<MeshRenderer>().material.color = Color.red;
 			break;
 
 			case false:
 			activated = true;
-			GetComponent<MeshRenderer>().material.SetColor("Color_98F628AE", Color.green);
+			GetComponent<MeshRenderer>().material.color = Color.green;
 			break;
 		}
 
@@ -52,12 +52,12 @@ public class Fuse : InteractableObject {
 		foreach(Fuse f in InfluencedFuses) {
 				switch(f.activated) {
 					case true:
-					f.GetComponent<MeshRenderer>().material.SetColor("Color_98F628AE", Color.red);
+					GetComponent<MeshRenderer>().material.color = Color.red;
 					f.activated = false;
 					break;
 
 					case false:
-					f.GetComponent<MeshRenderer>().material.SetColor("Color_98F628AE", Color.green);
+					GetComponent<MeshRenderer>().material.color = Color.green;
 					f.activated = true;
 					break;
 				}		

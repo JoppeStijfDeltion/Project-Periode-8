@@ -12,7 +12,7 @@ public class RegionManager : MonoBehaviour {
 	[Header("UI Settings:")]
 	public Image overlay;
 	public Color alpha;
-	public float fadeTime = 5;
+	public float fadeTime = 1;
 
 	[System.Serializable]
 	public struct RegionData{

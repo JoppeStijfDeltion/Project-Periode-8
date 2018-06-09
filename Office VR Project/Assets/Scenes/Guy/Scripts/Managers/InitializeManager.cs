@@ -45,7 +45,6 @@ public class InitializeManager : MonoBehaviour {
         }
 
         StartCoroutine(StartGame());
-        print(initializeManager);
     }
 
     public IEnumerator StartGame() {

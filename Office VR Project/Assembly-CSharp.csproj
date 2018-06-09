@@ -81,6 +81,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Radio\RadioVolume.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\RedButton.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Safedoor.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\TeleportRoomCheck.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\ControllerScript.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Fusion.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Laser.cs" />
@@ -208,6 +209,7 @@
      <None Include="Assets\Scenes\Joppe\Scene\test.txt" />
      <None Include="Assets\Scenes\Lucas\Models\test.txt" />
      <None Include="Assets\Scenes\Guy\Shader\OutlineInteractable.shader" />
+     <None Include="Assets\Scenes\Tom\Scripts\Interactable.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
      <None Include="Assets\SteamVR\readme.txt" />

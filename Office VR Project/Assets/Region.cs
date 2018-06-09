@@ -6,26 +6,30 @@ using UnityEngine;
 
 public class Region : MonoBehaviour {
 
-	public void OnTriggerStay(Collider _Col) {
-		print(_Col);
+	#region Private Variables
+	Collider[] colliders; //All the colliders recorded before the first frame;
+	#endregion
 
-		if(_Col.transform.tag == "Player") {
+	private void Awake() {
+		colliders = GetComponents<Collider>(); //Tracks all the colliders of this object at initialization;
+	}
 
-			if(GameManager.gameManager.startedGame == true) { //IF the same has started;
-			RegionManager.regionManager.fadeTime = 5;
-			RegionManager.regionManager.fade = false;
-			}
+	private void Update() {
+		if(GameManager.gameManager.startedGame == true) { //If the game has started;
+		RegionManager.regionManager.fadeTime = 0.3f;
+		RegionManager.regionManager.fade = CheckForFade(colliders); //Check if the player is within bounds;
 		}
 	}
 
-	public void OnTriggerExit(Collider _Col) {
-		print(_Col);
-
-		if(_Col.transform.tag == "Player") { //IF the camera is within range of the loading region;
-			if(GameManager.gameManager.startedGame == true) { //IF the same has started;
-			RegionManager.regionManager.fadeTime = 1;
-			RegionManager.regionManager.fade = true;
+	public bool CheckForFade(Collider[] _Colliders) {
+		foreach(Collider _Col in _Colliders) { //For every collider on this object;
+			if(_Col.bounds.Contains(GameManager.gameManager.player.transform.position)) { //Even if only one of them contains the player;
+				print("Player contained in: "+gameObject.name);
+				return false; //Prevent fading
 			}
 		}
+
+		print("Nothing contained in: " +gameObject.name);
+		return true; //If no colliders contain any player whatsoever, fade the screen;
 	}
 }

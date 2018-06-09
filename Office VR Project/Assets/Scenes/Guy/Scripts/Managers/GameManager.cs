@@ -9,6 +9,17 @@ public class GameManager : ManagerManager {
 
 	[Header("Statics:")]
 	public List<PickupSystem> hands;
+	public GameObject player;
+
+	private GameObject getPlayer {
+		get {
+			if(player == null) {
+			player = GameObject.FindGameObjectWithTag("Player");
+		}
+
+		return player;
+	}
+}
 
 	[Header("Selected Settings:")]
 	public Material selected;
@@ -25,6 +36,8 @@ public class GameManager : ManagerManager {
 	#endregion
 
 	public override void Initialization() {
+		player = getPlayer; //Searches for the player;
+
 		if(gameManager == null) { gameManager = this; return; } //Sets the static manager;
 		Destroy(this); //If its already set, destroy this component;
 	}

@@ -15,13 +15,11 @@ public class ControllerScript : MonoBehaviour {
 	public LineRenderer laser;
 	[Header ("Color the laser gets when either teleporting or interacting")]
 	public Color teleportColor = Color.red;
-	public Color interactColor = Color.blue;
 	public Material laserMaterial;
 	[Header ("Prefab of the reticle shown when teleport laser is active")]
 	public GameObject teleportReticlePrefab;
 	[Header ("Laser masks")]
-	public LayerMask teleportMask;
-	public float interactDistance = 10f;
+	public LayerMask reticleMask;
 
 	#endregion
 	#region Get Controller (Input)
@@ -33,16 +31,7 @@ public class ControllerScript : MonoBehaviour {
 	}
 
 	#endregion
-	#region Laser
 
-	public enum LaserMode {
-		Teleport,
-		Interact
-	}
-
-	private LaserMode laserMode;
-
-	#endregion
 	#region  Teleport
 
 	private GameObject reticle;
@@ -64,45 +53,53 @@ public class ControllerScript : MonoBehaviour {
 		reticle.SetActive (false);
 	}
 
-	public void ShowLaser () {
-		RaycastHit hit;
-		switch (laserMode) {
-			case LaserMode.Teleport:
-				if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask)) {
-					laser.enabled = true;
-					laserMaterial.color = teleportColor;
-					laser.useWorldSpace = true;
-					laser.SetPositions (new Vector3[] { transform.position, hit.point });
-					reticle.SetActive (true);
-					reticle.transform.position = hit.point + new Vector3 (0, 0.05f, 0);
-					canTeleport = true;
-				}
-				else {
-					laser.enabled = false;
-					reticle.SetActive (false);
-					canTeleport = false;
-				}
+	private void Update( ) {
+		ShowLaser();
+	}
 
-				bool input = (vr)? controller.GetHairTriggerDown (): Input.GetKeyDown ("e");
-				if (input && canTeleport) {
-					Teleport (hit);
-				}
-				break;
-			case LaserMode.Interact:
+	public void LaserActivation(bool _State) { //Used to turn on and turn off the laser function;
+		if(_State == true) { //If the laser should be activated;
 				laser.enabled = true;
-				laserMaterial.color = interactColor;
-				laser.useWorldSpace = false;
-				laser.SetPositions (new Vector3[] { Vector3.zero, Vector3.forward * interactDistance });
-				break;
+				reticle.SetActive (true);
+				canTeleport = true;
+				laserMaterial.color = teleportColor;
+				laser.useWorldSpace = true;
+				return;
+		} else
+
+		if(_State == false) { //If the laser should be activated;
+				laser.enabled = false;
+				reticle.SetActive (false);
+				canTeleport = false;
+				return;
 		}
 	}
 
+	public void ShowLaser () {
+		RaycastHit hit;
+		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity, reticleMask)) {
+			if(hit.transform.gameObject.layer == 8) {
+					LaserActivation(true);
+					laser.SetPositions (new Vector3[] { transform.position, hit.point });
+					reticle.transform.position = hit.point + new Vector3 (0, 0.05f, 0);
+					} 
+					else
+					LaserActivation(false);
+				} else
+					LaserActivation(false);
+
+				bool input = (vr)? controller.GetHairTriggerDown (): Input.GetKeyDown ("e");
+				if (input && canTeleport) 
+					Teleport (hit);
+	}
+
 	private void Teleport (RaycastHit hit) {
-		canTeleport = false;
-		reticle.SetActive (false);
+		if(reticle.GetComponent<TeleportRoomCheck>().canTeleport) { //If the reticle doesn't collide with anything;
+		RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
+		LaserActivation(false);
 		Vector3 difference = headTransform.parent.position - headTransform.position;
 		difference.y = 0f;
 		headTransform.parent.position = hit.point + difference;
+		}
 	}
-
 }
