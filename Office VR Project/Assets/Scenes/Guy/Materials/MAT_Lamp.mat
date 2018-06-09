@@ -8,6 +8,10 @@ Material:
   m_PrefabInternal: {fileID: 0}
 <<<<<<< HEAD:Office VR Project/Assets/Scenes/Guy/Materials/MAT_Desklamp.mat
   m_Name: MAT_Desklamp
+<<<<<<< HEAD:Office VR Project/Assets/Scenes/Guy/Materials/MAT_Desklamp.mat
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
+=======
   m_Shader: {fileID: 4800000, guid: 449d1f4ce6122754786537998a303028, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _BOOL_ON _EMISSION _INTERACT_ON _METALLICGLOSSMAP
     _METALLICSPECGLOSSMAP _NORMALMAP
@@ -16,6 +20,7 @@ Material:
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
 >>>>>>> origin/master:Office VR Project/Assets/Scenes/Guy/Materials/MAT_Lamp.mat
+>>>>>>> 1366f2286e6ef15c542d5bb55042a3b8953ea385:Office VR Project/Assets/Scenes/Guy/Materials/MAT_Lamp.mat
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
