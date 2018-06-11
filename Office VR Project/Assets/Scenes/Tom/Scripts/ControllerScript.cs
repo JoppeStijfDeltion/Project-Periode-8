@@ -5,23 +5,21 @@ using UnityEngine;
 [RequireComponent (typeof (LineRenderer))]
 public class ControllerScript : MonoBehaviour {
 
-	public static bool vr;
+	[Header("Sound:")]
+	public AudioClip footsteps;
 
-	#region Public Variables
-
-	[Header ("The ''Camera (head)'' object ")]
+	[Header("Camera Head Rig Object:")]
 	public Transform headTransform;
-	[Header ("Prefab of the laser")]
-	public LineRenderer laser;
-	[Header ("Color the laser gets when either teleporting or interacting")]
-	public Color teleportColor = Color.red;
-	public Material laserMaterial;
-	[Header ("Prefab of the reticle shown when teleport laser is active")]
-	public GameObject teleportReticlePrefab;
-	[Header ("Laser masks")]
-	public LayerMask reticleMask;
 
-	#endregion
+	[Header ("Ray Reference:")]
+	public LineRenderer rayVisual;
+
+	[Header ("Prefab of the reticle shown when teleport laser is active")]
+	public GameObject teleportMarker;
+
+	[Header ("Allow Teleport Mask:")]
+	public LayerMask teleportMask;
+
 	#region Get Controller (Input)
 
 	private SteamVR_TrackedObject trackedObj;
@@ -40,16 +38,16 @@ public class ControllerScript : MonoBehaviour {
 	#endregion
 
 	private void Awake () {
-		laser = GetComponent<LineRenderer> ();
-		if (vr) {
-			trackedObj = GetComponent<SteamVR_TrackedObject> ();
-		}
+		rayVisual = GetComponent<LineRenderer> ();
 	}
 
 	private void Start () {
-		reticle = Instantiate (teleportReticlePrefab);
-		reticle.GetComponent<Renderer> ().material.color = teleportColor;
-		laser.enabled = false;
+		if (GameManager.gameManager.virtualReality == true) {
+			trackedObj = GetComponent<SteamVR_TrackedObject> ();
+		}
+
+		reticle = Instantiate (teleportMarker);
+		rayVisual.enabled = false;
 		reticle.SetActive (false);
 	}
 
@@ -59,16 +57,15 @@ public class ControllerScript : MonoBehaviour {
 
 	public void LaserActivation(bool _State) { //Used to turn on and turn off the laser function;
 		if(_State == true) { //If the laser should be activated;
-				laser.enabled = true;
+				rayVisual.enabled = true;
 				reticle.SetActive (true);
 				canTeleport = true;
-				laserMaterial.color = teleportColor;
-				laser.useWorldSpace = true;
+				rayVisual.useWorldSpace = true;
 				return;
 		} else
 
 		if(_State == false) { //If the laser should be activated;
-				laser.enabled = false;
+				rayVisual.enabled = false;
 				reticle.SetActive (false);
 				canTeleport = false;
 				return;
@@ -77,29 +74,27 @@ public class ControllerScript : MonoBehaviour {
 
 	public void ShowLaser () {
 		RaycastHit hit;
-		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity, reticleMask)) {
-			if(hit.transform.gameObject.layer == 8) {
+		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask)) {
 					LaserActivation(true);
-					laser.SetPositions (new Vector3[] { transform.position, hit.point });
+					rayVisual.SetPositions (new Vector3[] { transform.position, hit.point });
 					reticle.transform.position = hit.point + new Vector3 (0, 0.05f, 0);
 					} 
-					else
-					LaserActivation(false);
-				} else
+					 else
 					LaserActivation(false);
 
-				bool input = (vr)? controller.GetHairTriggerDown (): Input.GetKeyDown ("e");
+				bool input = (GameManager.gameManager.virtualReality == true)? controller.GetHairTriggerDown (): Input.GetKeyDown ("e");
 				if (input && canTeleport) 
 					Teleport (hit);
 	}
 
 	private void Teleport (RaycastHit hit) {
-		if(reticle.GetComponent<TeleportRoomCheck>().canTeleport) { //If the reticle doesn't collide with anything;
+		if(TeleportRoomCheck.canTeleport == true) { //If the reticle doesn't collide with anything;
 		RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
 		LaserActivation(false);
 		Vector3 difference = headTransform.parent.position - headTransform.position;
 		difference.y = 0f;
 		headTransform.parent.position = hit.point + difference;
+		AudioManager.audioManager.PlayAudio(footsteps, transform);
 		}
 	}
 }

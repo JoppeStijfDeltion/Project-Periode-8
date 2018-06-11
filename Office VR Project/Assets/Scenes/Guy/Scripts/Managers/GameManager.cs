@@ -7,6 +7,9 @@ public class GameManager : ManagerManager {
 
 	public static GameManager gameManager;
 
+	[Header("Mode:")]
+	public bool virtualReality = false;
+
 	[Header("Statics:")]
 	public List<PickupSystem> hands;
 	public GameObject player;

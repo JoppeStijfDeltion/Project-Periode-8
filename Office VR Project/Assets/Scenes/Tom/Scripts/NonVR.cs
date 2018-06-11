@@ -35,11 +35,11 @@ public class NonVR : MonoBehaviour {
         if (popup) {
             if (EditorUtility.DisplayDialog ("Play Mode", "Do you want to use VR mode or Non-VR mode?", "VR Mode", "Non-VR mode")) {
                 use = true;
-                ControllerScript.vr = true;
+                GameManager.gameManager.virtualReality = true;
             }
             else {
                 use = false;
-                ControllerScript.vr = false;
+                GameManager.gameManager.virtualReality = false;
             }
 
         }

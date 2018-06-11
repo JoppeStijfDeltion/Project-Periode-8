@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /*This script has the primary use of enabling the player to interact with props and different objects*/
 
@@ -7,6 +8,9 @@ public class PickupSystem : MonoBehaviour {
 
 	public enum Interaction {Default, RayInteraction, Teleporting}
 	public Interaction interactionState;
+
+	[Header("UI Settings:")]
+	public Text currentMethodText;
 
 	[Header("Teleportation Settings:")]
 	public ControllerScript teleport; //Teleport Options;
@@ -27,9 +31,9 @@ public class PickupSystem : MonoBehaviour {
 	private GameObject oldSelected;
 
 	#region Private&Hidden Variables
-	/*private SteamVR_TrackedObject trackedObj;
+	private SteamVR_TrackedObject trackedObj;
 	[HideInInspector]
-	public SteamVR_Controller.Device controller {	get { return SteamVR_Controller.Input((int)trackedObj.index); }}*/
+	public SteamVR_Controller.Device controller {	get { return SteamVR_Controller.Input((int)trackedObj.index); }}
 
 	private FixedJoint thisJoint; //Current gameobject its fixed joint;
 
@@ -49,8 +53,8 @@ public class PickupSystem : MonoBehaviour {
 		thisBody = GetComponent<Rigidbody>();
 		rayRepresentation.gameObject.SetActive(true);
 
-		/*if(GetComponent<SteamVR_TrackedObject>())
-		trackedObj = GetComponent<SteamVR_TrackedObject>();*/
+		if(GetComponent<SteamVR_TrackedObject>() && GameManager.gameManager.virtualReality == true)
+		trackedObj = GetComponent<SteamVR_TrackedObject>();
 	}
 
 	private void Start() {
@@ -65,25 +69,50 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Toggle() { //This method is used to toggle between multiple interaction methods;
-		if(Input.GetButtonDown("Fire3") /* || controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad)*/) { //Interaction based toggle;
+		if((GameManager.gameManager.virtualReality == true)? controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad):Input.GetButtonDown("Fire3")) { //Interaction based toggle;
 		rayRepresentation.enabled = false;
 
 		switch(interactionState) {
 
 			case Interaction.Default: //If the interaction state is currently none;
 			interactionState = Interaction.RayInteraction; //Set it to Rayinteraction with objects;
+			UpdateTool(Interaction.RayInteraction);
 			break;
 
 			case Interaction.RayInteraction: //If the interaction state is currently related to ray interaction;
 			interactionState = Interaction.Teleporting; //Set it to Teleporting;
+			UpdateTool(Interaction.Teleporting);
 			break;
 
 			case Interaction.Teleporting: //If the interaction state is currently related to teleporting;
 			teleport.LaserActivation(false);
 			interactionState = Interaction.Default; //Set it to Default (None);
+			UpdateTool(Interaction.Default);
 			break;
 			}
 		}
+	}
+
+	private void UpdateTool(Interaction _State) { //Used to update string;
+		if(currentMethodText != null) { //If a tool has been detected;
+			switch(interactionState) {
+				case Interaction.Default: //If the default tool has been selected;
+				currentMethodText.text = "Default \n \n Mode";
+				break;
+
+				case Interaction.Teleporting: //If the default tool has been selected;
+				currentMethodText.text = "Teleporting \n \n Mode";
+				break;
+
+				case Interaction.RayInteraction: //If the default tool has been selected;
+				currentMethodText.text = "Ray Interaction \n \n Mode";
+				break;
+			}
+
+			return; //After updating text, cut off function;
+		}
+
+		Debug.LogWarning("No tool has been selected to update the UI mode on.");
 	}
 
 	private void CoreInteraction() { //Used to decide which functions to activate;
@@ -110,18 +139,18 @@ public class PickupSystem : MonoBehaviour {
 			rayRepresentation.transform.localScale = new Vector3 (rayRepresentation.transform.lossyScale.x, rayRepresentation.transform.localEulerAngles.y, rayHit.distance * 7); //To draw the ray;
 				if(rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
 
-					if(Input.GetKeyDown("e") /* ||  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger) */) 
+					if((GameManager.gameManager.virtualReality == true)? controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown("e")) 
 						rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
 
 					if(currentRaySelectedObject == null) { //If the current object is equal to nothing;
 						currentRaySelectedObject = rayHit.transform.gameObject; //Grasp new found object;
-						currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 1); //Set the material to its selected format;
+						currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 1); //Set the material to its selected format;
 
 					} else if(currentRaySelectedObject != null) { //If the current interacted ray object storage is already occupied;
 						if(currentRaySelectedObject != rayHit.transform.gameObject) { //And if the object is not equal to the selected one;
-							currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Deselect the old one;
+							currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 0); //Deselect the old one;
 							currentRaySelectedObject = rayHit.transform.gameObject; //Sets the newely interacted object;
-							currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 1); //Selects the new one;			
+							currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 1); //Selects the new one;			
 						}
 					}
 
@@ -129,7 +158,7 @@ public class PickupSystem : MonoBehaviour {
 			} 
 
 					if(currentRaySelectedObject != null) {//If there is a old selected object;
-						currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Deselects old ray object;
+						currentRaySelectedObject.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 0); //Deselects old ray object;
 						currentRaySelectedObject = null; //Sets current object thats being interacted with to a null;
 					}
 				}
@@ -150,8 +179,10 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Pickup(GameObject _Object) {
-		if(Input.GetKeyDown(KeyCode.E) /* || controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger)*/ ) //Checks if you are holding down the button;
-		{
+			if(objectBeingCarried != null) {
+			objectBeingCarried.transform.parent = null;	
+			}
+
 			objectBeingCarried = _Object; //Sets the overloaded object as the object being carried;	
 
 			if(objectBeingCarried.GetComponent<Friction>())
@@ -166,7 +197,6 @@ public class PickupSystem : MonoBehaviour {
 			thisJoint = GetComponent<FixedJoint>();
 			objectBeingCarried.transform.SetParent(gameObject.transform); //Childs newfound object to the hand;
 			thisJoint.connectedBody = objectBeingCarried.GetComponent<Rigidbody>(); //Connects the rigidbodys between the parent and the child;
-			}
 		}
 	}
 
@@ -183,8 +213,7 @@ public class PickupSystem : MonoBehaviour {
 
 	public void LetGo() {
 		if(objectBeingCarried == null) { return;} //If there is no object being interacted with, cut function off;
-
-		if(Input.GetKeyUp(KeyCode.E) /* || controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger) */ ) {
+		if((GameManager.gameManager.virtualReality == true)? controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyUp(KeyCode.E)) {
 
 			if(objectBeingCarried.GetComponent<InteractableObject>())
 				objectBeingCarried.GetComponent<InteractableObject>().hand = null; //If its an interactable, stop interaction;
@@ -207,19 +236,19 @@ public class PickupSystem : MonoBehaviour {
 		} else if(currentlyHovering != null) { //Else if the currently hovering object 
 
 			if(_Deselect == true) {
-			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Set the material to its selected format;
+			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 0); //Set the material to its selected format;
 			currentlyHovering = null; //Change it to the newely hovered object;
 			return;
 			}
 
 			if(_Deselect == false) {
-			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 0); //Set the material to its selected format;
+			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 0); //Set the material to its selected format;
 			currentlyHovering = _SelectedObj; //Change it to the newely hovered object;
 			}
 		}
 
 		if(currentlyHovering != null && currentlyHovering.GetComponent<MeshRenderer>() && _Deselect == false) //If the overloaded object is not null;
-			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("Boolean_A5D3ACEF"), 1); //Set the material to its selected format;
+			currentlyHovering.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 1); //Set the material to its selected format;
 	}
 
 		public void OnTriggerEnter(Collider c) {
@@ -231,6 +260,7 @@ public class PickupSystem : MonoBehaviour {
 			bool canPickup = PickupCheck(c.gameObject); //A check to see if the item in range is indeed something to interact with;
 
 			if(canPickup) //If you can pickup the item;
+			if((GameManager.gameManager.virtualReality == true)?  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown(KeyCode.E)) //Checks if you are holding down the button;
 			Pickup(c.gameObject); //Call Pickup;
 
 		}
@@ -246,7 +276,7 @@ public class PickupSystem : MonoBehaviour {
 					if(!_Object.GetComponent<PickupSystem>()) //Checks if the object is NOT a 
 					return true; //Return true
 
-					if(_Object.GetComponent<Rigidbody>()) //If the opposing gameobject has a rigidbody;
+					if(_Object.GetComponent<Rigidbody>() && _Object.GetComponent<Friction>()) //If the opposing gameobject has a rigidbody and a friction module;
 						if(_Object.GetComponent<Rigidbody>().isKinematic == false) //If the rigidbody is NOT kinematic;
 						return true;
 

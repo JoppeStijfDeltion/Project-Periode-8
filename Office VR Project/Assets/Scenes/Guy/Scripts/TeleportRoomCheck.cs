@@ -2,20 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*Script is used to prevent teleporting through objects, and avoid general clipping with color based feedback*/
+
 public class TeleportRoomCheck : MonoBehaviour {
 
-	public bool canTeleport = false;
+	public static bool canTeleport = true;
 
-	private void OnTriggerStay(Collider _Col) {
-		if(_Col.isTrigger == false) {
-			if(_Col.transform.gameObject.layer != 8) {
-			canTeleport = false;
-			GetComponent<MeshRenderer>().material.color = Color.red;
+	public Material parentCol; //Parent color;
+	public Material childCol; //Child color;
+	public Material lineCol; //Linecolor;
+
+	[Header("test")]
+	public Color parent;
+
+	public void Update() {
+		CustomTriggerArea(); //Custom written OnTrigger station;
+	}
+
+	private void CustomTriggerArea() {
+		Collider[] _CurrentColliders = new Collider[10]; //Storage for all colliders within the triggerfield;
+		Physics.OverlapBoxNonAlloc(transform.position, transform.GetComponent<BoxCollider>().size, _CurrentColliders); //Collecting all current data;
+
+	if(_CurrentColliders != null) {
+		foreach(Collider _Col in _CurrentColliders) { //For every collider that is within the trigger field;
+			print(_Col);
+			if(_Col != null) { //If the collider has data;
+			if(_Col.isTrigger == false) { //If the collider is NOT a triggerfield;
+				if(_Col.gameObject.layer != 8) { //If the collider currently is NOT a teleport allowing mask;
+
+				parentCol.color = Color.red; //Gives the player negative feedback;
+				childCol.color = Color.red;
+				lineCol.color = Color.red;
+				canTeleport = false; //Stops the user from teleporting;
+				return; //Cuts off the function due to the circumstances not meeting up to the criteria stated above;
+				}
 			}
-
-			else if(_Col.transform.gameObject.layer == 8)
-			canTeleport = true;
-			GetComponent<MeshRenderer>().material.color = Color.green;
 		}
+	}
+}
+
+		parentCol.color = Color.white; //Gives positive feedback;
+		childCol.color = parent;
+		lineCol.color = Color.white;
+		canTeleport = true; //Allows the player to teleport;
 	}
 }

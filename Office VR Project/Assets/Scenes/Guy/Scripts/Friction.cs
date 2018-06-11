@@ -16,12 +16,11 @@ public class Friction : MonoBehaviour {
 
 	if(canChild == true) {
 		if(Physics.Raycast(below, out hit, distanceBelowTillFriction)) { 
-			if(!hit.transform.GetComponent<PickupSystem>())
+			if(!hit.transform.GetComponent<PickupSystem>() && hit.transform.tag != "Player")
 			transform.SetParent(hit.transform, true); 			
 			}
 		}
 
-		print(KineticEnergy(GetComponent<Rigidbody>()));
 		if(KineticEnergy(GetComponent<Rigidbody>()) > 0.5f) {
 			AudioManager.audioManager.PlayAudio(AudioManager.audioManager.collision, transform);
 		}

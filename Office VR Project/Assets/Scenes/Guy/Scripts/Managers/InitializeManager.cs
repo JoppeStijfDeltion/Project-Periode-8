@@ -14,6 +14,7 @@ public class InitializeManager : MonoBehaviour {
     public GameObject[] elevatorButtons;
     public Material elevatorButtonActive;
     public Animator elevatorAnimator;
+    public AudioClip elevatorOpeningSound;
 
     public static InitializeManager Initialize {
         get {
@@ -50,16 +51,23 @@ public class InitializeManager : MonoBehaviour {
     public IEnumerator StartGame() {
         yield return new WaitForSeconds(timeTillFadeIn); //When the game fades in;
         RegionManager.regionManager.fade = false;
+        StartCoroutine(ElevatorSoundQueue());
 
         yield return new WaitForSeconds(timeTillInteraction);
 
         foreach(PickupSystem _Hand in GameManager.gameManager.hands) {
             _Hand.enabled = true;
         }
+
         elevatorAnimator.SetTrigger("Open");
         GameManager.gameManager.startedGame = true;
         foreach(GameObject _Button in elevatorButtons) {
         _Button.GetComponent<MeshRenderer>().material = elevatorButtonActive;
         }
+    }
+
+    private IEnumerator ElevatorSoundQueue() {
+        yield return new WaitForSeconds(2.5f);
+        AudioManager.audioManager.PlayAudio(elevatorOpeningSound, transform);
     }
 }
