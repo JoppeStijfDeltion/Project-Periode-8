@@ -3315,11 +3315,11 @@ Light:
   m_GameObject: {fileID: 1256694416419900}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3351,11 +3351,11 @@ Light:
   m_GameObject: {fileID: 1656208311652278}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3387,11 +3387,11 @@ Light:
   m_GameObject: {fileID: 1610944112350836}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3459,11 +3459,11 @@ Light:
   m_GameObject: {fileID: 1569747154987632}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3531,11 +3531,11 @@ Light:
   m_GameObject: {fileID: 1670292641070392}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3567,11 +3567,11 @@ Light:
   m_GameObject: {fileID: 1444333056706430}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3639,11 +3639,11 @@ Light:
   m_GameObject: {fileID: 1619662971088026}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3675,11 +3675,11 @@ Light:
   m_GameObject: {fileID: 1820536395052806}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3747,11 +3747,11 @@ Light:
   m_GameObject: {fileID: 1134164532786620}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3783,11 +3783,11 @@ Light:
   m_GameObject: {fileID: 1530358377281782}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
-  m_Range: 4.5
-  m_SpotAngle: 30
+  m_Range: 10.23
+  m_SpotAngle: 99
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3855,11 +3855,11 @@ Light:
   m_GameObject: {fileID: 1965570060437850}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3927,11 +3927,11 @@ Light:
   m_GameObject: {fileID: 1998599430016074}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -3999,11 +3999,11 @@ Light:
   m_GameObject: {fileID: 1014825643012986}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -4035,11 +4035,11 @@ Light:
   m_GameObject: {fileID: 1426257537340902}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -4215,11 +4215,11 @@ Light:
   m_GameObject: {fileID: 1057150636778646}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -4251,11 +4251,11 @@ Light:
   m_GameObject: {fileID: 1207575559698770}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.75
   m_Range: 4.5
-  m_SpotAngle: 30
+  m_SpotAngle: 175
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
