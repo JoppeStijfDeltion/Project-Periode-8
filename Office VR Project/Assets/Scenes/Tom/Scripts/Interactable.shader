@@ -3,6 +3,8 @@
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		[Toggle]_bool ("Use a Mettalic/Smoothness map", float) = 1
+		_MetalSlider("Mettalic Slider", Range(0,1)) = 0.5
+		_SmoothSlider("Smoothness Slider", Range(0,1)) = 0.5
 		_MeSm ("Metallic(R), Smoothness(A)", 2D) = "white" {}
 		_Normal("Normal Map", 2D) = "bump" {}
 		_Emission ("Emmision", 2D) = "black"
@@ -41,6 +43,8 @@
 		float _bool;
 		float _interact;
 		float _EffectSlider;
+		float _SmoothSlider;
+		float _MetalSlider;
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 
@@ -64,8 +68,8 @@
 				o.Smoothness = ms.a;
 			}
 			else {
-				o.Metallic = 0;
-				o.Smoothness = 0;
+				o.Metallic = _MetalSlider;
+				o.Smoothness = _SmoothSlider;
 			}
 			if(_interact == 1){
 				o.Emission = tex2D (_Emission, IN.uv_MainTex).rgb + effect.rgb;
