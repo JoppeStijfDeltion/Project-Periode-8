@@ -29,7 +29,7 @@ public class NonVR : MonoBehaviour {
     // Ref
     private CharacterController con;
 
-    private void Awake () {
+    private void Start () {
         con = GetComponent<CharacterController> ();
         // Show popup
         if (popup) {
@@ -45,7 +45,7 @@ public class NonVR : MonoBehaviour {
         }
 
         // Toggle VR
-        if (use) {
+        if (GameManager.gameManager.virtualReality) {
             XRSettings.LoadDeviceByName ("OpenVR");
             con.enabled = false;
         }
@@ -61,12 +61,12 @@ public class NonVR : MonoBehaviour {
     }
 
     private void Update () {
-        if (!use) {
+        if (!GameManager.gameManager.virtualReality) {
             Rotation ();
         }
     }
     private void FixedUpdate () {
-        if (!use) {
+        if (!GameManager.gameManager.virtualReality) {
             Movement ();
         }
     }
