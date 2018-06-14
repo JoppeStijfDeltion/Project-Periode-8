@@ -38,7 +38,9 @@ public class ControllerScript : MonoBehaviour {
 	#endregion
 
 	private void Awake () {
-		rayVisual = GetComponent<LineRenderer> ();
+		rayVisual = GetComponent<LineRenderer>();
+		print(teleportMarker);
+		reticle = Instantiate (teleportMarker);
 	}
 
 	private void Start () {
@@ -46,7 +48,6 @@ public class ControllerScript : MonoBehaviour {
 			trackedObj = GetComponent<SteamVR_TrackedObject> ();
 		}
 
-		reticle = Instantiate (teleportMarker);
 		rayVisual.enabled = false;
 		reticle.SetActive (false);
 	}
@@ -65,6 +66,7 @@ public class ControllerScript : MonoBehaviour {
 		} else
 
 		if(_State == false) { //If the laser should be activated;
+				print(rayVisual);
 				rayVisual.enabled = false;
 				reticle.SetActive (false);
 				canTeleport = false;

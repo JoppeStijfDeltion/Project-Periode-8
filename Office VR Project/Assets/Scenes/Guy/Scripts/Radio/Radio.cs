@@ -38,7 +38,7 @@ public class Radio : RayInteraction {
 	}
 
 	private void ToggleChannel() {
-		if(channelIndex < channels.Length - 1) { //If the channel index exists and is smaller than the length;
+		if(channelIndex < channels.Length - 2) { //If the channel index exists and is smaller than the length;
 			channelIndex++;
 			aSource.clip = channels[channelIndex];
 		} 

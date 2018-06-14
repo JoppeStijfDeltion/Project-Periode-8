@@ -22,7 +22,7 @@ public class Friction : MonoBehaviour {
 		}
 
 		if(KineticEnergy(GetComponent<Rigidbody>()) > 0.5f) {
-			AudioManager.audioManager.PlayAudio(AudioManager.audioManager.collision, transform);
+			//AudioManager.audioManager.PlayAudio(AudioManager.audioManager.collision, transform);
 		}
 	}
 

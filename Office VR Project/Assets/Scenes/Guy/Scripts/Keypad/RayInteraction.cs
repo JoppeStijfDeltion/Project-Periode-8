@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource), typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 public abstract class RayInteraction : MonoBehaviour {
 
 	[Header("Audio Settings:")]

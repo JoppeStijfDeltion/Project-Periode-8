@@ -41,9 +41,9 @@ public class TeleportRoomCheck : MonoBehaviour {
 	}
 }
 
-		parentCol.color = Color.white; //Gives positive feedback;
-		childCol.color = parent;
-		lineCol.color = Color.white;
+		parentCol.color = Color.green; //Gives positive feedback;
+		childCol.color = Color.green;
+		lineCol.color = Color.green;
 		canTeleport = true; //Allows the player to teleport;
 	}
 }

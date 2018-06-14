@@ -18,7 +18,7 @@ public class Key : RayInteraction {
 
 	public override void Activate() { 
 		//anim.SetTrigger("Press"); //Plays animation of the button being pressed
-		PlayAudio(0); //Plays audio that sounds like something is pressed;
+		AudioManager.audioManager.PlayAudio(sounds[0], transform); //Plays audio that sounds like something is pressed;
 
 		switch(isEnter) {
 			case true:

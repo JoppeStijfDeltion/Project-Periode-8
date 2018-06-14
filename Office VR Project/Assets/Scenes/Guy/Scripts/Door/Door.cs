@@ -23,14 +23,14 @@ public class Door : InteractableObject {
 	public override void Awake() {
 		base.Awake();
 		anim = GetComponent<Animator>(); //Sets reference to the animator;
-		currentRotation = hinge.transform.eulerAngles; //Sets Vector3 to the rotation of this object;
+		currentRotation = hinge.transform.localEulerAngles; //Sets Vector3 to the rotation of this object;
 		anim.StopPlayback();
 	}
 
 	public override void Update() {
 		base.Update(); //Gets information of the parent class;
 		Audio();
-		hinge.transform.eulerAngles = currentRotation; //Sets the rotation to a local Vector3 for modifying purposes;
+		hinge.transform.localEulerAngles = currentRotation; //Sets the rotation to a local Vector3 for modifying purposes;
 	}
 
 	public override void UpdateAnimations() { //Function solely based on animation updating;

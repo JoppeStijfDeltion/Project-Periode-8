@@ -58,6 +58,10 @@ public class Drawer : InteractableObject {
 		open = true; //Set the state to being unlocked;
 		GameObject _Contained = Instantiate(containedObject, instancePos.transform.position, Quaternion.identity); //Spawn the contained item;
 		_Contained.transform.SetParent(gameObject.transform);
+		if(!_Contained.GetComponent<Friction>()) { //If the object doesn't have friction;
+		_Contained.AddComponent<Friction>(); //Add friction component;
+		_Contained.GetComponent<Friction>().distanceBelowTillFriction = 0.5f;
+		}
 		//AudioManager.audioManager.PlayAudio(aSource, sounds[1]); //Play unlocking audio cueue;
 		}
 	}

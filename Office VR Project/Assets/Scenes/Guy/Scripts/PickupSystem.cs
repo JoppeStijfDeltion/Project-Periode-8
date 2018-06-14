@@ -80,8 +80,13 @@ public class PickupSystem : MonoBehaviour {
 			break;
 
 			case Interaction.RayInteraction: //If the interaction state is currently related to ray interaction;
+			if(teleport != null) {
 			interactionState = Interaction.Teleporting; //Set it to Teleporting;
-			UpdateTool(Interaction.Teleporting);
+			teleport.enabled = true;
+			teleport.LaserActivation(true);
+			} else //Else if the teleport function does not exist;
+			interactionState = Interaction.Default; //Update to the next tool in the queue;
+			UpdateTool(Interaction.Default); //Updates the current state in the UI;
 			break;
 
 			case Interaction.Teleporting: //If the interaction state is currently related to teleporting;

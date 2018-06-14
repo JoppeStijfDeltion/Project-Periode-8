@@ -36,7 +36,7 @@ public class Computer : RayInteraction {
 	public string[] possibleResults;
 
 	[Header("Checks:")]
-	public bool usingPrinter = false;
+	public bool usingPrinter = true;
 	public bool usingDirectory = false;
 
 	#region Private Variables
