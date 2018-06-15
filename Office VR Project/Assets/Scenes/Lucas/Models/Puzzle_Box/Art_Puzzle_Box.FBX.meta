@@ -1,0 +1,235 @@
+fileFormatVersion: 2
+guid: c5785562d82724a429bb4bcf1574fb35
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Hinge_Bottom
+    100004: Hinge_Top
+    100006: Puzzle_Box_Lid
+    100008: Puzzle_Piece_01
+    100010: Puzzle_Piece_02
+    100012: Puzzle_Piece_03
+    100014: Puzzle_Piece_04
+    100016: Puzzle_Piece_05
+    100018: Puzzle_Piece_06
+    100020: Puzzle_Piece_07
+    100022: Puzzle_Piece_08
+    100024: Puzzle_Piece_09
+    100026: Puzzle_Piece_10
+    100028: Puzzle_Piece_11
+    100030: Puzzle_Piece_12
+    100032: Puzzle_Piece_13
+    100034: Puzzle_Piece_14
+    100036: Puzzle_Piece_15
+    100038: Puzzle_Piece_16
+    100040: Puzzle_Piece_17
+    100042: Puzzle_Piece_18
+    100044: Puzzle_Piece_19
+    100046: Puzzle_Piece_20
+    100048: Puzzle_Piece_21
+    100050: Puzzle_Piece_22
+    100052: Puzzle_Piece_23
+    100054: Puzzle_Piece_24
+    400000: //RootNode
+    400002: Hinge_Bottom
+    400004: Hinge_Top
+    400006: Puzzle_Box_Lid
+    400008: Puzzle_Piece_01
+    400010: Puzzle_Piece_02
+    400012: Puzzle_Piece_03
+    400014: Puzzle_Piece_04
+    400016: Puzzle_Piece_05
+    400018: Puzzle_Piece_06
+    400020: Puzzle_Piece_07
+    400022: Puzzle_Piece_08
+    400024: Puzzle_Piece_09
+    400026: Puzzle_Piece_10
+    400028: Puzzle_Piece_11
+    400030: Puzzle_Piece_12
+    400032: Puzzle_Piece_13
+    400034: Puzzle_Piece_14
+    400036: Puzzle_Piece_15
+    400038: Puzzle_Piece_16
+    400040: Puzzle_Piece_17
+    400042: Puzzle_Piece_18
+    400044: Puzzle_Piece_19
+    400046: Puzzle_Piece_20
+    400048: Puzzle_Piece_21
+    400050: Puzzle_Piece_22
+    400052: Puzzle_Piece_23
+    400054: Puzzle_Piece_24
+    2100000: Puzzle_Box_Base
+    2100002: Puzzle_Box_Hinge_Bottom
+    2100004: Puzzle_Box_Hinge_Top
+    2100006: Puzzle_Box_Lid
+    2100008: Puzzle_Piece_Start
+    2100010: Puzzle_Piece_Straight
+    2100012: No Name
+    2100014: Puzzle_Piece_Corner
+    2100016: Puzzle_Piece_End
+    2300000: //RootNode
+    2300002: Hinge_Bottom
+    2300004: Hinge_Top
+    2300006: Puzzle_Box_Lid
+    2300008: Puzzle_Piece_01
+    2300010: Puzzle_Piece_02
+    2300012: Puzzle_Piece_03
+    2300014: Puzzle_Piece_04
+    2300016: Puzzle_Piece_05
+    2300018: Puzzle_Piece_06
+    2300020: Puzzle_Piece_07
+    2300022: Puzzle_Piece_08
+    2300024: Puzzle_Piece_09
+    2300026: Puzzle_Piece_10
+    2300028: Puzzle_Piece_11
+    2300030: Puzzle_Piece_12
+    2300032: Puzzle_Piece_13
+    2300034: Puzzle_Piece_14
+    2300036: Puzzle_Piece_15
+    2300038: Puzzle_Piece_16
+    2300040: Puzzle_Piece_17
+    2300042: Puzzle_Piece_18
+    2300044: Puzzle_Piece_19
+    2300046: Puzzle_Piece_20
+    2300048: Puzzle_Piece_21
+    2300050: Puzzle_Piece_22
+    2300052: Puzzle_Piece_23
+    2300054: Puzzle_Piece_24
+    3300000: //RootNode
+    3300002: Hinge_Bottom
+    3300004: Hinge_Top
+    3300006: Puzzle_Box_Lid
+    3300008: Puzzle_Piece_01
+    3300010: Puzzle_Piece_02
+    3300012: Puzzle_Piece_03
+    3300014: Puzzle_Piece_04
+    3300016: Puzzle_Piece_05
+    3300018: Puzzle_Piece_06
+    3300020: Puzzle_Piece_07
+    3300022: Puzzle_Piece_08
+    3300024: Puzzle_Piece_09
+    3300026: Puzzle_Piece_10
+    3300028: Puzzle_Piece_11
+    3300030: Puzzle_Piece_12
+    3300032: Puzzle_Piece_13
+    3300034: Puzzle_Piece_14
+    3300036: Puzzle_Piece_15
+    3300038: Puzzle_Piece_16
+    3300040: Puzzle_Piece_17
+    3300042: Puzzle_Piece_18
+    3300044: Puzzle_Piece_19
+    3300046: Puzzle_Piece_20
+    3300048: Puzzle_Piece_21
+    3300050: Puzzle_Piece_22
+    3300052: Puzzle_Piece_23
+    3300054: Puzzle_Piece_24
+    4300000: Puzzle_Box_Base
+    4300002: Hinge_Bottom
+    4300004: Hinge_Top
+    4300006: Puzzle_Box_Lid
+    4300008: Puzzle_Piece_01
+    4300010: Puzzle_Piece_02
+    4300012: Puzzle_Piece_03
+    4300014: Puzzle_Piece_04
+    4300016: Puzzle_Piece_05
+    4300018: Puzzle_Piece_06
+    4300020: Puzzle_Piece_07
+    4300022: Puzzle_Piece_08
+    4300024: Puzzle_Piece_09
+    4300026: Puzzle_Piece_10
+    4300028: Puzzle_Piece_11
+    4300030: Puzzle_Piece_12
+    4300032: Puzzle_Piece_13
+    4300034: Puzzle_Piece_14
+    4300036: Puzzle_Piece_15
+    4300038: Puzzle_Piece_16
+    4300040: Puzzle_Piece_17
+    4300042: Puzzle_Piece_18
+    4300044: Puzzle_Piece_19
+    4300046: Puzzle_Piece_20
+    4300048: Puzzle_Piece_21
+    4300050: Puzzle_Piece_22
+    4300052: Puzzle_Piece_23
+    4300054: Puzzle_Piece_24
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
