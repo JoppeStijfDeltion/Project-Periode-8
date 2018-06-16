@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6981c36109c12ce44b0c473243219915
+guid: ab8f6818f08eff54fa5c28aa22a10f0f
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Paper
+    4300000: Mobile_LP
   externalObjects: {}
   materials:
     importMaterials: 1
