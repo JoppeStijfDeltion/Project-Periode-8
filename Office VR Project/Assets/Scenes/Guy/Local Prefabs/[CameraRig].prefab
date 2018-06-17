@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 20748544023258536}
   - component: {fileID: 124155785302964066}
   - component: {fileID: 114613497180899082}
-  - component: {fileID: 114061039087099672}
+  - component: {fileID: 114026191019303038}
+  - component: {fileID: 114894966520186696}
   m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
@@ -166,8 +167,6 @@ GameObject:
   - component: {fileID: 20587214664866338}
   - component: {fileID: 114670660404868254}
   - component: {fileID: 92605592044754632}
-  - component: {fileID: 114752669852928538}
-  - component: {fileID: 114497380814883856}
   m_Layer: 0
   m_Name: Camera (head)
   m_TagString: MainCamera
@@ -515,7 +514,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777138915349276}
   m_Enabled: 1
---- !u!114 &114061039087099672
+--- !u!114 &114026191019303038
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -523,12 +522,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1012190012246306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _head: {fileID: 4318330613734344}
-  _ears: {fileID: 4025896219996098}
-  wireframe: 0
+  profile: {fileID: 11400000, guid: d2b74c25a0e9bf043831d673db7c8b77, type: 2}
 --- !u!114 &114226213702739874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,18 +579,6 @@ MonoBehaviour:
   - {x: -1.65, y: 0.01, z: -1.275}
   - {x: -1.65, y: 0.01, z: 1.275}
   - {x: 1.65, y: 0.01, z: 1.275}
---- !u!114 &114497380814883856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1777138915349276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: d2b74c25a0e9bf043831d673db7c8b77, type: 2}
 --- !u!114 &114523944121567542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -654,19 +639,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   origin: {fileID: 0}
---- !u!114 &114752669852928538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1777138915349276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Resolution: 1
-  DefaultSpotCookie: {fileID: 0}
 --- !u!114 &114755150606361500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -733,6 +705,20 @@ MonoBehaviour:
   teleportMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &114894966520186696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012190012246306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 4318330613734344}
+  _ears: {fileID: 4025896219996098}
+  wireframe: 0
 --- !u!114 &114909638775599382
 MonoBehaviour:
   m_ObjectHideFlags: 1
