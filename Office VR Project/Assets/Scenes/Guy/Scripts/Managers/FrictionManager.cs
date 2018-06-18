@@ -5,7 +5,9 @@ using UnityEngine;
 public class FrictionManager : ManagerManager {
 
 	public static FrictionManager frictionManager;
-
+	
+	[Header("Ignored Objects:")]
+	public Rigidbody[] mask;
 	public float frictionDistance;
 
 	public override void Initialization() {
@@ -23,11 +25,24 @@ public class FrictionManager : ManagerManager {
 
 		foreach(Rigidbody _PhysicObject in physicsObjects) {
 			if(_PhysicObject.isKinematic == false) {
-				_PhysicObject.transform.gameObject.AddComponent<Friction>();
+				bool _IsMasked = MaskCheck(_PhysicObject); //Runs a check;
 
+				if(_IsMasked == false) {
+				_PhysicObject.transform.gameObject.AddComponent<Friction>();
 				Friction _Friction = _PhysicObject.transform.gameObject.GetComponent<Friction>();
 				_Friction.distanceBelowTillFriction = frictionDistance;
+				}
 			}
 		}
+	}
+
+	bool MaskCheck(Rigidbody _ObjectFound) {
+			foreach(Rigidbody _Mask in mask) { //Go through every masked object;
+				if(_ObjectFound == _Mask) { //If the object is the same as one of the masked objects;
+					return true; //Return false;
+				}
+			}
+
+		return false;
 	}
 }

@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\mp5adrctiyltuuyuyen.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -102,6 +103,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Destroy.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Door.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Keylock.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Door\Test.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Friction.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fuse.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fusebox.cs" />
@@ -237,6 +239,10 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+     <Compile Include="Assets\VolumetricLights\Assets\Scripts\VolumetricLight.cs" />
+     <Compile Include="Assets\VolumetricLights\Assets\Scripts\VolumetricLightRenderer.cs" />
+     <Compile Include="Assets\VolumetricLights\Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
+     <Compile Include="Assets\VolumetricLights\Assets\Standard Assets\Effects\ImageEffects\Scripts\Tonemapping.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\PostProcessing\test.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
@@ -252,6 +258,7 @@
      <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
      <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+     <None Include="Assets\VolumetricLights\ProjectSettings\ProjectVersion.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
      <None Include="Assets\Scenes\Joppe\Textures\test.txt" />
@@ -262,6 +269,7 @@
      <None Include="Assets\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+     <None Include="Assets\VolumetricLights\Assets\Shaders\BilateralBlur.shader" />
      <None Include="Assets\Scenes\Lucas\Materials\test.txt" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
      <None Include="Assets\Scenes\Lucas\Textures\test.txt" />
@@ -272,6 +280,7 @@
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
      <None Include="Assets\Scenes\Lucas\Local Prefabs\test.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+     <None Include="Assets\VolumetricLights\Assets\Shaders\BlitAdd.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
      <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
      <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
@@ -287,10 +296,12 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
      <None Include="Assets\Scenes\Guy\Shader\OutlineInteractable.shader" />
+     <None Include="Assets\VolumetricLights\Assets\Shaders\VolumetricLight.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
      <None Include="Assets\Scenes\Tom\Scripts\Interactable.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
+     <None Include="Assets\VolumetricLights\Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
      <None Include="Assets\SteamVR\readme.txt" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
