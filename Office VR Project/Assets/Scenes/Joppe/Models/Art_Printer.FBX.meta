@@ -1,15 +1,58 @@
 fileFormatVersion: 2
-guid: 675f8d4cd4a374d4bac16b537a5617e4
+guid: c33252a87ffd1644eb5220cf5ebcaabf
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Display
+    100004: Drawer_01
+    100006: Drawer_02
+    100008: Power_Button
+    100010: Printer
+    100012: Scan_Button
+    100014: Start_Button
+    100016: Stop/Clear_Button
     400000: //RootNode
-    2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Mobile_LP
-    9500000: //RootNode
+    400002: Display
+    400004: Drawer_01
+    400006: Drawer_02
+    400008: Power_Button
+    400010: Printer
+    400012: Scan_Button
+    400014: Start_Button
+    400016: Stop/Clear_Button
+    2100000: Printer
+    2100002: Drawer_01
+    2100004: Drawer_02
+    2100006: Power_Button
+    2100008: Scan_Button
+    2100010: Display
+    2100012: Stop_clear_Button
+    2100014: Start_Button
+    2300000: Display
+    2300002: Drawer_01
+    2300004: Drawer_02
+    2300006: Power_Button
+    2300008: Printer
+    2300010: Scan_Button
+    2300012: Start_Button
+    2300014: Stop/Clear_Button
+    3300000: Display
+    3300002: Drawer_01
+    3300004: Drawer_02
+    3300006: Power_Button
+    3300008: Printer
+    3300010: Scan_Button
+    3300012: Start_Button
+    3300014: Stop/Clear_Button
+    4300000: Printer
+    4300002: Drawer_01
+    4300004: Drawer_02
+    4300006: Power_Button
+    4300008: Scan_Button
+    4300010: Display
+    4300012: Stop/Clear_Button
+    4300014: Start_Button
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,7 +84,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.7
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -85,7 +128,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
