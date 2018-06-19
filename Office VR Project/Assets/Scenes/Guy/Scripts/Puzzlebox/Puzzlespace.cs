@@ -9,7 +9,7 @@ public class Puzzlespace : MonoBehaviour {
 	public Puzzlepiece pieceContained; //The piece this space currently holds;
 	public Puzzlespace[] influencedSpaces; //Spaces that the object can go to once clicked and it has something;
 
-	private void Awake () {
+	private void Start () {
 		if (transform.childCount != 0) {
 			pieceContained = transform.GetChild (0).GetComponent<Puzzlepiece> ();
 			pieceContained.parent = this;
