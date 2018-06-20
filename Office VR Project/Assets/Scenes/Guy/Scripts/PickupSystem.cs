@@ -43,7 +43,9 @@ public class PickupSystem : MonoBehaviour {
 	private Vector3 oldLocation;
 
 	private GameObject currentlyHovering; //An object which the hand can currently grab;
-	private GameObject currentRaySelectedObject;
+
+	[HideInInspector]
+	public GameObject currentRaySelectedObject;
 
 	private int frameCount;
 	#endregion

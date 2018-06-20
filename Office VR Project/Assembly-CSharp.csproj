@@ -104,6 +104,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Door.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Keylock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Test.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\EffectManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Friction.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fuse.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fusebox.cs" />

@@ -11,10 +11,11 @@ public class Puzzlespace : MonoBehaviour {
 
 	private void Start () {
 		if (transform.childCount != 0) {
-			pieceContained = transform.GetChild (0).GetComponent<Puzzlepiece> ();
+			pieceContained = transform.GetChild(0).GetComponent<Puzzlepiece>();
 			pieceContained.parent = this;
 		}
-		Puzzlebox.puzzleBox.allPuzzleSpaces.Add (this);
+
+		Puzzlebox.puzzleBox.allPuzzleSpaces.Add(this);
 	}
 
 	public void MovePiece () {
@@ -27,6 +28,7 @@ public class Puzzlespace : MonoBehaviour {
 					pieceContained.transform.localPosition = Vector3.zero; //Gives the piece the same position as the newely found space;
 					pieceContained = null; //And removes it from this space;
 					Puzzlebox.puzzleBox.Completion (); //Checks if the puzzlebox has been completed;
+					EffectManager.effectManager.InstantiateEffect("Sparks", transform);
 				}
 			}
 		}

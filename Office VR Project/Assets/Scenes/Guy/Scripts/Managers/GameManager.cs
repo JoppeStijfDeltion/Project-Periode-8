@@ -9,11 +9,11 @@ public class GameManager : ManagerManager {
 
 	[Header("Mode:")]
 	public bool virtualReality = false;
+	public bool playCutscene = false;
 
 	[Header("Statics:")]
 	public List<PickupSystem> hands;
 	public GameObject player;
-
 	private GameObject getPlayer {
 		get {
 			if(player == null) {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InitializeManager : MonoBehaviour {
 
@@ -10,11 +11,20 @@ public class InitializeManager : MonoBehaviour {
     public float timeTillInteraction;
     public float timeTillFadeIn;
 
+    [Header("Cutscene Settings:")]
+    public string[] script;
+    public float timeTillNextLine = 2.5f;
+    public Text uiCutsceneDialogue;
+
     [Header("Elevator Settings:")]
     public GameObject[] elevatorButtons;
     public Material elevatorButtonActive;
     public Animator elevatorAnimator;
     public AudioClip elevatorOpeningSound;
+
+    #region Private Variables
+    private int index;
+    #endregion
 
     public static InitializeManager Initialize {
         get {
@@ -45,6 +55,24 @@ public class InitializeManager : MonoBehaviour {
             _Hand.enabled = false;
         }
 
+        StartCoroutine(CutScene());
+    }
+
+    public IEnumerator CutScene() {
+        if(GameManager.gameManager.playCutscene == false) { //IF the cutscene should be skipped;
+        StartCoroutine(StartGame()); //Start the game;
+        yield break;
+        }
+
+        yield return new WaitForSeconds(timeTillNextLine);
+        if(index < script.Length) {
+            uiCutsceneDialogue.text = script[index];
+            index++;
+            StartCoroutine(CutScene());
+            yield break;
+        } 
+
+        uiCutsceneDialogue.text = "";
         StartCoroutine(StartGame());
     }
 
