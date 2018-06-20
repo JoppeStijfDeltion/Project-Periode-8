@@ -201,6 +201,7 @@ public class PickupSystem : MonoBehaviour {
 
 			if(objectBeingCarried.GetComponent<Rigidbody>()) {
 			gameObject.AddComponent<FixedJoint>();
+			objectBeingCarried.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 			objectBeingCarried.GetComponent<Rigidbody>().useGravity = false;
 			thisJoint = GetComponent<FixedJoint>();
 			objectBeingCarried.transform.SetParent(gameObject.transform); //Childs newfound object to the hand;

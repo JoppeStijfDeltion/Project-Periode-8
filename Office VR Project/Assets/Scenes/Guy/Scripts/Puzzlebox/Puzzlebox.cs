@@ -13,6 +13,8 @@ public class Puzzlebox : InteractableObject {
 	public List<Puzzlespace> allPuzzleSpaces = new List<Puzzlespace> (); //All spaces;
 	public Text[] hints; //Used to show where which piece must be located at;
 	public float alphaDecreaseSpeed = 2;
+	public GameObject tools;
+	public Animator hingeAnim;
 
 
 	[Header ("Checks:")]
@@ -49,7 +51,15 @@ public class Puzzlebox : InteractableObject {
 
 		if (completed == true) {
 			print ("You have succesfully finished the puzzle!");
+			tools.SetActive(true);
+			StartCoroutine(Open());
 		}
+	}
+
+
+	IEnumerator Open() {
+		yield return new WaitForSeconds(2);
+		hingeAnim.SetTrigger("Open");
 	}
 
 
