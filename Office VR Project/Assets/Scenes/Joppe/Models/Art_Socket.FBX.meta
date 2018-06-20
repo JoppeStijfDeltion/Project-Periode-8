@@ -1,47 +1,14 @@
 fileFormatVersion: 2
-guid: c33252a87ffd1644eb5220cf5ebcaabf
+guid: 4e294187b924f0f44a42e8cb0832c89b
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Display
-    100004: Drawer_01
-    100006: Drawer_02
-    100008: Power_Button
-    100010: Printer
-    100012: Start_Button
-    100014: Stoop-clear_Button
     400000: //RootNode
-    400002: Display
-    400004: Drawer_01
-    400006: Drawer_02
-    400008: Power_Button
-    400010: Printer
-    400012: Start_Button
-    400014: Stoop-clear_Button
-    2100000: Printer
-    2100002: Drawer
-    2300000: Display
-    2300002: Drawer_01
-    2300004: Drawer_02
-    2300006: Power_Button
-    2300008: Printer
-    2300010: Start_Button
-    2300012: Stoop-clear_Button
-    3300000: Display
-    3300002: Drawer_01
-    3300004: Drawer_02
-    3300006: Power_Button
-    3300008: Printer
-    3300010: Start_Button
-    3300012: Stoop-clear_Button
-    4300000: Printer
-    4300002: Drawer_01
-    4300004: Drawer_02
-    4300006: Power_Button
-    4300008: Display
-    4300010: Stoop-clear_Button
-    4300012: Start_Button
+    2100000: No Name
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Socket
   externalObjects: {}
   materials:
     importMaterials: 1
