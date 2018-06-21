@@ -12,6 +12,7 @@ public class Door : InteractableObject {
 	public float maxRotation;
 	public float followingspeed = 2;
 	public bool locked = false;
+	public bool calculateNegatives = false;
 
 	#region Private Variables
 	private bool selected = false;
@@ -67,16 +68,25 @@ public class Door : InteractableObject {
 		}
 
 	private float ClampAngle(float angle) { //Clamp function based on the bug when eulerangles go negative;
+	if(calculateNegatives == true) {
+	  if(angle > 180)
+		angle = 360 - angle;
+	  	angle = Mathf.Clamp(angle, minRotation, maxRotation);
+ 	 if(angle < 0) 
+	  	angle = 360 + angle;
+	  return angle;
+	}
 
-		if (angle < 90 || angle > 270) { //Calculates if the anglers are going negative;
-		if (angle > 180) angle -= 360;
-		if (maxRotation > 180) maxRotation -= 360;	
-		if (minRotation > 180) minRotation -= 360;
-		} 
 
-		angle = Mathf.Clamp(angle, minRotation, maxRotation); //Finalizes the clamp;
+	 if(angle < 0) 
+		 angle = 360 + angle;
 
-		if (angle < 0) angle += 360;
-		return angle; //Returns the newely found angle to move towards;
+     if (angle < minRotation)
+         angle = minRotation;
+    else if (angle > maxRotation)
+        angle = maxRotation;
+     
+
+     return angle;
 	}
 }

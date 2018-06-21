@@ -35,7 +35,8 @@ public class GameManager : ManagerManager {
 
 	#region Private Variables
 	private float timer;
-	private int tenSeconds; //Amount of times 10 seconds passed;
+	[HideInInspector]
+	public int tenSeconds; //Amount of times 10 seconds passed;
 	#endregion
 
 	public override void Initialization() {
