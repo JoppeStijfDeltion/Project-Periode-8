@@ -98,6 +98,7 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
      <Compile Include="Assets\Region.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Clock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Computer.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Printer.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Destroy.cs" />
