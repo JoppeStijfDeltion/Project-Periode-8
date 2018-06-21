@@ -43,7 +43,9 @@ public class PickupSystem : MonoBehaviour {
 	private Vector3 oldLocation;
 
 	private GameObject currentlyHovering; //An object which the hand can currently grab;
-	private GameObject currentRaySelectedObject;
+
+	[HideInInspector]
+	public GameObject currentRaySelectedObject;
 
 	private int frameCount;
 	#endregion
@@ -189,16 +191,18 @@ public class PickupSystem : MonoBehaviour {
 			}
 
 			objectBeingCarried = _Object; //Sets the overloaded object as the object being carried;	
-
-			if(objectBeingCarried.GetComponent<Friction>())
-			objectBeingCarried.GetComponent<Friction>().canChild = false;
-
+	
 			if(objectBeingCarried.GetComponent<InteractableObject>()) {	
 			objectBeingCarried.GetComponent<InteractableObject>().hand = this;
 			}
 
+			if(objectBeingCarried.GetComponent<Friction>())
+			objectBeingCarried.GetComponent<Friction>().canChild = false;
+
 			if(objectBeingCarried.GetComponent<Rigidbody>()) {
 			gameObject.AddComponent<FixedJoint>();
+			objectBeingCarried.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+			objectBeingCarried.GetComponent<Rigidbody>().useGravity = false;
 			thisJoint = GetComponent<FixedJoint>();
 			objectBeingCarried.transform.SetParent(gameObject.transform); //Childs newfound object to the hand;
 			thisJoint.connectedBody = objectBeingCarried.GetComponent<Rigidbody>(); //Connects the rigidbodys between the parent and the child;
@@ -207,6 +211,7 @@ public class PickupSystem : MonoBehaviour {
 
 	private void Throwing() { //Applying velocity and let go of grip of the object;
 		if(objectBeingCarried == null) { return; }
+					objectBeingCarried.GetComponent<Rigidbody>().useGravity = true;
 					objectBeingCarried.transform.parent = null; //Unchilds it from the hand;
 					objectBeingCarried.GetComponent<Friction>().canChild = true;
 					objectBeingCarried.GetComponent<Rigidbody>().velocity = (newLocation - oldLocation) * throwforceMultiplier; //Formula to decide velocity;
@@ -220,13 +225,14 @@ public class PickupSystem : MonoBehaviour {
 		if(objectBeingCarried == null) { return;} //If there is no object being interacted with, cut function off;
 		if((GameManager.gameManager.virtualReality == true)? controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyUp(KeyCode.E)) {
 
-			if(objectBeingCarried.GetComponent<InteractableObject>())
+			if(objectBeingCarried.GetComponent<InteractableObject>()) {
 				objectBeingCarried.GetComponent<InteractableObject>().hand = null; //If its an interactable, stop interaction;
+				objectBeingCarried = null;
+				return;
+			}
 
 			if(objectBeingCarried.GetComponent<Rigidbody>())
 				Throwing(); //If it has a rigidbody, throw it away;
-
-				objectBeingCarried = null;
 		}
 	}
 
@@ -277,13 +283,15 @@ public class PickupSystem : MonoBehaviour {
 
 		bool PickupCheck(GameObject _Object) {
 			if(objectBeingCarried == null)
-				if(_Object.GetComponent<InteractableObject>()) //Checks if the object can be picked up;
-					if(!_Object.GetComponent<PickupSystem>()) //Checks if the object is NOT a 
-					return true; //Return true
+					if(!_Object.GetComponent<PickupSystem>()) { //If the opposing gameobject has a rigidbody and a friction module;
+						if(_Object.GetComponent<Rigidbody>()) { //If the rigidbody is NOT kinematic;w
+						if(!_Object.GetComponent<Rigidbody>().isKinematic == false)
+						return false;
+						}
 
-					if(_Object.GetComponent<Rigidbody>() && _Object.GetComponent<Friction>()) //If the opposing gameobject has a rigidbody and a friction module;
-						if(_Object.GetComponent<Rigidbody>().isKinematic == false) //If the rigidbody is NOT kinematic;
+						if(_Object.GetComponent<Friction>() || _Object.GetComponent<InteractableObject>())
 						return true;
+					}
 
 			//Else returns false;
 			return false;

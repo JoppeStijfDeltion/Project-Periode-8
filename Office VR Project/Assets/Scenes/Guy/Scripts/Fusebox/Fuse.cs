@@ -10,19 +10,20 @@ public class Fuse : InteractableObject {
 	public List<Fuse> InfluencedFuses = new List<Fuse>();
 	public bool activated = false;
 
-	public override void Awake() {
-		base.Awake();
+	public void Start() {
 		SetStartingColors();
 	}
 
 	private void SetStartingColors() { //When the game initializes, it updates its visuals based on its starting parameters;
 		switch(activated) {
 			case true:
-			GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
+			GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOn;
+			anim.SetTrigger("On");
 			break;
 
 			case false:
-			GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
+			GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOff;
+			anim.SetTrigger("Off");
 			break;
 		}
 	}
@@ -32,16 +33,20 @@ public class Fuse : InteractableObject {
 		return;
 
 		AudioManager.audioManager.PlayAudio(sounds[0], transform);
+		EffectManager.effectManager.InstantiateEffect("Sparks", transform);
+
 		anim.SetTrigger("Press");
 		switch(activated) {
 			case true:
 			activated = false;
-			GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
+			GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOff;
+			anim.SetTrigger("Off");
 			break;
 
 			case false:
 			activated = true;
-			GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
+			GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOn;
+			anim.SetTrigger("On");
 			break;
 		}
 
@@ -52,12 +57,14 @@ public class Fuse : InteractableObject {
 		foreach(Fuse f in InfluencedFuses) {
 				switch(f.activated) {
 					case true:
-					f.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
+					GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOff;
+					anim.SetTrigger("Off");
 					f.activated = false;
 					break;
 
 					case false:
-					f.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.green);
+					GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOn;
+					anim.SetTrigger("On");
 					f.activated = true;
 					break;
 				}		

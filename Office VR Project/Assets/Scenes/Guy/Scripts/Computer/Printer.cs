@@ -31,7 +31,7 @@ public class Printer : InteractableObject {
 	}
 
 	public void UpdateUI() { //Updates the current status of documents that are queued
-		queue.text = "Queuing \n" + toBePrinted.Count.ToString() + " files";
+		queue.text = "Q u e u i n g : \n" + toBePrinted.Count.ToString() + " f i l e s ";
 	}
 
 	public void ActivatePrinter() { //Turns on the printer
@@ -62,14 +62,14 @@ public class Printer : InteractableObject {
 
 	}	
 
-	private void PrintCheck() { //Checks if the conditions are met and if the printer has something to print with;
-	bool canPrint = false;
-	GameObject printedObj = null;
+    void PrintCheck() { //Checks if the conditions are met and if the printer has something to print with;
+ 		bool canPrint = false;
+		GameObject printedObj = null;
 
-	if(beenInteracted == false)	{
-	anim.SetTrigger("Press");
-	beenInteracted = true;
-	}
+		if(beenInteracted == false)	{
+			anim.SetTrigger("Press");
+			beenInteracted = true;
+		}
 
 		foreach(GameObject obj in toBePrinted) {
 			if(obj != null) {
@@ -103,7 +103,7 @@ public class Printer : InteractableObject {
 
 		if(!printed.GetComponent<Rigidbody>()) {
 			printed.AddComponent<Rigidbody>();
-			printed.GetComponent<Rigidbody>().AddForce(-printed.transform.forward * 4, ForceMode.Impulse);
+			printed.GetComponent<Rigidbody>().AddForce(printed.transform.forward * 4, ForceMode.Impulse);
 		}
 
 		PrintCheck();

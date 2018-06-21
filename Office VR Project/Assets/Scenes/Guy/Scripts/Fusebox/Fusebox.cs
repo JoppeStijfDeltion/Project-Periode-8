@@ -13,6 +13,9 @@ public class Fusebox : MonoBehaviour {
 	public Safedoor door;
 	public bool completed = false;
 
+	[Header("Fuse Settings:")]
+	public Material turnedOn, turnedOff;
+
 	[Header("Debug")]
 	public bool[] checks;
 

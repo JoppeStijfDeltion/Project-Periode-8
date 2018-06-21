@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: 482ca5264871aea4d8124e52139ab414
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Display
+    100004: Drawer_01
+    100006: Drawer_02
+    100008: Power_Button
+    100010: Printer
+    100012: Scan_Button
+    100014: Start_Button
+    100016: Stop/Clear_Button
+    400000: //RootNode
+    400002: Display
+    400004: Drawer_01
+    400006: Drawer_02
+    400008: Power_Button
+    400010: Printer
+    400012: Scan_Button
+    400014: Start_Button
+    400016: Stop/Clear_Button
+    2100000: Printer
+    2100002: Drawer_01
+    2100004: Drawer_02
+    2100006: Power_Button
+    2100008: Scan_Button
+    2100010: Display
+    2100012: Stop_clear_Button
+    2100014: Start_Button
+    2300000: Display
+    2300002: Drawer_01
+    2300004: Drawer_02
+    2300006: Power_Button
+    2300008: Printer
+    2300010: Scan_Button
+    2300012: Start_Button
+    2300014: Stop/Clear_Button
+    3300000: Display
+    3300002: Drawer_01
+    3300004: Drawer_02
+    3300006: Power_Button
+    3300008: Printer
+    3300010: Scan_Button
+    3300012: Start_Button
+    3300014: Stop/Clear_Button
+    4300000: Printer
+    4300002: Drawer_01
+    4300004: Drawer_02
+    4300006: Power_Button
+    4300008: Scan_Button
+    4300010: Display
+    4300012: Stop/Clear_Button
+    4300014: Start_Button
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

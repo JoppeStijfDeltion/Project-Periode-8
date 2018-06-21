@@ -9,11 +9,11 @@ public class GameManager : ManagerManager {
 
 	[Header("Mode:")]
 	public bool virtualReality = false;
+	public bool playCutscene = false;
 
 	[Header("Statics:")]
 	public List<PickupSystem> hands;
 	public GameObject player;
-
 	private GameObject getPlayer {
 		get {
 			if(player == null) {
@@ -35,7 +35,8 @@ public class GameManager : ManagerManager {
 
 	#region Private Variables
 	private float timer;
-	private int tenSeconds; //Amount of times 10 seconds passed;
+	[HideInInspector]
+	public int tenSeconds; //Amount of times 10 seconds passed;
 	#endregion
 
 	public override void Initialization() {
