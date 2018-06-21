@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Screw : MonoBehaviour {
 
-	private GameObject screwdriver;
+	public GameObject screwdriver;
 	private Transform parent;
 	private BoxCollider colRef;
 	private Vent vent;
 
 	private void Start () {
 		colRef = GetComponent<BoxCollider> ();
-		screwdriver = GameObject.FindWithTag ("Screwdriver");
+		//screwdriver = GameObject.FindWithTag ("Screwdriver");
 		parent = screwdriver.transform.parent;
 		vent = GameObject.FindWithTag ("Vent").GetComponent<Vent> ();
 	}

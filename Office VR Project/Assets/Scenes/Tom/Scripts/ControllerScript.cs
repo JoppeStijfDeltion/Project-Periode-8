@@ -45,6 +45,7 @@ public class ControllerScript : MonoBehaviour {
 		rayVisual = GetComponent<LineRenderer>();
 		print(teleportMarker);
 		reticle = Instantiate (teleportMarker);
+        reticle.SetActive(false);
         height = headTransform.position.y;
  
     }
