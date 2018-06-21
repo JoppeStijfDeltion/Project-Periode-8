@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: b590053888f28504b93a663817fc5cf0
-=======
-guid: 675f8d4cd4a374d4bac16b537a5617e4
->>>>>>> 1ebb67cd225dd99e485e1a64d79bb851f0411518
+guid: 9fcac4bc1a6aea447a1cf641cf024308
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -12,11 +8,7 @@ ModelImporter:
     2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Mobile_LP
-<<<<<<< HEAD
-=======
-    9500000: //RootNode
->>>>>>> 1ebb67cd225dd99e485e1a64d79bb851f0411518
+    4300000: Paper
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -92,11 +84,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD
   animationType: 0
-=======
-  animationType: 2
->>>>>>> 1ebb67cd225dd99e485e1a64d79bb851f0411518
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

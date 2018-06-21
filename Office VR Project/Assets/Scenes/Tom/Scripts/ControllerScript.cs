@@ -28,11 +28,15 @@ public class ControllerScript : MonoBehaviour {
 		get { return SteamVR_Controller.Input ((int)trackedObj.index); }
 	}
 
-	#endregion
+    #endregion
 
-	#region  Teleport
+    #region
+    private float height = 0;
+#endregion
 
-	private GameObject reticle;
+    #region  Teleport
+
+    private GameObject reticle;
 	private bool canTeleport;
 
 	#endregion
@@ -41,7 +45,9 @@ public class ControllerScript : MonoBehaviour {
 		rayVisual = GetComponent<LineRenderer>();
 		print(teleportMarker);
 		reticle = Instantiate (teleportMarker);
-	}
+        height = headTransform.position.y;
+ 
+    }
 
 	private void Start () {
 		if (GameManager.gameManager.virtualReality == true) {
@@ -94,7 +100,9 @@ public class ControllerScript : MonoBehaviour {
 		RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
 		LaserActivation(false);
 		Vector3 difference = headTransform.parent.position - headTransform.position;
-		difference.y = 0f;
+            Vector3 test = headTransform.position;
+            test.y = height;
+            headTransform.position = test;   
 		headTransform.parent.position = hit.point + difference;
 		AudioManager.audioManager.PlayAudio(footsteps, transform);
 		}
