@@ -33,7 +33,7 @@ public class Region : MonoBehaviour {
 		}
 	}
 
-		print("Nothing contained in: " +gameObject.name);
+		//print("Nothing contained in: " +gameObject.name);
 		return true; //If no colliders contain any player whatsoever, fade the screen;
 	}
 }

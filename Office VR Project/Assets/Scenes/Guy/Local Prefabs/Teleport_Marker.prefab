@@ -220,9 +220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45924bf13c9ff3447a09d92efddce090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canTeleport: 1
   parentCol: {fileID: 2100000, guid: 9d065959dd00b1b4695b2e69a466a604, type: 2}
   childCol: {fileID: 2100000, guid: b3cc94ef80022784aa90f46f95e67be6, type: 2}
   lineCol: {fileID: 2100000, guid: dfcb31a837c8d224b940af8326f05be8, type: 2}
+  teleportMask:
+    serializedVersion: 2
+    m_Bits: 256
   parent: {r: 0, g: 0, b: 0, a: 0}
 --- !u!198 &198447894559380958
 ParticleSystem:

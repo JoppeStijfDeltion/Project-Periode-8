@@ -32,6 +32,8 @@ public class Fuse : InteractableObject {
 		if(Fusebox.fuseBox.completed)
 		return;
 
+        print("Fuse pressed");
+
 		AudioManager.audioManager.PlayAudio(sounds[0], transform);
 		EffectManager.effectManager.InstantiateEffect("Sparks", transform);
 

@@ -74,7 +74,6 @@ public class ControllerScript : MonoBehaviour {
 		} else
 
 		if(_State == false) { //If the laser should be activated;
-				print(rayVisual);
 				rayVisual.enabled = false;
 				reticle.SetActive (false);
 				canTeleport = false;
@@ -86,23 +85,26 @@ public class ControllerScript : MonoBehaviour {
         if (this.enabled == true)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
-            {
-                LaserActivation(true);
-                rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
-                reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
-            }
-            else
-                LaserActivation(false);
 
-            bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
-            if (input && canTeleport)
-                Teleport(hit);
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity)) {
+                if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
+                {
+                    LaserActivation(true);
+                    rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
+                    reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
+                }
+                else
+                    LaserActivation(false);
+
+                bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
+                if (input && canTeleport)
+                    Teleport(hit);
+            }
         }
 	}
 
 	private void Teleport (RaycastHit hit) {
-		if(TeleportRoomCheck.canTeleport == true) { //If the reticle doesn't collide with anything;
+		if(reticle.GetComponent<TeleportRoomCheck>().canTeleport == true) { //If the reticle doesn't collide with anything;
 		RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
 		LaserActivation(false);
         Vector3 difference = headTransform.parent.position - headTransform.position;
