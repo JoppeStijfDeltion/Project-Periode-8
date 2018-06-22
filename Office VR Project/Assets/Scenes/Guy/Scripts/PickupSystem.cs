@@ -134,20 +134,23 @@ public class PickupSystem : MonoBehaviour {
 
 	#region RayInteraction
 	public void RayInteraction() { //Used for when the player is using a ray to interact with;
-		Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+		Ray ray = new Ray(transform.position, transform.forward);
 		RaycastHit rayHit;
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        rayRepresentation.SetPositions(new Vector3[] { });
+        rayRepresentation.SetPosition(0, transform.position); //Sets starting position of the line;
+        rayRepresentation.startColor = Color.cyan;
 
-		/*This is the functionality part of the ray interaction function */
-		if(rayRepresentation.enabled == false) //Check if the ray is turned off;
-		rayRepresentation.enabled = true; //If so, turns it back on;
+        /*This is the functionality part of the ray interaction function */
+        if (rayRepresentation.enabled == false) //Check if the ray is turned off;
+		    rayRepresentation.enabled = true; //If so, turns it back on;
 
 		if (Physics.Raycast(ray, out rayHit, maxRange)) { //If it detects collision;
-            rayRepresentation.transform.localScale = new Vector3 (rayRepresentation.transform.lossyScale.x, rayRepresentation.transform.localEulerAngles.y, rayHit.distance * 7); //To draw the ray;
-				if(rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
+            //rayRepresentation.SetPosition(1, rayHit.point); //Overwrites the index;
 
+            if (rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
 					if((GameManager.gameManager.virtualReality == true)? Controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown("e")) 
 						rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
-                print("Shot ray");    
 
 					if(currentRaySelectedObject == null) { //If the current object is equal to nothing;
 						currentRaySelectedObject = rayHit.transform.gameObject; //Grasp new found object;

@@ -25,7 +25,6 @@ public class TeleportRoomCheck : MonoBehaviour {
 
 	if(_CurrentColliders != null) {
 		foreach(Collider _Col in _CurrentColliders) { //For every collider that is within the trigger field;
-			print(_Col);
 			if(_Col != null) { //If the collider has data;
 			if(_Col.isTrigger == false) { //If the collider is NOT a triggerfield;
 				if(_Col.gameObject.layer != 8) { //If the collider currently is NOT a teleport allowing mask;
