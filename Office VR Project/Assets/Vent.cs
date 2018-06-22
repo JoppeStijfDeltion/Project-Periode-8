@@ -9,7 +9,8 @@ public class Vent : MonoBehaviour {
 	public void Check () {
 		numberOfScrews--;
 		if (numberOfScrews <= 0) {
-			//Do something
+			GetComponent<BoxCollider> ().enabled = true;
+			gameObject.AddComponent<Rigidbody> ();
 		}
 	}
 }
