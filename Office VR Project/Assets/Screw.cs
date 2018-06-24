@@ -34,8 +34,10 @@ public class Screw : MonoBehaviour {
 		parent.parent = null;
 		parent.GetComponent<BoxCollider> ().enabled = true;
 		parent.gameObject.AddComponent<Rigidbody> ();
+		gameObject.GetComponent<Animator> ().enabled = false;
 		gameObject.AddComponent<Rigidbody> ();
-		gameObject.GetComponent<BoxCollider> ().enabled = false;
+		Destroy (GetComponent<BoxCollider> ());
+		gameObject.AddComponent<BoxCollider> ();
 		Destroy (this);
 	}
 }

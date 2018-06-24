@@ -29,7 +29,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1187733230370166
 GameObject:
@@ -49,7 +49,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1197918454289104
 GameObject:
@@ -88,7 +88,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1525120210607942
 GameObject:
@@ -108,7 +108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4110207029391918
 Transform:
@@ -532,6 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a46e92dd9dfdf40a6e38b130fff128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screwdriver: {fileID: 1286649721515158, guid: 7cedce7beca3d774da1fdeb36837a0f8,
+    type: 2}
 --- !u!114 &114041845200416542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,6 +545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a46e92dd9dfdf40a6e38b130fff128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screwdriver: {fileID: 1286649721515158, guid: 7cedce7beca3d774da1fdeb36837a0f8,
+    type: 2}
 --- !u!114 &114063660836259056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,6 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a46e92dd9dfdf40a6e38b130fff128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screwdriver: {fileID: 1286649721515158, guid: 7cedce7beca3d774da1fdeb36837a0f8,
+    type: 2}
 --- !u!114 &114663294697307972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -565,6 +571,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a46e92dd9dfdf40a6e38b130fff128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screwdriver: {fileID: 1286649721515158, guid: 7cedce7beca3d774da1fdeb36837a0f8,
+    type: 2}
 --- !u!114 &114732189779284704
 MonoBehaviour:
   m_ObjectHideFlags: 1
