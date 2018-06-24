@@ -284,6 +284,7 @@ public class VolumetricLightRenderer : MonoBehaviour
         proj = GL.GetGPUProjectionMatrix(proj, true);
         _viewProj = proj * _camera.worldToCameraMatrix;
 
+        if(_preLightPass != null)
         _preLightPass.Clear();
 
         bool dx11 = SystemInfo.graphicsShaderLevel > 40;

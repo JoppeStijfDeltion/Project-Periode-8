@@ -38,6 +38,7 @@ public class Screw : MonoBehaviour {
 		gameObject.AddComponent<Rigidbody> ();
 		Destroy (GetComponent<BoxCollider> ());
 		gameObject.AddComponent<BoxCollider> ();
+		transform.parent = null;
 		Destroy (this);
 	}
 }

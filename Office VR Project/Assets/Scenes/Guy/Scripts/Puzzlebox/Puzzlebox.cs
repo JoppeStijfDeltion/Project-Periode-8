@@ -12,7 +12,7 @@ public class Puzzlebox : InteractableObject {
 	[Header ("Puzzlebox Settings:")]
 	public List<Puzzlespace> allPuzzleSpaces = new List<Puzzlespace> (); //All spaces;
 	public Text[] hints; //Used to show where which piece must be located at;
-	public float alphaDecreaseSpeed = 2;
+	public float alphaIncrementSpeed = 2;
 	public GameObject tools;
 	public Animator hingeAnim;
 
@@ -65,8 +65,7 @@ public class Puzzlebox : InteractableObject {
 
 
 	public override void Interact() {
-        print("d");
-
+		anim.SetTrigger("Press");
         if (decreaseAlpha)
             decreaseAlpha = false;  else decreaseAlpha = true;
 	    	hand = null;
@@ -80,17 +79,17 @@ public class Puzzlebox : InteractableObject {
 	void ChangeColor() {
 			foreach(Text _Text in hints) {
 
-                if(decreaseAlpha == true) 
+                if(decreaseAlpha == false) 
 				alphaCol.a -= AdjustAlpha();
                 else
                 alphaCol.a += AdjustAlpha();
 
-                alphaCol.a = Mathf.Clamp(alphaCol.a, 0, 255);
+                alphaCol.a = Mathf.Clamp01(alphaCol.a);
                 _Text.color = alphaCol;
 			}
 	    }
 
 	float AdjustAlpha() {
-		return Mathf.Clamp01(Time.deltaTime * alphaDecreaseSpeed);
+		return Mathf.Clamp01(Time.deltaTime * alphaIncrementSpeed);
 	}
 }

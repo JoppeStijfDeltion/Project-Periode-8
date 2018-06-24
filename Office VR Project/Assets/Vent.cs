@@ -11,6 +11,8 @@ public class Vent : MonoBehaviour {
 		if (numberOfScrews <= 0) {
 			GetComponent<BoxCollider> ().enabled = true;
 			gameObject.AddComponent<Rigidbody> ();
+			gameObject.AddComponent<Friction>();
+			RegionManager.regionManager.LoadRegion(3);
 		}
 	}
 }

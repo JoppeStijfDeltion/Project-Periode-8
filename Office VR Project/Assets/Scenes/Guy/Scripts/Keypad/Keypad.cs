@@ -19,11 +19,16 @@ public class Keypad : MonoBehaviour {
 	[Header("Unlock Settings:")]
 	public Safedoor door; //The door that will be unlocked upon completion;
 
+	[Header("This Object Settings:")]
+	public GameObject reward;
+	public Material light;
+
 	[Header("Sound Settings:")]
 	public AudioClip[] sounds;
 
 	#region Private Variables
 	private bool wrongCode = false;
+	private Animator anim;
 	private AudioSource aSource;
 	#endregion
 	
@@ -36,6 +41,8 @@ public class Keypad : MonoBehaviour {
 
 	public void Awake() {
 		aSource = GetComponent<AudioSource>();
+		if(GetComponent<Animator>())
+		anim = GetComponent<Animator>();
 	}
 
 	public void AddChar(char _Input) { //Adds to the input of the keypad;
@@ -59,7 +66,6 @@ public class Keypad : MonoBehaviour {
 	public void Unlock() { //If input matches the code, unlocks whatever mechanism is selected;
 		if(input.text == code) {
 			completed = true;
-			door.OpenDoor(); //Unlocks door and completed the keypad;
 			input.text = "Passed";
 			input.color = Color.green;
 			AudioManager.audioManager.PlayAudio(sounds[1], transform);
@@ -68,5 +74,14 @@ public class Keypad : MonoBehaviour {
 			wrongCode = true;
 			AudioManager.audioManager.PlayAudio(sounds[0], transform);
 		}
-	}
-}
+
+		if(completed == true)
+			if(door != null)
+				door.OpenDoor(); //Unlocks door and completed the keypad;
+				else {
+					reward.SetActive(true);
+					anim.SetTrigger("Open");
+					light.color = Color.green;			
+				}			
+			}
+		}

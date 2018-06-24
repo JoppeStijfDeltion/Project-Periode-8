@@ -8,7 +8,8 @@ public class Safedoor : MonoBehaviour {
 	public int locks = 3;
 
 	#region Private Variables
-	private bool opened = false;
+	[HideInInspector]
+	public bool opened = false;
 
 	[HideInInspector]
 	public Animator anim;
@@ -22,10 +23,9 @@ public class Safedoor : MonoBehaviour {
 		locks--;
 
 		if(locks <= 0 && opened == false) { //If there aren't any locks left, open up the door;
-            print("ÿes");
 			opened = true;
 			anim.SetTrigger("Open");
-			RegionManager.regionManager.LoadRegion(3);
+			RegionManager.regionManager.LoadRegion(1);
 		}
 	}
 
