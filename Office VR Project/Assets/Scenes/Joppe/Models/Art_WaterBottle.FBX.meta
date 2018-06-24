@@ -5,15 +5,20 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: WaterBottle_Cap
+    100004: WaterBottle_Label
     400000: //RootNode
     400002: WaterBottle_Cap
+    400004: WaterBottle_Label
     2100000: WaterBottle
     2300000: //RootNode
     2300002: WaterBottle_Cap
+    2300004: WaterBottle_Label
     3300000: //RootNode
     3300002: WaterBottle_Cap
+    3300004: WaterBottle_Label
     4300000: WaterBottle
     4300002: WaterBottle_Cap
+    4300004: WaterBottle_Label
   externalObjects: {}
   materials:
     importMaterials: 1

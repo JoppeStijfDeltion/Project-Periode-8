@@ -32,10 +32,13 @@ public class Fuse : InteractableObject {
 		if(Fusebox.fuseBox.completed)
 		return;
 
+        print("Fuse pressed");
+
 		AudioManager.audioManager.PlayAudio(sounds[0], transform);
 		EffectManager.effectManager.InstantiateEffect("Sparks", transform);
 
 		anim.SetTrigger("Press");
+
 		switch(activated) {
 			case true:
 			activated = false;
@@ -57,14 +60,14 @@ public class Fuse : InteractableObject {
 		foreach(Fuse f in InfluencedFuses) {
 				switch(f.activated) {
 					case true:
-					GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOff;
-					anim.SetTrigger("Off");
+					f.GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOff;
+					f.anim.SetTrigger("Off");
 					f.activated = false;
 					break;
 
 					case false:
-					GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOn;
-					anim.SetTrigger("On");
+					f.GetComponent<MeshRenderer>().material = Fusebox.fuseBox.turnedOn;
+					f.anim.SetTrigger("On");
 					f.activated = true;
 					break;
 				}		

@@ -33,7 +33,7 @@ public class PickupSystem : MonoBehaviour {
 	#region Private&Hidden Variables
 	private SteamVR_TrackedObject trackedObj;
 	[HideInInspector]
-	public SteamVR_Controller.Device controller {	get { return SteamVR_Controller.Input((int)trackedObj.index); }}
+	public SteamVR_Controller.Device Controller {	get { return SteamVR_Controller.Input((int)trackedObj.index); }}
 
 	private FixedJoint thisJoint; //Current gameobject its fixed joint;
 
@@ -50,17 +50,13 @@ public class PickupSystem : MonoBehaviour {
 	private int frameCount;
 	#endregion
 	
-	private void Awake() { //Sets some references;
+	private void Start() { //Sets some references;
 		thisJoint = GetComponent<FixedJoint>(); //Sets the main joint of this object;
 		thisBody = GetComponent<Rigidbody>();
 		rayRepresentation.gameObject.SetActive(true);
 
 		if(GetComponent<SteamVR_TrackedObject>() && GameManager.gameManager.virtualReality == true)
 		trackedObj = GetComponent<SteamVR_TrackedObject>();
-	}
-
-	private void Start() {
-		GameManager.gameManager.hands.Add(this);
 	}
 
 	private void Update() {
@@ -71,7 +67,7 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 	private void Toggle() { //This method is used to toggle between multiple interaction methods;
-		if((GameManager.gameManager.virtualReality == true)? controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad):Input.GetButtonDown("Fire3")) { //Interaction based toggle;
+		if((GameManager.gameManager.virtualReality == true)? Controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad):Input.GetButtonDown("Fire3")) { //Interaction based toggle;
 		rayRepresentation.enabled = false;
 
 		switch(interactionState) {
@@ -134,19 +130,25 @@ public class PickupSystem : MonoBehaviour {
 
 	#region RayInteraction
 	public void RayInteraction() { //Used for when the player is using a ray to interact with;
-		Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
+		Ray ray = new Ray(transform.position, transform.forward);
 		RaycastHit rayHit;
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+        rayRepresentation.SetPosition(0, transform.position); //Sets starting position of the line;
+        rayRepresentation.material.color = Color.cyan;
 
-		/*This is the functionality part of the ray interaction function */
-		if(rayRepresentation.enabled == false) //Check if the ray is turned off;
-		rayRepresentation.enabled = true; //If so, turns it back on;
+
+        rayRepresentation.SetPositions(new Vector3[] { transform.position, transform.forward * 100 });
+        
+ 
+
+        /*This is the functionality part of the ray interaction function */
+        if (rayRepresentation.enabled == false) //Check if the ray is turned off;
+		    rayRepresentation.enabled = true; //If so, turns it back on;
 
 		if (Physics.Raycast(ray, out rayHit, maxRange)) { //If it detects collision;
-		
-			rayRepresentation.transform.localScale = new Vector3 (rayRepresentation.transform.lossyScale.x, rayRepresentation.transform.localEulerAngles.y, rayHit.distance * 7); //To draw the ray;
-				if(rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
-
-					if((GameManager.gameManager.virtualReality == true)? controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown("e")) 
+            rayRepresentation.transform.localScale = rayRepresentation.transform.position - rayHit.point;
+            if (rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
+					if((GameManager.gameManager.virtualReality == true)? Controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown("e")) 
 						rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;
 
 					if(currentRaySelectedObject == null) { //If the current object is equal to nothing;
@@ -223,7 +225,7 @@ public class PickupSystem : MonoBehaviour {
 
 	public void LetGo() {
 		if(objectBeingCarried == null) { return;} //If there is no object being interacted with, cut function off;
-		if((GameManager.gameManager.virtualReality == true)? controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyUp(KeyCode.E)) {
+		if((GameManager.gameManager.virtualReality == true)? Controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyUp(KeyCode.E)) {
 
 			if(objectBeingCarried.GetComponent<InteractableObject>()) {
 				objectBeingCarried.GetComponent<InteractableObject>().hand = null; //If its an interactable, stop interaction;
@@ -271,7 +273,7 @@ public class PickupSystem : MonoBehaviour {
 			bool canPickup = PickupCheck(c.gameObject); //A check to see if the item in range is indeed something to interact with;
 
 			if(canPickup) //If you can pickup the item;
-			if((GameManager.gameManager.virtualReality == true)?  controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown(KeyCode.E)) //Checks if you are holding down the button;
+			if((GameManager.gameManager.virtualReality == true)?  Controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown(KeyCode.E)) //Checks if you are holding down the button;
 			Pickup(c.gameObject); //Call Pickup;
 
 		}
@@ -284,7 +286,7 @@ public class PickupSystem : MonoBehaviour {
 		bool PickupCheck(GameObject _Object) {
 			if(objectBeingCarried == null)
 					if(!_Object.GetComponent<PickupSystem>()) { //If the opposing gameobject has a rigidbody and a friction module;
-						if(_Object.GetComponent<Rigidbody>()) { //If the rigidbody is NOT kinematic;w
+						if(_Object.GetComponent<Rigidbody>()) { //If the rigidbody is NOT kinematic;
 						if(!_Object.GetComponent<Rigidbody>().isKinematic == false)
 						return false;
 						}

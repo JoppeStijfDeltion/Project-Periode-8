@@ -14,8 +14,9 @@ public class ControllerScript : MonoBehaviour {
 	[Header ("Ray Reference:")]
 	public LineRenderer rayVisual;
 
-	[Header ("Prefab of the reticle shown when teleport laser is active")]
-	public GameObject teleportMarker;
+    [Header("Prefab of the reticle shown when teleport laser is active")]
+    public GameObject teleportMarker;
+    public Vector3 teleportScale;
 
 	[Header ("Allow Teleport Mask:")]
 	public LayerMask teleportMask;
@@ -43,8 +44,9 @@ public class ControllerScript : MonoBehaviour {
 
 	private void Awake () {
 		rayVisual = GetComponent<LineRenderer>();
-		print(teleportMarker);
 		reticle = Instantiate (teleportMarker);
+        reticle.transform.localScale = teleportScale;
+        reticle.SetActive(false);
         height = headTransform.position.y;
  
     }
@@ -72,7 +74,6 @@ public class ControllerScript : MonoBehaviour {
 		} else
 
 		if(_State == false) { //If the laser should be activated;
-				print(rayVisual);
 				rayVisual.enabled = false;
 				reticle.SetActive (false);
 				canTeleport = false;
@@ -81,29 +82,36 @@ public class ControllerScript : MonoBehaviour {
 	}
 
 	public void ShowLaser () {
-		RaycastHit hit;
-		if (Physics.Raycast (transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask)) {
-					LaserActivation(true);
-					rayVisual.SetPositions (new Vector3[] { transform.position, hit.point });
-					reticle.transform.position = hit.point + new Vector3 (0, 0.05f, 0);
-					} 
-					 else
-					LaserActivation(false);
+        if (this.enabled == true)
+        {
+            RaycastHit hit;
 
-				bool input = (GameManager.gameManager.virtualReality == true)? controller.GetHairTriggerDown (): Input.GetKeyDown ("e");
-				if (input && canTeleport) 
-					Teleport (hit);
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity)) {
+                if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
+                {
+                    LaserActivation(true);
+                    rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
+                    reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
+                }
+                else
+                    LaserActivation(false);
+
+                bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
+                if (input && canTeleport)
+                    Teleport(hit);
+            }
+        }
 	}
 
 	private void Teleport (RaycastHit hit) {
-		if(TeleportRoomCheck.canTeleport == true) { //If the reticle doesn't collide with anything;
+		if(reticle.GetComponent<TeleportRoomCheck>().canTeleport == true) { //If the reticle doesn't collide with anything;
 		RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
 		LaserActivation(false);
-		Vector3 difference = headTransform.parent.position - headTransform.position;
-            Vector3 test = headTransform.position;
-            test.y = height;
-            headTransform.position = test;   
-		headTransform.parent.position = hit.point + difference;
+        Vector3 difference = headTransform.parent.position - headTransform.position;
+        Vector3 test = headTransform.position;
+        test.y = height;
+        headTransform.position = test;   
+        headTransform.parent.position = hit.point + difference; 
 		AudioManager.audioManager.PlayAudio(footsteps, transform);
 		}
 	}

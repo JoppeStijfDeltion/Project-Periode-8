@@ -13,6 +13,5 @@ public class Puzzlepiece : RayInteraction {
     public override void Activate () {
         if (parent != null)
             parent.MovePiece ();
-            print("yes");
     }
 }

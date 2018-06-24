@@ -18,17 +18,11 @@ public class Safedoor : MonoBehaviour {
 		anim = GetComponent<Animator>();
 	}
 
-	public void Update() {
-		if(Input.GetKeyDown("o"))
-		OpenDoor();
-		if(Input.GetKeyDown("p"))
-		CloseDoor();
-	}
-
 	public void OpenDoor() {
 		locks--;
 
 		if(locks <= 0 && opened == false) { //If there aren't any locks left, open up the door;
+            print("ÿes");
 			opened = true;
 			anim.SetTrigger("Open");
 			RegionManager.regionManager.LoadRegion(3);

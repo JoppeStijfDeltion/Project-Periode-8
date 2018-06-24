@@ -22,7 +22,7 @@ public class Puzzlebox : InteractableObject {
 	public Color alphaCol;
 
 	#region Private Variables
-	private bool decreaseAlpha = false;
+	public bool decreaseAlpha = false;
 	#endregion
 
 	public override void Awake () { //Setting up the static box;
@@ -65,14 +65,11 @@ public class Puzzlebox : InteractableObject {
 
 
 	public override void Interact() {
-		decreaseAlpha = true;
-		alphaCol.a = 1;
+        print("d");
 
-		foreach(Text _Text in hints) {
-			_Text.color = alphaCol;
-		}
-
-		hand = null;
+        if (decreaseAlpha)
+            decreaseAlpha = false;  else decreaseAlpha = true;
+	    	hand = null;
 	}
 
 	public override void Update() {
@@ -81,15 +78,19 @@ public class Puzzlebox : InteractableObject {
 	}
 
 	void ChangeColor() {
-		if(decreaseAlpha == true) {
 			foreach(Text _Text in hints) {
-				alphaCol.a -= DecreaseAlpha();
-				_Text.color = alphaCol;
-			}
-		}
-	}
 
-	float DecreaseAlpha() {
-		return Mathf.Clamp01(Time.deltaTime * alphaDecreaseSpeed / 1);
+                if(decreaseAlpha == true) 
+				alphaCol.a -= AdjustAlpha();
+                else
+                alphaCol.a += AdjustAlpha();
+
+                alphaCol.a = Mathf.Clamp(alphaCol.a, 0, 255);
+                _Text.color = alphaCol;
+			}
+	    }
+
+	float AdjustAlpha() {
+		return Mathf.Clamp01(Time.deltaTime * alphaDecreaseSpeed);
 	}
 }

@@ -54,7 +54,7 @@ public class RegionManager : MonoBehaviour {
 	public void LoadRegion(int _RoomID) {
 		foreach(RegionData _Region in regions) { //Goes through every existing region;
 			foreach(GameObject _Flooring in _Region.regionFlooring) { //And takes every flooring there;
-			_Flooring.layer = 9; //And deactivate the ability to teleport on it;
+			_Flooring.layer = 1; //And deactivate the ability to teleport on it;
 			}
 
 			_Region.region.SetActive(false);
