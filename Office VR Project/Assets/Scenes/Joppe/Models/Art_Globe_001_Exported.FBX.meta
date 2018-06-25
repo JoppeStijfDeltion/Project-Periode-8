@@ -4,18 +4,18 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cylinder001
-    100004: Globe_Top
+    100002: Globe_LP
+    100004: Globe_Top_LP
     400000: //RootNode
-    400002: Cylinder001
-    400004: Globe_Top
+    400002: Globe_LP
+    400004: Globe_Top_LP
     2100000: No Name
-    2300000: Cylinder001
-    2300002: Globe_Top
-    3300000: Cylinder001
-    3300002: Globe_Top
-    4300000: Cylinder001
-    4300002: Globe_Top
+    2300000: Globe_LP
+    2300002: Globe_Top_LP
+    3300000: Globe_LP
+    3300002: Globe_Top_LP
+    4300000: Globe_Top_LP
+    4300002: Globe_LP
   externalObjects: {}
   materials:
     importMaterials: 1
