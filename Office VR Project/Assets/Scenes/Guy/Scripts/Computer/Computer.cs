@@ -144,7 +144,7 @@ public class Computer : RayInteraction {
 		}
 
 		if(_Command.Contains("90smode")) {
-			radio.aSource.clip = radio.sounds[1];
+			radio.aSource.clip = radio.secret;
 			radio.aSource.Play();
 			result.text = possibleResults[7];
 			return;

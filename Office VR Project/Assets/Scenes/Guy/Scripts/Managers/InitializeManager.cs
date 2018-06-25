@@ -15,6 +15,7 @@ public class InitializeManager : MonoBehaviour {
     public string[] script;
     public float timeTillNextLine = 2.5f;
     public Text uiCutsceneDialogue;
+    public GameObject phone;
 
     [Header("Elevator Settings:")]
     public GameObject[] elevatorButtons;
@@ -97,5 +98,7 @@ public class InitializeManager : MonoBehaviour {
     private IEnumerator ElevatorSoundQueue() {
         yield return new WaitForSeconds(2.5f);
         AudioManager.audioManager.PlayAudio(elevatorOpeningSound, transform);
+        phone.transform.parent = null;
+        phone.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }

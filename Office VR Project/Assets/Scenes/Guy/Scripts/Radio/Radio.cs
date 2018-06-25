@@ -4,43 +4,34 @@ using UnityEngine;
 
 /*An object with different types of music, this game its main audiosource*/
 
-public class Radio : RayInteraction {
+public class Radio : InteractableObject {
 
 	[Header("Radio Settings:")]
 	public bool isOn = false; //This function defines if the radio can send or not;
-	public AudioClip[] channels;
+	public AudioClip secret;
 
 	#region Private Variables
 	private int channelIndex = 0;
+
+	[HideInInspector]
+	public AudioSource aSource;
 	#endregion
 
-	public override void Activate() {
-		if(isOn == true) { //If the radio is on;
-			isOn = false; //Deactivate the radio;
-		} else //Else if it is the other way around;
-		{
-			isOn = true; //Turn the radio on instead;
-		}
-
-		TogglePower();
+	public override void Awake() {
+		base.Awake();
+		aSource = GetComponent<AudioSource>();
 	}
 
-	private void TogglePower() { //Used to turn this radio on or off;
-		switch(isOn) { //Switching the bool to check if the radio is on or not;
-			case true: //If its on, turn it off;
-			aSource.Play();
-			break;
-
-			case false: //If its off, turn it on;
-			aSource.Pause();
-			break;
-		}
-	}
-
-	private void ToggleChannel() {
-		if(channelIndex < channels.Length - 2) { //If the channel index exists and is smaller than the length;
+	public override void Interact() {
+		if(channelIndex < sounds.Count - 1) { //If the channel index exists and is smaller than the length;
 			channelIndex++;
-			aSource.clip = channels[channelIndex];
-		} 
+		}  else {
+			channelIndex = 0;
+		}
+
+		aSource.clip = sounds[channelIndex];
+		aSource.Play();
+
+		hand = null;
 	}
 }
