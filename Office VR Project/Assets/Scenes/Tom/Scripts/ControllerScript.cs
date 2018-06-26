@@ -87,18 +87,22 @@ public class ControllerScript : MonoBehaviour {
             RaycastHit hit;
 
             if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity)) {
+                rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
+                reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
+                Debug.Log("<color=yellow>" + hit.transform.name + "</color>");
+
                 if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
                 {
-                    LaserActivation(true);
-                    rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
-                    reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
+                    rayVisual.material.color = Color.green;
+                    bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
+                    if (input && canTeleport)
+                        Teleport(hit);
                 }
                 else
-                    LaserActivation(false);
-
-                bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
-                if (input && canTeleport)
-                    Teleport(hit);
+                {
+                    reticle.SetActive(false);
+                    rayVisual.material.color = Color.red;
+                }
             }
         }
 	}
@@ -106,7 +110,6 @@ public class ControllerScript : MonoBehaviour {
 	private void Teleport (RaycastHit hit) {
 		if(reticle.GetComponent<TeleportRoomCheck>().canTeleport == true) { //If the reticle doesn't collide with anything;
 		RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
-		LaserActivation(false);
         Vector3 difference = headTransform.parent.position - headTransform.position;
         Vector3 test = headTransform.position;
         test.y = height;
