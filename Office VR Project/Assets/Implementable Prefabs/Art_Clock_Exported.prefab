@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 23027353350168046}
   - component: {fileID: 54065143441633164}
   - component: {fileID: 65292916693381714}
+  - component: {fileID: 114950425079495384}
   m_Layer: 0
   m_Name: Klep_Rechts
   m_TagString: Untagged
@@ -250,6 +251,8 @@ GameObject:
   - component: {fileID: 23937132022757310}
   - component: {fileID: 65033869415123094}
   - component: {fileID: 54677023879691108}
+  - component: {fileID: 65642003843329350}
+  - component: {fileID: 114758835906099342}
   m_Layer: 0
   m_Name: Klep_Links
   m_TagString: Untagged
@@ -382,8 +385,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832349626293872}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.29575273, y: 0.00000010058284, z: -1.2741733}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -1.85, y: -0, z: 4.288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4764316324678996}
@@ -395,7 +398,7 @@ Transform:
   - {fileID: 4928751334687416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!4 &4375615600425230
 Transform:
   m_ObjectHideFlags: 1
@@ -588,7 +591,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f1029fc571379964f8af309fb9f05b97, type: 2}
+  - {fileID: 2100000, guid: 71e3591836d823a4582c85f7e71eb133, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -623,7 +626,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f1029fc571379964f8af309fb9f05b97, type: 2}
+  - {fileID: 2100000, guid: 71e3591836d823a4582c85f7e71eb133, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -693,7 +696,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f1029fc571379964f8af309fb9f05b97, type: 2}
+  - {fileID: 2100000, guid: 71e3591836d823a4582c85f7e71eb133, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -868,7 +871,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: f1029fc571379964f8af309fb9f05b97, type: 2}
+  - {fileID: 2100000, guid: 71e3591836d823a4582c85f7e71eb133, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1143,6 +1146,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -0.27, y: 0.04, z: 2.177148}
   m_Center: {x: -0.03, y: -0.05, z: 0.08}
+--- !u!65 &65642003843329350
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592563059653768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13, y: 0.01000002, z: 0.18000007}
+  m_Center: {x: 0, y: 0.000000014901161, z: -0.00000011920929}
 --- !u!65 &65703590958662056
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1253,8 +1268,9 @@ MonoBehaviour:
   hinge: {fileID: 1335202272261978}
   minRotation: 0
   maxRotation: 90
-  followingspeed: 2
+  followingspeed: 30
   locked: 0
+  calculateNegatives: 0
 --- !u!114 &114363055316291322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1270,6 +1286,19 @@ MonoBehaviour:
   hourHinge: {fileID: 4508087044335970}
   secondHingeRot: {x: 0, y: 0, z: 0}
   hourHingeRot: {x: 0, y: 0, z: 0}
+--- !u!114 &114758835906099342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592563059653768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f863432a2f21c80409b80c1e8f02d91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceBelowTillFriction: 0
+  canChild: 1
 --- !u!114 &114801670460700834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1288,5 +1317,19 @@ MonoBehaviour:
   hinge: {fileID: 1597870661380874}
   minRotation: 0
   maxRotation: 90
-  followingspeed: 2
+  followingspeed: 30
   locked: 0
+  calculateNegatives: 0
+--- !u!114 &114950425079495384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558808793371154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f863432a2f21c80409b80c1e8f02d91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceBelowTillFriction: 0
+  canChild: 1

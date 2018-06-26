@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Art_Desk_Kastjes_Material
+  m_Name: Art_Clock_Interactable
   m_Shader: {fileID: 4800000, guid: 449d1f4ce6122754786537998a303028, type: 3}
-  m_ShaderKeywords: _BOOL_ON _METALLICGLOSSMAP _NORMALMAP
+  m_ShaderKeywords: _BOOL_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: ca569edff981ff743b8e552417f09ecd, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -47,19 +47,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a9cff9fb237d47d47a2baee413b879bb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e705cb210c8c1b459b8fafbff992c33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MeSm:
-        m_Texture: {fileID: 2800000, guid: e3029c5d6c3e32a488faf13cd27849ec, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5530a9c871ba09a45aa07d278ea00f24, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: e3029c5d6c3e32a488faf13cd27849ec, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: ca569edff981ff743b8e552417f09ecd, type: 3}
+        m_Texture: {fileID: 2800000, guid: f0aea9c407316f44aa4cf64700e08a48, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:

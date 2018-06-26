@@ -1,21 +1,15 @@
 fileFormatVersion: 2
-guid: 2c52c6cc0ce1d6642baed4e077bf8ec2
+guid: 24b31970620b88f42bd5eab2a98cc2c5
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Globe_LP
-    100004: Globe_Top_LP
     400000: //RootNode
-    400002: Globe_LP
-    400004: Globe_Top_LP
-    2100000: No Name
-    2300000: Globe_LP
-    2300002: Globe_Top_LP
-    3300000: Globe_LP
-    3300002: Globe_Top_LP
-    4300000: Globe_Top_LP
-    4300002: Globe_LP
+    2100000: Solid Glass
+    2100002: Ceramic
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Water_Bottle001
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -47,7 +41,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.2
+    globalScale: 1.25
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
