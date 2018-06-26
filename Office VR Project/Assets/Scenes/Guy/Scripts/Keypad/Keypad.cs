@@ -18,10 +18,7 @@ public class Keypad : MonoBehaviour {
 
 	[Header("Unlock Settings:")]
 	public Safedoor door; //The door that will be unlocked upon completion;
-
-	[Header("This Object Settings:")]
-	public GameObject reward;
-	public Material light;
+    public Safe safe;
 
 	[Header("Sound Settings:")]
 	public AudioClip[] sounds;
@@ -78,10 +75,8 @@ public class Keypad : MonoBehaviour {
 		if(completed == true)
 			if(door != null)
 				door.OpenDoor(); //Unlocks door and completed the keypad;
-				else {
-					reward.SetActive(true);
-					anim.SetTrigger("Open");
-					light.color = Color.green;			
-				}			
-			}
-		}
+
+              if (safe != null)
+                safe.Open();
+			  }
+		  }
