@@ -76,7 +76,7 @@ public class Keypad : MonoBehaviour {
 			if(door != null)
 				door.OpenDoor(); //Unlocks door and completed the keypad;
 
-              if (safe != null)
+              if (safe != null && completed == true)
                 safe.Open();
 			  }
 		  }

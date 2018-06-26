@@ -15,7 +15,7 @@ public class Safe : MonoBehaviour {
 
     void Start () {
         anim = GetComponent<Animator>();
-        lightCol = light.GetComponent<Material>();
+        lightCol = light.GetComponent<MeshRenderer>().material;
 	}
 	
     public void Open() {

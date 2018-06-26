@@ -129,8 +129,13 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Radio\RadioChannel.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Radio\RadioVolume.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\RedButton.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Rotation.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Safe.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Safedoor.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\TeleportRoomCheck.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Water.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\WaterBottle.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\WaterDispenser.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\ControllerScript.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Fusion.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Laser.cs" />
