@@ -23,6 +23,10 @@ public class InitializeManager : MonoBehaviour {
     public Animator elevatorAnimator;
     public AudioClip elevatorOpeningSound;
 
+    [Header("Transforms:")]
+    public Transform player;
+    public Transform newLoc;
+
     #region Private Variables
     private int index;
     #endregion
@@ -51,34 +55,9 @@ public class InitializeManager : MonoBehaviour {
          initializeManager = Initialize;
     }
 
-    public void Start() {
-        foreach(PickupSystem _Hand in GameManager.gameManager.hands) {
-            _Hand.enabled = false;
-        }
-
-        StartCoroutine(CutScene());
-    }
-
-    public IEnumerator CutScene() {
-        if(GameManager.gameManager.playCutscene == false) { //IF the cutscene should be skipped;
-        StartCoroutine(StartGame()); //Start the game;
-        yield break;
-        }
-
-        yield return new WaitForSeconds(timeTillNextLine);
-        if(index < script.Length) {
-            uiCutsceneDialogue.text = script[index];
-            index++;
-            StartCoroutine(CutScene());
-            yield break;
-        } 
-
-        uiCutsceneDialogue.text = "";
-        StartCoroutine(StartGame());
-    }
-
     public IEnumerator StartGame() {
         yield return new WaitForSeconds(timeTillFadeIn); //When the game fades in;
+        player.transform.position = newLoc.transform.position;
         RegionManager.regionManager.fade = false;
         StartCoroutine(ElevatorSoundQueue());
 

@@ -123,6 +123,7 @@ public class ControllerScript : MonoBehaviour
     {
         if (reticle.GetComponent<TeleportRoomCheck>().canTeleport == true)
         { //If the reticle doesn't collide with anything;
+            Narrative.narrative.teleported = true;
             RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
             Vector3 difference = headTransform.parent.position - headTransform.position;
             Vector3 test = headTransform.position;

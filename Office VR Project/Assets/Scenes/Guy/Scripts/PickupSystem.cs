@@ -136,10 +136,7 @@ public class PickupSystem : MonoBehaviour {
         rayRepresentation.SetPosition(0, transform.position); //Sets starting position of the line;
         rayRepresentation.material.color = Color.cyan;
 
-
         rayRepresentation.SetPositions(new Vector3[] { transform.position, transform.forward * 100 });
-        
- 
 
         /*This is the functionality part of the ray interaction function */
         if (rayRepresentation.enabled == false) //Check if the ray is turned off;
@@ -211,7 +208,7 @@ public class PickupSystem : MonoBehaviour {
 		}
 	}
 
-	private void Throwing() { //Applying velocity and let go of grip of the object;
+	public void Throwing() { //Applying velocity and let go of grip of the object;
 		if(objectBeingCarried == null) { return; }
 					objectBeingCarried.GetComponent<Rigidbody>().useGravity = true;
 					objectBeingCarried.transform.parent = null; //Unchilds it from the hand;

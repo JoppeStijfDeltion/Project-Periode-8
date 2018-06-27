@@ -121,6 +121,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\InitializeManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\ManagerManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Managers\RegionManager.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Narrative.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\PickupSystem.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlebox.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Puzzlebox\Puzzlepiece.cs" />
