@@ -64,10 +64,12 @@ public class PickupSystem : MonoBehaviour {
 		AdjustVelocity(); //Used to define the throwing speed;
 		Toggle(); //This function is used to toggle the way to interact with the environment;
 		CoreInteraction(); //Used to decide for which functions to activate;
+        
 	}
 
-	private void Toggle() { //This method is used to toggle between multiple interaction methods;
+	private void Toggle() { //This method is used to toggle between multiple interaction methods;S
 		if((GameManager.gameManager.virtualReality == true)? Controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad):Input.GetButtonDown("Fire3")) { //Interaction based toggle;
+
 		rayRepresentation.enabled = false;
 
 		switch(interactionState) {

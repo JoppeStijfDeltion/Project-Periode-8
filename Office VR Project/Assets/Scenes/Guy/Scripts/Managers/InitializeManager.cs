@@ -57,6 +57,10 @@ public class InitializeManager : MonoBehaviour {
         yield return new WaitForSeconds(timeTillFadeIn); //When the game fades in;
         radio.SetActive(true);
         player.transform.position = newLoc.transform.position;
+        foreach(PickupSystem _Hand in GameManager.gameManager.hands)
+        {
+            _Hand.teleport.height = player.transform.position.y;
+        }
         RegionManager.regionManager.fade = false;
         StartCoroutine(ElevatorSoundQueue());
 

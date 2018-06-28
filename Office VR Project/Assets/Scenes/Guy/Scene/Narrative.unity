@@ -1461,7 +1461,7 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 114905171}
-  m_Mesh: {fileID: 1120522527}
+  m_Mesh: {fileID: 1115834207}
 --- !u!23 &114905175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1477,7 +1477,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 181469455}
+  - {fileID: 856653857}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2361,39 +2361,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 20
---- !u!21 &181469455
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &181702225
 GameObject:
   m_ObjectHideFlags: 0
@@ -13047,6 +13014,39 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 854538651}
   m_Mesh: {fileID: 4300000, guid: 41a3990c908dd4b4681f14921e46a47c, type: 3}
+--- !u!21 &856653857
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &859129981
 Prefab:
   m_ObjectHideFlags: 0
@@ -16114,72 +16114,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c52c6cc0ce1d6642baed4e077bf8ec2, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1119692277
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1119692278}
-  - component: {fileID: 1119692279}
-  m_Layer: 0
-  m_Name: Point Light (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1119692278
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119692277}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.00000008594943, y: -0.09999992, z: 0.078000106}
-  m_LocalScale: {x: 1.0000014, y: 1.0000017, z: 1.0000002}
-  m_Children: []
-  m_Father: {fileID: 625144822}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &1119692279
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1119692277}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 2
-  m_Color: {r: 1, g: 0.53891975, b: 0.514151, a: 1}
-  m_Intensity: 0.5
-  m_Range: 5
-  m_SpotAngle: 80
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.02
-    m_NormalBias: 0.1
-    m_NearPlane: 0.1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 1
---- !u!43 &1120522527
+--- !u!43 &1115834207
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -16307,6 +16242,71 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &1119692277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1119692278}
+  - component: {fileID: 1119692279}
+  m_Layer: 0
+  m_Name: Point Light (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119692278
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119692277}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.00000008594943, y: -0.09999992, z: 0.078000106}
+  m_LocalScale: {x: 1.0000014, y: 1.0000017, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 625144822}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!108 &1119692279
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1119692277}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 0.53891975, b: 0.514151, a: 1}
+  m_Intensity: 0.5
+  m_Range: 5
+  m_SpotAngle: 80
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.02
+    m_NormalBias: 0.1
+    m_NearPlane: 0.1
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 1
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 1
 --- !u!1 &1129332314
 GameObject:
   m_ObjectHideFlags: 0
@@ -18896,6 +18896,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footsteps: {fileID: 8300000, guid: 3029c8c478ecd2148b83d8d1a138f50b, type: 3}
   rig: {fileID: 0}
+  head: {fileID: 0}
   rayVisual: {fileID: 371470866}
   teleportMarker: {fileID: 1345252774102524, guid: eb2dfbb673cc3cb47897756ed1db9cf8,
     type: 2}
@@ -18905,6 +18906,7 @@ MonoBehaviour:
   reticleMask:
     serializedVersion: 2
     m_Bits: 0
+  height: 0
 --- !u!120 &1257548633
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -25835,7 +25837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footsteps: {fileID: 8300000, guid: 3029c8c478ecd2148b83d8d1a138f50b, type: 3}
-  rig: {fileID: 114905171}
+  rig: {fileID: 114905172}
+  head: {fileID: 2091990608}
   rayVisual: {fileID: 1561599471}
   teleportMarker: {fileID: 1066120169484820, guid: 472d80767cf253c4c9f65229b1c348bb,
     type: 2}
@@ -25845,6 +25848,7 @@ MonoBehaviour:
   reticleMask:
     serializedVersion: 2
     m_Bits: 4294966271
+  height: 0
 --- !u!135 &1561599470
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30967,7 +30971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footsteps: {fileID: 8300000, guid: 3029c8c478ecd2148b83d8d1a138f50b, type: 3}
-  rig: {fileID: 114905171}
+  rig: {fileID: 114905172}
+  head: {fileID: 2091990608}
   rayVisual: {fileID: 1832980332}
   teleportMarker: {fileID: 1066120169484820, guid: 472d80767cf253c4c9f65229b1c348bb,
     type: 2}
@@ -30977,6 +30982,7 @@ MonoBehaviour:
   reticleMask:
     serializedVersion: 2
     m_Bits: 4294966271
+  height: 0
 --- !u!135 &1832980331
 SphereCollider:
   m_ObjectHideFlags: 0

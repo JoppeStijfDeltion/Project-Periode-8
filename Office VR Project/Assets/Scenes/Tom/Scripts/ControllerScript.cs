@@ -10,7 +10,8 @@ public class ControllerScript : MonoBehaviour
     public AudioClip footsteps;
 
     [Header("Camera Head Rig Object:")]
-    public GameObject rig;
+    public Transform rig;
+    public Transform head;
 
     [Header("Ray Reference:")]
     public LineRenderer rayVisual;
@@ -22,6 +23,9 @@ public class ControllerScript : MonoBehaviour
     public LayerMask teleportMask;
     public LayerMask reticleMask;
 
+    [HideInInspector]
+    public float height;
+    float heightGet { get { return rig.position.y; } }
     #region Get Controller (Input)
 
     private SteamVR_TrackedObject trackedObj;
@@ -31,10 +35,6 @@ public class ControllerScript : MonoBehaviour
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
     }
 
-    #endregion
-
-    #region
-    private float height = 0;
     #endregion
 
     #region  Teleport
@@ -49,6 +49,7 @@ public class ControllerScript : MonoBehaviour
         rayVisual = GetComponent<LineRenderer>();
         reticle = Instantiate(teleportMarker);
         reticle.SetActive(false);
+        height = heightGet;
 
     }
 
@@ -108,13 +109,12 @@ public class ControllerScript : MonoBehaviour
 
                 if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
                 {
-                    print(hit.transform.gameObject);
                     if (reticle.activeSelf == false)
                     reticle.SetActive(true);
                     rayVisual.material.color = Color.green;
 
                     if (input)
-                        Teleport(hit.transform.position);
+                        Teleport(hit);
                 }
                 else
                 {
@@ -126,20 +126,26 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
-    void Teleport(Vector3 hit)
+    void Teleport(RaycastHit _hit)
     { 
             Narrative.narrative.teleported = true;
             RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
-            rig.transform.position = hit;
+            Vector3 _Final = new Vector3(_hit.point.x, height, _hit.point.z);
+            rig.transform.position = _Final;
+            
 
-            GameObject _Sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), new Vector3(hit.x, hit.y + 1, hit.z), Quaternion.identity);
-             PhysicMaterial _Bounce = new PhysicMaterial();
-             _Bounce.bounciness = 1;
-             _Bounce.bounceCombine = PhysicMaterialCombine.Maximum;
-             _Sphere.AddComponent<Friction>();
-            _Sphere.AddComponent<Rigidbody>();
-        _Sphere.GetComponent<SphereCollider>().material = _Bounce;
+        //GameObject _Sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), rig.transform.position, Quaternion.identity);
+        /*PhysicMaterial _Bounce = new PhysicMaterial
+        {
+        bounciness = 1,
+        bounceCombine = PhysicMaterialCombine.Maximum
+        };
+        _Sphere.AddComponent<Friction>();
+        _Sphere.AddComponent<Rigidbody>();
+        _Sphere.GetComponent<SphereCollider>().material = _Bounce; */
 
-            AudioManager.audioManager.PlayAudio(footsteps, transform);
+        //print("Transform Difference: " +(rig.transform.position - _Sphere.transform.position));
+
+        AudioManager.audioManager.PlayAudio(footsteps, transform);
     }
 }

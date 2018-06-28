@@ -8,9 +8,10 @@ public class Water : MonoBehaviour {
 	public float incrementAmount = 0.05f;
 
 	void OnParticleCollision(GameObject _Bottle) {
-		if(_Bottle.transform.tag == "Water") {
-			WaterBottle _WaterBottle = _Bottle.transform.parent.GetComponent<WaterBottle>();
-			_WaterBottle.AddWater(incrementAmount);
+        print(_Bottle);
+		if(_Bottle.transform.GetComponent<WaterBottle>()) {
+			_Bottle.GetComponent<WaterBottle>().AddWater(incrementAmount);
+            print("Incrementing water...");
 			return;
 		}
 	}

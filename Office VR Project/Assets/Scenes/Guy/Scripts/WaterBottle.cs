@@ -28,19 +28,17 @@ public class WaterBottle : MonoBehaviour {
 	}
 
 	void SprayWater() {
-		print(transform.eulerAngles.x);
 
 	if(capped == false) {
-		if(transform.eulerAngles.x > -95 &&  transform.eulerAngles.x < 95 && rb.mass > 0) {
-			//water.Play();
-			rb.mass -= waterDecreaseSpeed * Time.deltaTime;
-		} /*else {
-		if(water.isPlaying) { 
-			water.Stop();
-		}
-	} */
-	}
-}
+            if (transform.eulerAngles.x > -95 && transform.eulerAngles.x < 95 && rb.mass > minMass)
+            {
+                water.Play();
+                rb.mass -= waterDecreaseSpeed * Time.deltaTime;
+            }
+            else
+                water.Stop();
+	    }
+    }
 
 	public void AddWater(float _Increment) {
 		rb.mass += (_Increment * Time.deltaTime);
