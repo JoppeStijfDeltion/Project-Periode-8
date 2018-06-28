@@ -67,7 +67,12 @@ public class Narrative : MonoBehaviour {
 		timer = timeTill;
 	}
 
-	public void Update() {
+    void Start()
+    {
+        InitializeManager.initializeManager.radio.SetActive(false);    
+    }
+
+    public void Update() {
 		NarrativeProgression();
 		Check();
 		RandomSound();
@@ -131,7 +136,8 @@ public class Narrative : MonoBehaviour {
 					objectiveState = Objective.Default;
 					narrativeState = Acts.ActTwo;
 					dialogueIndex = 0;
-					StartCoroutine(NarrativeProgression());
+                            StopCoroutine(NarrativeProgression());
+                            StartCoroutine(NarrativeProgression());
 					}
 				}
 			}
@@ -142,7 +148,8 @@ public class Narrative : MonoBehaviour {
 				objectiveState = Objective.Default;
 				narrativeState = Acts.ActThree;
 				dialogueIndex = 0;
-				StartCoroutine(NarrativeProgression());
+                    StopCoroutine(NarrativeProgression());
+                    StartCoroutine(NarrativeProgression());
 			}
 			break;
 
@@ -154,7 +161,8 @@ public class Narrative : MonoBehaviour {
 				objectiveState = Objective.Default;
 				narrativeState = Acts.finalAct;
 				dialogueIndex = 0;
-				StartCoroutine(NarrativeProgression());
+                            StopCoroutine(NarrativeProgression());
+                            StartCoroutine(NarrativeProgression());
 				}
 			}
 		}
@@ -169,56 +177,70 @@ public class Narrative : MonoBehaviour {
 	}
 
 	IEnumerator NarrativeProgression() {
-		switch(narrativeState) {
-			case Acts.ActOne:
-				audioIndex = 0;
-				SetAudio(voiceContainer[audioIndex], null, 0);
-				StopCoroutine(SetDialogue(null, null));
-				StartCoroutine(SetDialogue(null, firstAct));
-				yield return new WaitForSeconds(aSource.clip.length);
-				objectiveState = Objective.Ray;
-			break;
+        if (InitializeManager.initializeManager.playCutscene == true)
+        {
+            switch (narrativeState)
+            {
+                case Acts.ActOne:
+                    audioIndex = 0;
+                    SetAudio(voiceContainer[audioIndex], null, 0);
+                    StopCoroutine(SetDialogue(null, null));
+                    StartCoroutine(SetDialogue(null, firstAct));
+                    yield return new WaitForSeconds(aSource.clip.length);
+                    objectiveState = Objective.Ray;
+                    break;
 
-			case Acts.ActTwo:
-					audioIndex = 1;
-					SetAudio(voiceContainer[audioIndex], null, 0);
-					StopCoroutine(SetDialogue(null, null));
-					StartCoroutine(SetDialogue(null, secondAct));
-					yield return new WaitForSeconds(aSource.clip.length);
-					objectiveState = Objective.Teleport;
-			break;
+                case Acts.ActTwo:
+                    audioIndex = 1;
+                    SetAudio(voiceContainer[audioIndex], null, 0);
+                    StopCoroutine(SetDialogue(null, null));
+                    StartCoroutine(SetDialogue(null, secondAct));
+                    yield return new WaitForSeconds(aSource.clip.length);
+                    objectiveState = Objective.Teleport;
+                    break;
 
-			case Acts.ActThree:
-					audioIndex = 2;
-					SetAudio(voiceContainer[audioIndex], null, 0);
-					StopCoroutine(SetDialogue(null, null));
-					StartCoroutine(SetDialogue(null, thirdAct));
-					yield return new WaitForSeconds(aSource.clip.length);
-					testItem.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 1);
-					objectiveState = Objective.Throw;
-			break;
+                case Acts.ActThree:
+                    audioIndex = 2;
+                    SetAudio(voiceContainer[audioIndex], null, 0);
+                    StopCoroutine(SetDialogue(null, null));
+                    StartCoroutine(SetDialogue(null, thirdAct));
+                    yield return new WaitForSeconds(aSource.clip.length);
+                    testItem.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 1);
+                    objectiveState = Objective.Throw;
+                    break;
 
-			case Acts.finalAct:
-					audioIndex = 3;
-					SetAudio(voiceContainer[audioIndex], null, 0);
-					StartCoroutine(SetDialogue(null, finalAct));
-					yield return new WaitForSeconds(aSource.clip.length);
-					audioIndex = 4;
-					SetAudio(voiceContainer[audioIndex], null, 0);
-					RegionManager.regionManager.fade = true;
-					foreach(PickupSystem _Hand in GameManager.gameManager.hands) {
-						if(_Hand.objectBeingCarried != null) {
-							if(_Hand.objectBeingCarried.GetComponent<Friction>())
-							_Hand.Throwing();
-						}
-					}
-					
-					if(started == false) {
-					started = true;
-					StartCoroutine(InitializeManager.initializeManager.StartGame());
-					}
-			break;
-			}	
+                case Acts.finalAct:
+                    audioIndex = 3;
+                    SetAudio(voiceContainer[audioIndex], null, 0);
+                    StartCoroutine(SetDialogue(null, finalAct));
+                    yield return new WaitForSeconds(aSource.clip.length);
+                    audioIndex = 4;
+                    SetAudio(voiceContainer[audioIndex], null, 0);
+                    RegionManager.regionManager.fade = true;
+                    foreach (PickupSystem _Hand in GameManager.gameManager.hands)
+                    {
+                        if (_Hand.objectBeingCarried != null)
+                        {
+                            if (_Hand.objectBeingCarried.GetComponent<Friction>())
+                                _Hand.Throwing();
+                        }
+                    }
+
+                    if (started == false)
+                    {
+                        started = true;
+                        StartCoroutine(InitializeManager.initializeManager.StartGame());
+                    }
+                    break;
+            }
+        } else
+        {
+            if (started == false)
+            {
+                started = true;
+                StartCoroutine(InitializeManager.initializeManager.StartGame());
+            }
+        }
 	}
 
 	#region Audio

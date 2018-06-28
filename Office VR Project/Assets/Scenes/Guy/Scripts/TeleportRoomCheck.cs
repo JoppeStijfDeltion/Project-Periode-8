@@ -8,40 +8,39 @@ public class TeleportRoomCheck : MonoBehaviour {
 
 	public bool canTeleport = true;
 
-	public Material parentCol; //Parent color;
-	public Material childCol; //Child color;
-	public Material lineCol; //Linecolor;
     public LayerMask teleportMask; //Mask that allows teleporting;
+    public Material particle;
+    public Material footsteps;
+
+    public Color falseDetected;
+    public Color trueDetected;
 
 
-	[Header("test")]
-	public Color parent;
-
-	public void Update() {
+    public void Update() {
 		CustomTriggerArea(); //Custom written OnTrigger station;
 	}
 
-	private void CustomTriggerArea() {
+	void CustomTriggerArea() {
 		Collider[] _CurrentColliders = new Collider[10]; //Storage for all colliders within the triggerfield;
 		Physics.OverlapBoxNonAlloc(transform.position, transform.GetComponent<BoxCollider>().size, _CurrentColliders); //Collecting all current data;
 
 		foreach(Collider _Col in _CurrentColliders) { //For every collider that is within the trigger field;
 			if(_Col != null) { //If the collider has data;
 			    if(_Col.isTrigger == false) { //If the collider is NOT a triggerfield;
-			    	if((1<<_Col.gameObject.layer & teleportMask) == 8) { //If the collider currently is NOT a teleport allowing mask;
-                        parentCol.color = Color.red; //Gives the player negative feedback;
-                        childCol.color = Color.red;
-                        lineCol.color = Color.red;
-                        canTeleport = false; //Stops the user from teleporting;
-                        return; //Cuts off the function due to the circumstances not meeting up to the criteria stated above;
-                    }
-			    }
-		    }
-	    }
-
-        parentCol.color = Color.green; //Gives positive feedback;
-        childCol.color = Color.green;
-        lineCol.color = Color.green;
-        canTeleport = true; //Allows the player to teleport;
+                        canTeleport = true; //Stops the user from teleporting;
+                        particle.color = trueDetected;
+                        footsteps.color = trueDetected;
+                    } else {
+                    canTeleport = false; //Stops the user from teleporting;
+                    particle.color = falseDetected;
+                    footsteps.color = falseDetected;
+                }
+            } else
+            {
+                canTeleport = true; //Stops the user from teleporting;
+                particle.color = trueDetected;
+                footsteps.color = trueDetected;
+            }
+        }
     }
 }
