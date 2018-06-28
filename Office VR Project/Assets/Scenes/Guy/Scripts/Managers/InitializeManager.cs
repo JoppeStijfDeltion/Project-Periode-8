@@ -12,10 +12,8 @@ public class InitializeManager : MonoBehaviour {
     public float timeTillFadeIn;
 
     [Header("Cutscene Settings:")]
-    public string[] script;
-    public float timeTillNextLine = 2.5f;
-    public Text uiCutsceneDialogue;
-    public GameObject phone;
+    public bool playCutscene = true;
+    public GameObject radio;
 
     [Header("Elevator Settings:")]
     public GameObject[] elevatorButtons;
@@ -57,6 +55,7 @@ public class InitializeManager : MonoBehaviour {
 
     public IEnumerator StartGame() {
         yield return new WaitForSeconds(timeTillFadeIn); //When the game fades in;
+        radio.SetActive(true);
         player.transform.position = newLoc.transform.position;
         RegionManager.regionManager.fade = false;
         StartCoroutine(ElevatorSoundQueue());
@@ -77,7 +76,5 @@ public class InitializeManager : MonoBehaviour {
     private IEnumerator ElevatorSoundQueue() {
         yield return new WaitForSeconds(2.5f);
         AudioManager.audioManager.PlayAudio(elevatorOpeningSound, transform);
-        phone.transform.parent = null;
-        phone.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }

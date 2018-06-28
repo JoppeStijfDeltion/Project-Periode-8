@@ -10,17 +10,17 @@ public class ControllerScript : MonoBehaviour
     public AudioClip footsteps;
 
     [Header("Camera Head Rig Object:")]
-    public Transform headTransform;
+    public GameObject rig;
 
     [Header("Ray Reference:")]
     public LineRenderer rayVisual;
 
     [Header("Prefab of the reticle shown when teleport laser is active")]
     public GameObject teleportMarker;
-    public Vector3 teleportScale;
 
     [Header("Allow Teleport Mask:")]
     public LayerMask teleportMask;
+    public LayerMask reticleMask;
 
     #region Get Controller (Input)
 
@@ -48,9 +48,7 @@ public class ControllerScript : MonoBehaviour
     {
         rayVisual = GetComponent<LineRenderer>();
         reticle = Instantiate(teleportMarker);
-        reticle.transform.localScale = teleportScale;
         reticle.SetActive(false);
-        height = headTransform.position.y;
 
     }
 
@@ -93,25 +91,34 @@ public class ControllerScript : MonoBehaviour
 
     public void ShowLaser()
     {
+        bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
+
+        rayVisual.enabled = true;
+
         if (this.enabled == true)
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+            Debug.DrawRay(transform.position, transform.forward);
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, reticleMask))
             {
-                rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
                 reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
-                Debug.Log("<color=yellow>" + hit.transform.name + "</color>");
+
+                rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
 
                 if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
                 {
+                    print(hit.transform.gameObject);
+                    if (reticle.activeSelf == false)
+                    reticle.SetActive(true);
                     rayVisual.material.color = Color.green;
-                    bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
-                    if (input && canTeleport)
-                        Teleport(hit);
+
+                    if (input)
+                        Teleport(hit.transform.position);
                 }
                 else
                 {
+                    if(reticle.activeSelf == true)
                     reticle.SetActive(false);
                     rayVisual.material.color = Color.red;
                 }
@@ -119,18 +126,20 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
-    private void Teleport(RaycastHit hit)
-    {
-        if (reticle.GetComponent<TeleportRoomCheck>().canTeleport == true)
-        { //If the reticle doesn't collide with anything;
+    void Teleport(Vector3 hit)
+    { 
             Narrative.narrative.teleported = true;
             RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
-            Vector3 difference = headTransform.parent.position - headTransform.position;
-            Vector3 test = headTransform.position;
-            test.y = height;
-            headTransform.position = test;
-            headTransform.parent.position = hit.point + difference;
+            rig.transform.position = hit;
+
+            GameObject _Sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), new Vector3(hit.x, hit.y + 1, hit.z), Quaternion.identity);
+             PhysicMaterial _Bounce = new PhysicMaterial();
+             _Bounce.bounciness = 1;
+             _Bounce.bounceCombine = PhysicMaterialCombine.Maximum;
+             _Sphere.AddComponent<Friction>();
+            _Sphere.AddComponent<Rigidbody>();
+        _Sphere.GetComponent<SphereCollider>().material = _Bounce;
+
             AudioManager.audioManager.PlayAudio(footsteps, transform);
-        }
     }
 }
