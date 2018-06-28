@@ -10,7 +10,7 @@ public class ControllerScript : MonoBehaviour
     public AudioClip footsteps;
 
     [Header("Camera Head Rig Object:")]
-    public Transform headTransform;
+    public GameObject rig;
 
     [Header("Ray Reference:")]
     public LineRenderer rayVisual;
@@ -49,7 +49,6 @@ public class ControllerScript : MonoBehaviour
         rayVisual = GetComponent<LineRenderer>();
         reticle = Instantiate(teleportMarker);
         reticle.SetActive(false);
-        height = headTransform.position.y;
 
     }
 
@@ -92,6 +91,8 @@ public class ControllerScript : MonoBehaviour
 
     public void ShowLaser()
     {
+        bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
+
         rayVisual.enabled = true;
 
         if (this.enabled == true)
@@ -112,10 +113,8 @@ public class ControllerScript : MonoBehaviour
                     reticle.SetActive(true);
                     rayVisual.material.color = Color.green;
 
-                    bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
-
                     if (input)
-                        Teleport(hit);
+                        Teleport(hit.transform.position);
                 }
                 else
                 {
@@ -127,11 +126,20 @@ public class ControllerScript : MonoBehaviour
         }
     }
 
-    void Teleport(RaycastHit hit)
+    void Teleport(Vector3 hit)
     { 
             Narrative.narrative.teleported = true;
             RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
-            headTransform.position = hit.point;
+            rig.transform.position = hit;
+
+            GameObject _Sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), new Vector3(hit.x, hit.y + 1, hit.z), Quaternion.identity);
+             PhysicMaterial _Bounce = new PhysicMaterial();
+             _Bounce.bounciness = 1;
+             _Bounce.bounceCombine = PhysicMaterialCombine.Maximum;
+             _Sphere.AddComponent<Friction>();
+            _Sphere.AddComponent<Rigidbody>();
+        _Sphere.GetComponent<SphereCollider>().material = _Bounce;
+
             AudioManager.audioManager.PlayAudio(footsteps, transform);
     }
 }
