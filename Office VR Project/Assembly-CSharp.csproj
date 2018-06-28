@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\LoadSafeRegion.cs" />
-     <Compile Include="Assets\mp5adrctiyltuuyuyen.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -106,6 +105,7 @@
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Door.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Keylock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Test.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\DoorAnimated.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\EffectManager.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Friction.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Fusebox\Fuse.cs" />

@@ -157,12 +157,13 @@ public class Narrative : MonoBehaviour {
 			foreach(PickupSystem _Hand in GameManager.gameManager.hands) {
 				if(_Hand.enabled == true) { 
 				if(_Hand.objectBeingCarried != null) {
-				if((GameManager.gameManager.virtualReality == true)?  _Hand.Controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyUp(KeyCode.E)) //Checks if you are holding down the button;
+				if((GameManager.gameManager.virtualReality == true)?  _Hand.Controller.GetPressUp(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyUp(KeyCode.E)) { //Checks if you are holding down the button;
 				objectiveState = Objective.Default;
 				narrativeState = Acts.finalAct;
 				dialogueIndex = 0;
                             StopCoroutine(NarrativeProgression());
                             StartCoroutine(NarrativeProgression());
+					}
 				}
 			}
 		}
@@ -171,14 +172,21 @@ public class Narrative : MonoBehaviour {
 	}
 
 	IEnumerator Begin() {
+		if (GameManager.gameManager.playCutscene == true)
+        {
 		SetAudio(phoneringing, null, 0);
 		yield return new WaitForSeconds(aSource.clip.length);
 		StartCoroutine(NarrativeProgression());
+		}
+		else {
+			if(started == false) {
+				started = true;
+			StartCoroutine(InitializeManager.initializeManager.StartGame());
+			}
+		}
 	}
 
 	IEnumerator NarrativeProgression() {
-        if (InitializeManager.initializeManager.playCutscene == true)
-        {
             switch (narrativeState)
             {
                 case Acts.ActOne:
@@ -233,15 +241,7 @@ public class Narrative : MonoBehaviour {
                     }
                     break;
             }
-        } else
-        {
-            if (started == false)
-            {
-                started = true;
-                StartCoroutine(InitializeManager.initializeManager.StartGame());
-            }
-        }
-	}
+        } 
 
 	#region Audio
 	void SetAudio(AudioClip _Clip, AudioClip[] _Acts, int _Index) {

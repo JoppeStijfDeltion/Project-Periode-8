@@ -12,7 +12,6 @@ public class InitializeManager : MonoBehaviour {
     public float timeTillFadeIn;
 
     [Header("Cutscene Settings:")]
-    public bool playCutscene = true;
     public GameObject radio;
 
     [Header("Elevator Settings:")]

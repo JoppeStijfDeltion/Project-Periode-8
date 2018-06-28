@@ -18,10 +18,11 @@ public class ControllerScript : MonoBehaviour
 
     [Header("Prefab of the reticle shown when teleport laser is active")]
     public GameObject teleportMarker;
+    public Transform worldspace;
 
     [Header("Allow Teleport Mask:")]
     public LayerMask teleportMask;
-    public LayerMask reticleMask;
+    public LayerMask negativeObjects;
 
     [HideInInspector]
     public float height;
@@ -48,6 +49,7 @@ public class ControllerScript : MonoBehaviour
     {
         rayVisual = GetComponent<LineRenderer>();
         reticle = Instantiate(teleportMarker);
+        reticle.transform.SetParent(worldspace);
         reticle.SetActive(false);
         height = heightGet;
 
@@ -101,33 +103,34 @@ public class ControllerScript : MonoBehaviour
             RaycastHit hit;
 
             Debug.DrawRay(transform.position, transform.forward);
-            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, reticleMask))
-            {
-                reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, negativeObjects))   {
+
+                print("Your teleport ray was blocked by: " +hit.transform.gameObject);
 
                 rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
+                reticle.SetActive(false);
+                rayVisual.material.color = Color.red;
+                return;
+            }
 
-                if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))
-                {
-                    if (reticle.activeSelf == false)
+            if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, teleportMask))  {
+                    
+                rayVisual.SetPositions(new Vector3[] { transform.position, hit.point });
+                reticle.transform.position = hit.point + new Vector3(0, 0.05f, 0);
+
+                if (reticle.activeSelf == false)
                     reticle.SetActive(true);
                     rayVisual.material.color = Color.green;
 
                     if (input)
                         Teleport(hit);
                 }
-                else
-                {
-                    if(reticle.activeSelf == true)
-                    reticle.SetActive(false);
-                    rayVisual.material.color = Color.red;
-                }
             }
         }
-    }
 
     void Teleport(RaycastHit _hit)
     { 
+            if(reticle.GetComponent<TeleportRoomCheck>().canTeleport) {
             Narrative.narrative.teleported = true;
             RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
             Vector3 _Final = new Vector3(_hit.point.x, height, _hit.point.z);
@@ -147,5 +150,6 @@ public class ControllerScript : MonoBehaviour
         //print("Transform Difference: " +(rig.transform.position - _Sphere.transform.position));
 
         AudioManager.audioManager.PlayAudio(footsteps, transform);
+        }
     }
 }
