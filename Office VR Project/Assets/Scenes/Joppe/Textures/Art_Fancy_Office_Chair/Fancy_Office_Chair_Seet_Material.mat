@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Art_Carpet_Material
+  m_Name: Fancy_Office_Chair_Seet_Material
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: a224dc488f797f043a976c2434a215d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: a5a07cc3b241f424f835ac2fc2d1faad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,11 +39,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 51cefca0712903248989238170d5326b, type: 3}
+        m_Texture: {fileID: 2800000, guid: bf82884fdc51f354d8d08b6218cb4ab8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 81e4c8d41a7a4ce448c723164c7db3a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5911c363f057df54f8f2c4f50c74b7af, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
