@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f1efa416e3ad89c45ab724944cb5c16a
+guid: 76b4b272501818942812f53c737add3a
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -26,7 +26,7 @@ ModelImporter:
     400018: Drawer_Top_R_001
     400020: Top_Drawer_001
     2100000: Desk
-    2100002: Desk_Drawers
+    2100002: Computer
     2300000: Desk
     2300002: Drawer_002_L_001
     2300004: Drawer_002_R_001
@@ -59,17 +59,7 @@ ModelImporter:
     4300018: Drawer_Top_R_001
     7400000: Take 001
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Desk
-    second: {fileID: 2100000, guid: 402d7553330ecaa48b9fa4642fab1176, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Desk_Drawers
-    second: {fileID: 2100000, guid: db08075152653d94b9d2157cbaa5ed07, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -121,8 +111,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 80
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
