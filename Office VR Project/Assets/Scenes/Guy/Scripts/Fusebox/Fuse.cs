@@ -29,7 +29,7 @@ public class Fuse : InteractableObject {
 	}
 
 	public override void Interact() {
-		if(Fusebox.fuseBox.completed)
+		if(Fusebox.fuseBox.completed || Fusebox.fuseBox.started == false)
 		return;
 
         print("Fuse pressed");

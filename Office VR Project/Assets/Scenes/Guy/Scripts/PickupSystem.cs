@@ -137,14 +137,14 @@ public class PickupSystem : MonoBehaviour {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
         rayRepresentation.SetPosition(0, transform.position); //Sets starting position of the line;
         rayRepresentation.material.color = Color.cyan;
-        rayRepresentation.SetPositions(new Vector3[] { transform.position, rayRepresentation.transform.forward * 100 });
+        rayRepresentation.SetPositions(new Vector3[] { transform.position, transform.forward * 100 });
 
         /*This is the functionality part of the ray interaction function */
         if (rayRepresentation.enabled == false) //Check if the ray is turned off;
 		    rayRepresentation.enabled = true; //If so, turns it back on;
 
 		if (Physics.Raycast(ray, out rayHit, maxRange)) { //If it detects collision;
-            rayRepresentation.transform.localScale = rayRepresentation.transform.position - rayHit.point;
+            //rayRepresentation.transform.localScale = rayRepresentation.transform.position - rayHit.point;
             if (rayHit.transform.gameObject.GetComponent<RayInteraction>() && rayHit.transform.GetComponent<MeshRenderer>()) { //If the object detected can be interacted with;
 					if((GameManager.gameManager.virtualReality == true)? Controller.GetPressDown(SteamVR_Controller.ButtonMask.Trigger): Input.GetKeyDown("e")) 
 						rayHit.transform.gameObject.GetComponent<RayInteraction>().Activate(); //Interacts with the object;

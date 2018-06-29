@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
 public class ControllerScript : MonoBehaviour
 {
 
@@ -47,7 +46,6 @@ public class ControllerScript : MonoBehaviour
 
     private void Awake()
     {
-        rayVisual = GetComponent<LineRenderer>();
         reticle = Instantiate(teleportMarker);
         reticle.transform.SetParent(worldspace);
         reticle.SetActive(false);
@@ -95,7 +93,6 @@ public class ControllerScript : MonoBehaviour
     public void ShowLaser()
     {
         bool input = (GameManager.gameManager.virtualReality == true) ? controller.GetHairTriggerDown() : Input.GetKeyDown("e");
-
         rayVisual.enabled = true;
 
         if (this.enabled == true)
@@ -126,16 +123,19 @@ public class ControllerScript : MonoBehaviour
                         Teleport(hit);
                 }
             }
-        }
+
+        if (reticle.GetComponent<TeleportRoomCheck>().canTeleport == false) rayVisual.material.color = Color.red;
+    }
 
     void Teleport(RaycastHit _hit)
     { 
             if(reticle.GetComponent<TeleportRoomCheck>().canTeleport) {
             Narrative.narrative.teleported = true;
             RegionManager.regionManager.alpha.a = 1; //Fade effect per teleport;
-            Vector3 _Final = new Vector3(_hit.point.x, height, _hit.point.z);
+            Vector3 _Offset = rig.transform.position - head.transform.position;
+            Vector3 _Plus = reticle.transform.position + _Offset;
+            Vector3 _Final = new Vector3(_Plus.x, height, _Plus.z);
             rig.transform.position = _Final;
-            
 
         //GameObject _Sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), rig.transform.position, Quaternion.identity);
         /*PhysicMaterial _Bounce = new PhysicMaterial

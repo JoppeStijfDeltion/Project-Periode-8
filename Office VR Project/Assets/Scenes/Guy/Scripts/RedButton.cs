@@ -21,7 +21,7 @@ public class RedButton : InteractableObject {
 		alarmAudioSource.Play();
 		print("ALARM");
 		anim.SetTrigger("Press"); //Plays the buttonpress animation;
-		AudioManager.audioManager.PlayAudio(sounds[0], transform); //Plays the button press sound;
+        GetComponent<AudioSource>().Play();
 	}
 
 	public override void Update() {

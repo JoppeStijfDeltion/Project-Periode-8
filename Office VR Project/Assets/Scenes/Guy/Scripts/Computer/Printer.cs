@@ -91,6 +91,7 @@ public class Printer : InteractableObject {
 
 	IEnumerator Print(GameObject _Printed) {
 		GameObject printed = (GameObject)Instantiate(_Printed, printLoc.position, Quaternion.identity);
+        printed.AddComponent<Friction>();
 		printed.transform.SetParent(printLoc);
 		printed.GetComponent<Animator>().SetFloat("Printspeed", printAnimationTime);
 		AudioManager.audioManager.PlayAudio(sounds[1], transform);

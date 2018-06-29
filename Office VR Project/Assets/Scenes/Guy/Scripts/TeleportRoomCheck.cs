@@ -27,16 +27,22 @@ public class TeleportRoomCheck : MonoBehaviour {
 
 		foreach(Collider _Col in _CurrentColliders) { //For every collider that is within the trigger field;
 			if(_Col != null) { //If the collider has data;
-                if((teleportMask.value & 1<<_Col.transform.gameObject.layer) != 0) {
+                if (_Col.isTrigger == true)
+                {
+                    if ((teleportMask.value & 1 << _Col.transform.gameObject.layer) != 0)
+                    {
                         canTeleport = true; //Stops the user from teleporting;
                         particle.color = trueDetected;
                         footsteps.color = trueDetected;
-                } else {
-                        print("Current colliders detected within triggerfield: " +_Col.gameObject);
+                    }
+                    else
+                    {
+                        print("Current colliders detected within triggerfield: " + _Col.gameObject);
                         canTeleport = false; //Stops the user from teleporting;
                         particle.color = falseDetected;
                         footsteps.color = falseDetected;
-                   }
+                    }
+                  }
                }
             }
         }

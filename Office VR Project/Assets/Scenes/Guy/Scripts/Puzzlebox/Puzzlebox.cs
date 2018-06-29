@@ -15,6 +15,7 @@ public class Puzzlebox : InteractableObject {
 	public float alphaIncrementSpeed = 2;
 	public GameObject tools;
 	public Animator hingeAnim;
+    public AudioClip sparkSound;
 
 
 	[Header ("Checks:")]
@@ -66,6 +67,7 @@ public class Puzzlebox : InteractableObject {
 
 	public override void Interact() {
 		anim.SetTrigger("Press");
+        AudioManager.audioManager.PlayAudio(sounds[0], transform);
         if (decreaseAlpha)
             decreaseAlpha = false;  else decreaseAlpha = true;
 	    	hand = null;

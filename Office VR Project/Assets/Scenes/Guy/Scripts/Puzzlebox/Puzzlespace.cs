@@ -27,7 +27,8 @@ public class Puzzlespace : MonoBehaviour {
 					pieceContained.parent = _PuzzleSpaces; //Gives the puzzle piece information about its parent;
 					pieceContained.transform.localPosition = Vector3.zero; //Gives the piece the same position as the newely found space;
 					pieceContained = null; //And removes it from this space;
-					Puzzlebox.puzzleBox.Completion (); //Checks if the puzzlebox has been completed;
+                    AudioManager.audioManager.PlayAudio(Puzzlebox.puzzleBox.sparkSound, transform);
+                    Puzzlebox.puzzleBox.Completion (); //Checks if the puzzlebox has been completed;
 					EffectManager.effectManager.InstantiateEffect("Sparks", transform);
 				}
 			}

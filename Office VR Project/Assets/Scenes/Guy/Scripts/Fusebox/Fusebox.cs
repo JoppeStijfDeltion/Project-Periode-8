@@ -7,6 +7,7 @@ using UnityEngine;
 public class Fusebox : MonoBehaviour {
 
 	public static Fusebox fuseBox;
+    public bool started = false;
 
 	[Header("Fusebox Settings:")]
 	public List<Fuse> fuses = new List<Fuse>();
