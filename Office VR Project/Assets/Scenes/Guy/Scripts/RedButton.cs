@@ -21,14 +21,14 @@ public class RedButton : InteractableObject {
 		alarmAudioSource.Play();
 		print("ALARM");
 		anim.SetTrigger("Press"); //Plays the buttonpress animation;
-        GetComponent<AudioSource>().Play();
+        alarmLight.SetActive(true);
 	}
 
 	public override void Update() {
 		base.Update();
 
 		if(alreadyInteracted == true) {
-			alarmLight.transform.Rotate(0, Time.deltaTime * rotationSpeed, 0);
+			alarmLight.transform.Rotate(0, 0, Time.deltaTime * rotationSpeed);
 		}
 	}
 }

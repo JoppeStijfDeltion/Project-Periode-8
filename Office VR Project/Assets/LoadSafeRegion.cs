@@ -12,11 +12,10 @@ public class LoadSafeRegion : MonoBehaviour {
 	BoxCollider _RegionLockArea;
 	#endregion
 
-	void Awake() {
-		 _RegionLockArea = GetComponent<BoxCollider>();
-	}
 
 	public void Update() {
+        _RegionLockArea = GetComponent<BoxCollider>();
+
 		if(hasLoaded == false) {
 			if(safe.opened == true) {
 			if(_RegionLockArea.bounds.Contains(GameManager.gameManager.player.transform.position)) {

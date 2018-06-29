@@ -64,8 +64,11 @@ public class PickupSystem : MonoBehaviour {
 		AdjustVelocity(); //Used to define the throwing speed;
 		Toggle(); //This function is used to toggle the way to interact with the environment;
 		CoreInteraction(); //Used to decide for which functions to activate;
-        
-	}
+
+        if (objectBeingCarried != null)
+            objectBeingCarried.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 0); //Set the material to its selected format;
+
+    }
 
 	private void Toggle() { //This method is used to toggle between multiple interaction methods;S
 		if((GameManager.gameManager.virtualReality == true)? Controller.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad):Input.GetButtonDown("Fire3")) { //Interaction based toggle;
@@ -241,7 +244,7 @@ public class PickupSystem : MonoBehaviour {
 			return; //Cut off function and do not update visuals;
 		}
 
-		if(currentlyHovering == null) { //If the currently hovered object is empty;
+        if (currentlyHovering == null) { //If the currently hovered object is empty;
 			currentlyHovering = _SelectedObj; //Fill in the hovered object;
 
 		} else if(currentlyHovering != null) { //Else if the currently hovering object 

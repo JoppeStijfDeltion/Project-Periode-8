@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Art_Newspaper_Material
+  m_Name: MAT_Glue
   m_Shader: {fileID: 4800000, guid: 449d1f4ce6122754786537998a303028, type: 3}
-  m_ShaderKeywords: _BOOL_ON _METALLICGLOSSMAP _NORMALMAP
+  m_ShaderKeywords: _BOOL_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f5bbda339d5fb61448b4a074ceee4545, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -47,19 +47,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1a203da784546144cb72144f25ad9193, type: 3}
+        m_Texture: {fileID: 2800000, guid: 075b376e893662945a4555969dcbbc64, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MeSm:
-        m_Texture: {fileID: 2800000, guid: b64ec603c18cadd4abfa67770a7d4627, type: 3}
+        m_Texture: {fileID: 2800000, guid: f09d10eeb80539b4ebb17d7b4ac0695e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: b64ec603c18cadd4abfa67770a7d4627, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: f5bbda339d5fb61448b4a074ceee4545, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4de627bd8710cf340863c9fa4ed81710, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
