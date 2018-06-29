@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeightPuzzle : MonoBehaviour {
+public class GetWeight : MonoBehaviour {
 
-	public float requiredMass = 5f;
-
-	private float mass;
+	[HideInInspector]
+	public float mass;
+	public WeightPuzzle puzzle;
 	private List<Rigidbody> colliders = new List<Rigidbody> ();
 
 	private void OnTriggerEnter (Collider collider) {
@@ -29,9 +29,6 @@ public class WeightPuzzle : MonoBehaviour {
 			m += colliders[i].mass;
 		}
 		mass = m;
-
-		if (m >= requiredMass) {
-			print ("Completed!");
-		}
+		puzzle.UpdateMass ();
 	}
 }

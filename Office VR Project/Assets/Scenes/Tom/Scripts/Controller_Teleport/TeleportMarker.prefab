@@ -113,6 +113,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canTeleport: 0
+  teleportMask:
+    serializedVersion: 2
+    m_Bits: 0
+  particle: {fileID: 0}
+  footsteps: {fileID: 0}
+  falseDetected: {r: 0, g: 0, b: 0, a: 0}
+  trueDetected: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &135787967651424802
 SphereCollider:
   m_ObjectHideFlags: 1
