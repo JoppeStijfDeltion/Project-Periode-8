@@ -6,6 +6,8 @@ public class WaterBottle : MonoBehaviour {
 
 	[Header("Visual Settings:")]
 	public bool capped = true;
+    public GameObject cap;
+
 	public GameObject waterCylinder;
 	public ParticleSystem water;
 	public float minMass, maxMass;
@@ -20,9 +22,10 @@ public class WaterBottle : MonoBehaviour {
 	}
 
     void Update() {
-		SprayWater();
+        if (transform.GetChild(0).transform.tag != "Cap") capped = false;
+        SprayWater();
 
-		Vector3 _Waterscale = new Vector3(waterCylinder.transform.lossyScale.x, rb.mass, waterCylinder.transform.lossyScale.z);
+        Vector3 _Waterscale = new Vector3(waterCylinder.transform.lossyScale.x, rb.mass, waterCylinder.transform.lossyScale.z);
 		waterCylinder.transform.localScale = _Waterscale;
 	    rb.mass = Mathf.Clamp(rb.mass, minMass, maxMass);
 	}
@@ -37,7 +40,9 @@ public class WaterBottle : MonoBehaviour {
             }
             else
                 water.Stop();
-	    }
+        }
+        else
+            water.Stop();
     }
 
 	public void AddWater(float _Increment) {

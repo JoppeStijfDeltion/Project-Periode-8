@@ -263,7 +263,7 @@ public class PickupSystem : MonoBehaviour {
 	}
 
 		public void OnTriggerEnter(Collider c) {
-			if(c.GetComponent<InteractableObject>() && objectBeingCarried == null)
+			if((c.GetComponent<InteractableObject>() || c.GetComponent<Friction>()) && objectBeingCarried == null)
 				Selected(c.gameObject, false);
 		}
 
@@ -277,7 +277,7 @@ public class PickupSystem : MonoBehaviour {
 		}
 
 		private void OnTriggerExit(Collider c) {
-			if(c.GetComponent<InteractableObject>() && c.GetComponent<MeshRenderer>())
+			if((c.GetComponent<InteractableObject>() || c.GetComponent<Friction>()) && c.GetComponent<MeshRenderer>())
 			Selected(c.gameObject, true);
 		}
 

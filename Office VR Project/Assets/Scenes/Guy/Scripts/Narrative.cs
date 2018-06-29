@@ -182,6 +182,7 @@ public class Narrative : MonoBehaviour {
 			if(started == false) {
 				started = true;
 			StartCoroutine(InitializeManager.initializeManager.StartGame());
+            RegionManager.regionManager.fade = true;
 			}
 		}
 	}

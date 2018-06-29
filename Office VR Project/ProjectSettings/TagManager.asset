@@ -7,6 +7,7 @@ TagManager:
   - Screwdriver
   - Vent
   - Water
+  - Cap
   layers:
   - Default
   - TransparentFX
