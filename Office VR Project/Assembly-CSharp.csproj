@@ -100,7 +100,9 @@
      <Compile Include="Assets\Region.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Clock.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Computer.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Computer\EmergencyDoor.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Computer\Printer.cs" />
+     <Compile Include="Assets\Scenes\Guy\Scripts\Computer\WaterBottleWater.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Destroy.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Door.cs" />
      <Compile Include="Assets\Scenes\Guy\Scripts\Door\Keylock.cs" />
@@ -140,7 +142,7 @@
      <Compile Include="Assets\Scenes\Tom\Scripts\Controller_Teleport\ControllerScript.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Controller_Teleport\Laser.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Controller_Teleport\VRInputTest.cs" />
-     <Compile Include="Assets\Scenes\Tom\Scripts\Fusion\Fusion.cs" />
+     <Compile Include="Assets\Scenes\Tom\Scripts\KeyMold\Mold.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\NonVR.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Weight\GetWeight.cs" />
      <Compile Include="Assets\Scenes\Tom\Scripts\Weight\WeightPuzzle.cs" />

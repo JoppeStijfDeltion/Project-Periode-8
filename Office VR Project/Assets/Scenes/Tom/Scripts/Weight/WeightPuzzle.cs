@@ -11,6 +11,8 @@ public class WeightPuzzle : MonoBehaviour {
 	public Text leftText;
 	public Text rightText;
 
+	public EmergencyDoor door;
+
 	private float currentMass;
 	private float newMass;
 	private Vector2 mass;
@@ -34,7 +36,8 @@ public class WeightPuzzle : MonoBehaviour {
 	}
 
 	private void Completed () {
-		print ("Completed!");
+		if(door.opened == false)
+		door.Open();
 	}
 
 	public void UpdateMass () {

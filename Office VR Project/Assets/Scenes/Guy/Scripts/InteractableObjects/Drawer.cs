@@ -11,6 +11,7 @@ public class Drawer : InteractableObject {
 	[Header("Unlock Settings:")]
 	public GameObject containedObject; //Object that will instantiate once the drawer is unlocked;
 	public Transform instancePos; //Transform where the content will be instantiated upon unlock;
+	public AudioClip unlock;
 
 	[Header("Drawer Settings:")]
 	[Tooltip("The max range from the startoffset the drawer can open at.")]
@@ -56,14 +57,9 @@ public class Drawer : InteractableObject {
 	public void Unlock() {
 		if(open == false) { //If the drawer hasn't been unlocked yet;
 		open = true; //Set the state to being unlocked;
-		GameObject _Contained = Instantiate(containedObject, instancePos.transform.position, Quaternion.identity); //Spawn the contained item;
-		_Contained.transform.SetParent(gameObject.transform);
-		if(!_Contained.GetComponent<Friction>()) { //If the object doesn't have friction;
-		_Contained.AddComponent<Friction>(); //Add friction component;
-		_Contained.GetComponent<Friction>().distanceBelowTillFriction = 0.5f;
+		containedObject.SetActive(true);
 		}
-		//AudioManager.audioManager.PlayAudio(aSource, sounds[1]); //Play unlocking audio cueue;
-		}
+		AudioManager.audioManager.PlayAudio(unlock, transform); //Play unlocking audio cueue;
 	}
 
 	public override void Interact() {

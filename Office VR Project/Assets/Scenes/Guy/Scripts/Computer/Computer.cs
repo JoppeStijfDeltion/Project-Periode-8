@@ -191,6 +191,14 @@ public class Computer : RayInteraction {
 		result.text = possibleResults[5];
 		return;
 		}
+
+		
+		if(_Command.Contains("classified")) //If the player has this as input;
+		{
+		printer.AddCode();
+		result.text = "You added the first part of the code to the queue.";
+		return;
+		}
 		
 		foreach(PrintingOptions prints in possiblePrints) { //For every possible prints it checks if the command matches one of em;
 			if(_Command.Contains(prints.name)) { //If the command matches one of the file types
@@ -215,6 +223,7 @@ public class Computer : RayInteraction {
 			foreach(PrintingOptions files in possiblePrints) {
 				detectedFiles += "\n> "+files.name +".jpg";
 			}
+			detectedFiles += "\n> classified.jpg";
 
 			result.text = detectedFiles;
 			return;

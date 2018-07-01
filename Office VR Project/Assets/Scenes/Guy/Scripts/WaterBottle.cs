@@ -25,7 +25,7 @@ public class WaterBottle : MonoBehaviour {
         if (transform.GetChild(0).transform.tag != "Cap") capped = false;
         SprayWater();
 
-        Vector3 _Waterscale = new Vector3(waterCylinder.transform.lossyScale.x, rb.mass, waterCylinder.transform.lossyScale.z);
+        Vector3 _Waterscale = new Vector3(waterCylinder.transform.lossyScale.x, 0.07f * (rb.mass * 2), waterCylinder.transform.lossyScale.z);
 		waterCylinder.transform.localScale = _Waterscale;
 	    rb.mass = Mathf.Clamp(rb.mass, minMass, maxMass);
 	}
