@@ -103,7 +103,7 @@ MonoBehaviour:
         intensity: 0.2
         threshold: 0.65
         softKnee: 0.5
-        radius: 4
+        radius: 5.5
         antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}
@@ -130,17 +130,17 @@ MonoBehaviour:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
         blue: {x: 0, y: 0, z: 1}
-        currentEditingChannel: 0
+        currentEditingChannel: 2
       colorWheels:
-        mode: 0
+        mode: 1
         log:
           slope: {r: 1, g: 0.97798634, b: 0.94979745, a: 0}
           power: {r: 1, g: 0.95974296, b: 0.89557236, a: 0}
           offset: {r: 1, g: 0.98899335, b: 0.9748986, a: 0}
         linear:
           lift: {r: 1, g: 0.9707297, b: 0.92062277, a: 0}
-          gamma: {r: 1, g: 0.9852317, b: 0.94092685, a: 0}
-          gain: {r: 1, g: 0.9694981, b: 0.9559694, a: 0}
+          gamma: {r: 1, g: 0.9245754, b: 0.7667126, a: 0}
+          gain: {r: 1, g: 0.9466589, b: 0.87835604, a: 0}
       curves:
         master:
           curve:
