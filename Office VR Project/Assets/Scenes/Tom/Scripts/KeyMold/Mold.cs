@@ -18,6 +18,7 @@ public class Mold : MonoBehaviour {
 			col.transform.localPosition = Vector3.zero;
 			col.transform.localEulerAngles = Vector3.zero;
 			Destroy (col.GetComponent<Rigidbody> ());
+			Destroy (col.GetComponent<Friction> ());
 			col.GetComponent<Collider> ().enabled = false;
 			one = true;
 
@@ -27,6 +28,7 @@ public class Mold : MonoBehaviour {
 			col.transform.localPosition = Vector3.zero;
 			col.transform.localEulerAngles = Vector3.zero;
 			Destroy (col.GetComponent<Rigidbody> ());
+			Destroy (col.GetComponent<Friction> ());
 			col.GetComponent<Collider> ().enabled = false;
 			two = true;
 		}
@@ -34,7 +36,9 @@ public class Mold : MonoBehaviour {
 			completed = true;
 			Destroy (keyPartOne.gameObject);
 			Destroy (keyPartTwo.gameObject);
-			Transform _key = Instantiate (key, transform.GetChild (2).position, Quaternion.identity);
+			Transform _key = Instantiate (key, transform.GetChild (2));
+			_key.transform.localPosition = Vector3.zero;
+			_key.transform.localEulerAngles = Vector3.zero;
 			_key.gameObject.AddComponent<Rigidbody> ();
 			_key.gameObject.AddComponent<BoxCollider> ();
 			_key.gameObject.AddComponent<Friction> ();
