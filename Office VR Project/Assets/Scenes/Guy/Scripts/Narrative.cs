@@ -23,6 +23,12 @@ public class Narrative : MonoBehaviour {
 	public float 		timeTillStart = 4;
 	public AudioClip    phoneringing;
 
+	[Header("Timers:")]
+	public float[]		firstArcTimers;
+	public float[]		secondArcTimers;
+	public float[] 		thirdArcTimers;
+	public float[]		finalArcTimers;
+
 	[Header("Text Containers:")]
 	public string[]     firstAct;
 	public string[]     secondAct;
@@ -85,21 +91,21 @@ public class Narrative : MonoBehaviour {
 	if(timer <= 0) { 
 		switch(objectiveState) {
 			case Objective.Ray:
-			_Index = Random.Range(0, voiceExtraOne.Length - 1);
+			_Index = Random.Range(0, voiceExtraOne.Length);
 			SetAudio(null, voiceExtraOne , _Index);
-			StartCoroutine(SetDialogue(firstActExtra[_Index], null));
+			StartCoroutine(SetDialogue(firstActExtra[_Index], null, null));
 			break;
 
 			case Objective.Teleport:
-			_Index = Random.Range(0, voiceExtraTwo.Length - 1);
+			_Index = Random.Range(0, voiceExtraTwo.Length);
 			SetAudio(null, voiceExtraTwo , _Index);
-			StartCoroutine(SetDialogue(secondActExtra[_Index], null));
+			StartCoroutine(SetDialogue(secondActExtra[_Index], null, null));
 			break;
 
 			case Objective.Throw:
-			_Index = Random.Range(0, voiceExtraThree.Length - 1);
+			_Index = Random.Range(0, voiceExtraThree.Length);
 			SetAudio(null, voiceExtraThree , _Index);
-			StartCoroutine(SetDialogue(finalActExtra[_Index], null));
+			StartCoroutine(SetDialogue(finalActExtra[_Index], null, null));
 
 			break;
 			}
@@ -107,7 +113,7 @@ public class Narrative : MonoBehaviour {
 		}
 	}
 
-	IEnumerator SetDialogue(string _I, string[] _DiaList) {
+	IEnumerator SetDialogue(string _I, string[] _DiaList, float[] _Timers) {
 		if(_I != null) {
 		subtitles.text = _I;
 		yield return new WaitForSeconds(aSource.clip.length);
@@ -117,7 +123,7 @@ public class Narrative : MonoBehaviour {
 		if(_DiaList != null) {
 			for(int i = 0; i < _DiaList.Length; i++) {
 				subtitles.text = _DiaList[i];
-				yield return new WaitForSeconds(aSource.clip.length / _DiaList.Length);
+				yield return new WaitForSeconds(_Timers[i]);
 			}
 		}
 
@@ -193,8 +199,8 @@ public class Narrative : MonoBehaviour {
                 case Acts.ActOne:
                     audioIndex = 0;
                     SetAudio(voiceContainer[audioIndex], null, 0);
-                    StopCoroutine(SetDialogue(null, null));
-                    StartCoroutine(SetDialogue(null, firstAct));
+                    StopCoroutine(SetDialogue(null, null, null));
+                    StartCoroutine(SetDialogue(null, firstAct, firstArcTimers));
                     yield return new WaitForSeconds(aSource.clip.length);
                     objectiveState = Objective.Ray;
                     break;
@@ -202,8 +208,8 @@ public class Narrative : MonoBehaviour {
                 case Acts.ActTwo:
                     audioIndex = 1;
                     SetAudio(voiceContainer[audioIndex], null, 0);
-                    StopCoroutine(SetDialogue(null, null));
-                    StartCoroutine(SetDialogue(null, secondAct));
+                    StopCoroutine(SetDialogue(null, null, null));
+                    StartCoroutine(SetDialogue(null, secondAct, secondArcTimers));
                     yield return new WaitForSeconds(aSource.clip.length);
                     objectiveState = Objective.Teleport;
                     break;
@@ -211,8 +217,8 @@ public class Narrative : MonoBehaviour {
                 case Acts.ActThree:
                     audioIndex = 2;
                     SetAudio(voiceContainer[audioIndex], null, 0);
-                    StopCoroutine(SetDialogue(null, null));
-                    StartCoroutine(SetDialogue(null, thirdAct));
+                    StopCoroutine(SetDialogue(null, null, null));
+                    StartCoroutine(SetDialogue(null, thirdAct, thirdArcTimers));
                     yield return new WaitForSeconds(aSource.clip.length);
                     testItem.GetComponent<MeshRenderer>().material.SetFloat(("_interact"), 1);
                     objectiveState = Objective.Throw;
@@ -221,7 +227,7 @@ public class Narrative : MonoBehaviour {
                 case Acts.finalAct:
                     audioIndex = 3;
                     SetAudio(voiceContainer[audioIndex], null, 0);
-                    StartCoroutine(SetDialogue(null, finalAct));
+                    StartCoroutine(SetDialogue(null, finalAct, finalArcTimers));
                     yield return new WaitForSeconds(aSource.clip.length);
                     audioIndex = 4;
                     SetAudio(voiceContainer[audioIndex], null, 0);
