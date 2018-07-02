@@ -32,7 +32,6 @@ public class EmergencyDoor : MonoBehaviour {
 		emergencyAnim = emergencyDoor.GetComponent<Animator>();
 		fuseAnim = fuseDoor.GetComponent<Animator>();
 		power = startPower;
-		Open(); //Debug;
 		smoke.Stop();
 	}
 
@@ -48,9 +47,6 @@ public class EmergencyDoor : MonoBehaviour {
 
 		power -= _PowerDecrease;
 
-		if(state != Doorstate.Off)
-		AudioManager.audioManager.PlayAudio(shock, transform);
-
 		if(power <= flickerPower) {
 		EffectManager.effectManager.InstantiateEffect("Sparks", transform);
 		state = Doorstate.Flickering;
@@ -63,6 +59,7 @@ public class EmergencyDoor : MonoBehaviour {
 	    if(power <= 0) {
 		state =	Doorstate.Off;
 		emergencyAnim.SetTrigger("Open");
+		RegionManager.regionManager.LoadRegion(4);
 		//End game;
 		}
 	}
@@ -70,6 +67,7 @@ public class EmergencyDoor : MonoBehaviour {
 	public IEnumerator Flickering() {
 		yield return new WaitForSeconds(FlickerInterval);
 		EffectManager.effectManager.InstantiateEffect("Sparks", transform);
+		AudioManager.audioManager.PlayAudio(shock, transform);
 
 		if(emergencyLight.enabled == true) 
 			emergencyLight.enabled = false;
