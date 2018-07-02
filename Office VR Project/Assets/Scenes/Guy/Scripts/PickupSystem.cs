@@ -138,7 +138,6 @@ public class PickupSystem : MonoBehaviour {
 		Ray ray = new Ray(transform.position, transform.forward);
 		RaycastHit rayHit;
         Debug.DrawRay(transform.position, transform.forward, Color.red);
-        rayRepresentation.SetPosition(0, transform.position); //Sets starting position of the line;
         rayRepresentation.material.color = Color.cyan;
         rayRepresentation.SetPositions(new Vector3[] { transform.position, transform.forward * 100 });
 

@@ -52,13 +52,13 @@ public class Puzzlebox : InteractableObject {
 
 		if (completed == true) {
 			print ("You have succesfully finished the puzzle!");
-			tools.SetActive(true);
 			StartCoroutine(Open());
 		}
 	}
 
 
 	IEnumerator Open() {
+		tools.SetActive(true);
 		yield return new WaitForSeconds(2);
 		hingeAnim.SetTrigger("Open");
 	}
@@ -76,6 +76,9 @@ public class Puzzlebox : InteractableObject {
 	public override void Update() {
 		base.Update();
 		ChangeColor();
+
+		if(Input.GetButtonDown("Fire3"))
+		StartCoroutine(Open());
 	}
 
 	void ChangeColor() {

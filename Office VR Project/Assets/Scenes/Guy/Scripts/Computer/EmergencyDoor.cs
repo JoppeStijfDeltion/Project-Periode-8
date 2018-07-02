@@ -38,7 +38,6 @@ public class EmergencyDoor : MonoBehaviour {
 	public void Open() {
 		opened = true;
 		fuseAnim.SetTrigger("Open");
-				emergencyAnim.SetTrigger("Open");
 	}
 	
 	public void IncrementPower(float _PowerDecrease) {
