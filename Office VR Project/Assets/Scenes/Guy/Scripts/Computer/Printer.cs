@@ -11,6 +11,7 @@ public class Printer : InteractableObject {
 	public float printInterval = 2; //Time between each paper thats being printed;
 	public GameObject paper;
 	public GameObject code;
+    public bool shouldSkipMaterial = false;
 
 	[Header("Checks:")]
 	public bool beenInteracted = true; //For when the player pushes the button, i'll keep printing till nothing is queuing;
@@ -58,6 +59,8 @@ public class Printer : InteractableObject {
 
 	public void AddCode() {
 		toBePrinted.Add(code);
+        UpdateUI();
+
 	}
  
 	public void DeactivatePrinter() { //Turns off the printer;
@@ -105,6 +108,7 @@ public class Printer : InteractableObject {
 		GameObject printed = (GameObject)Instantiate(_Printed, printLoc.position, Quaternion.identity) as GameObject;
 		printed.transform.GetChild(0).transform.GetComponent<MeshRenderer>().material = currentMat[0];
 		currentMat.RemoveAt(0);
+        shouldSkipMaterial = false;
         printed.AddComponent<Friction>();
 		printed.transform.SetParent(printLoc);
 		printed.GetComponent<Animator>().SetFloat("Printspeed", printAnimationTime);

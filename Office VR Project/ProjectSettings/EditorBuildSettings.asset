@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Guy/Scene/Narrative.unity
+    guid: 55d6d5c0bae845e43b80e3660402c5f4
+  m_configObjects: {}
